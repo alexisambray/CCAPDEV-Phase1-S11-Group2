@@ -1,0 +1,37 @@
+#nav {
+    background-color: black;
+    width: 220px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+#logo {
+    width: 100%;
+    padding: 10%;
+}
+.nav-btn-group {
+    position: block;
+    text-align: center;
+    width: 100%;
+    background-color: aqua;
+}
+.nav-btn {
+    text-align: left;
+    width: 80%;
+    padding: 3%;
+    margin: 3%;
+}
+#btns-logged-in{
+    display: block; /*to make visible, set to "block". to make invisible, set to "none"*/
+    background-color: blue;
+}
+#btns-logged-out {
+    display: block; /*to make visible, set to "block". to make invisible, set to "none"*/
+    background-color: brown;
+}
+#main {
+    margin-left: 220px;
+}
