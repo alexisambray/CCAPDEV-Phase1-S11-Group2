@@ -35,3 +35,48 @@
 #main {
     margin-left: 220px;
 }
+
+/* Ems added here (for temporary or permanent) */
+.login {
+    display: flex;
+    justify-content: center;
+    /* display: block;
+    margin-left: Auto;
+    margin-right: Auto; */
+}
+
+.login h3 {
+    text-align: left;
+    padding-top: 5px;
+    font-size:30px;
+}
+
+.login img{
+    margin-top: 100px;
+    width: 500px;
+    height: auto;
+    background-color: blue;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* justify-content: center; */
+}
+
+/* body {
+    /* testing purposes */
+    /* background-color: blue;
+    color: blue; */
+    /* text-align: center; 
+} */
+
+.button_blue {
+    background-color:blue;
+    color: white
+}
+
+.footer {
+    /* display: flex; */
+    padding: 10px;
+    text-align: left;
+    margin-left:80px;
+}
