@@ -19,6 +19,8 @@
             <div class="header">
                 <img src="images/logo.png" alt="login logo">
                 <!-- <h3> username </h3> -->
+
+                <!-- <form method="POST" action="register.html" id="submitLogin"> -->
                 <br>
                 <input type="text" id="username" required autocomplete="username" autofocus placeholder="Username"> 
                 <!-- <h3> password</h3> -->
@@ -26,13 +28,18 @@
                 <input type="password" id="pwd" minlength="8" required autocomplete="current-password" placeholder="Password"> 
                 <br><br><br>
                 <input type="button" id="submit" value="LOGIN" class="button_blue" >
+                <!-- </form> -->
+            
             </div>
         </div>
         <hr style="margin-top:7%">
         <div class="footer" style="background-color:rgb(177, 177, 177)">
             Don't have an account?
             <br>
-            <input type="button" id="submit" value="REGISTER" class="button_blue" >
+            <a href="register.html">
+                <input type="button" id="submit" value="REGISTER" class="button_blue" >
+            </a>
+
         </div>
         
     </body>

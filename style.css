@@ -37,6 +37,7 @@
 }
 
 /* Ems added here (for temporary or permanent) */
+/* ============================================ LOGIN =================== */
 .login {
     display: flex;
     justify-content: center;
@@ -80,3 +81,49 @@
     text-align: left;
     margin-left:80px;
 }
+    /* ============================================ REGISTER =================== */
+
+    .register-header{
+        display:flex;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items:center;
+    }
+
+    body .register-box{
+        text-align: left;
+        margin-top: 5%;
+        margin-right: 20%;
+        margin-left: 20%;
+        margin-bottom: 20%;
+    }
+
+    body .register-title{
+        font-size: 400%;
+        font-weight:bold;
+    }
+
+    body .register-input{
+        margin-top: 5%;
+        display: block;
+        width: 50%;
+    }
+
+    body .register-inputs-items{
+        margin-top: 8%;
+        width:80%;
+        height:50px;
+    }
+
+    .goback{
+        margin-left: 10%;
+        margin-top: 5%;
+        font-weight:lighter;
+        color:black;
+    }
+
+    .goback:hover{
+        color: blue;
+        text-decoration:underline;
+    }
