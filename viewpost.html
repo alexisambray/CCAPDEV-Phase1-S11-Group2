@@ -37,30 +37,35 @@
         <!-- Content Space -->
         <div id="main">
             <!-- PUT YOUR CODES HERE -->
-            <p>PUT YOUR CODES HERE! DELETE THIS PARAGRAPH AFTER</p>
-            <h1 id = "profile">Kevin</h1>
+            <h1 id = "profile">Kevin22</h1>
             <h2 id = "profiletype">Traveler Pro</h2>
             <img id = "profilepicture" src="images/poster.jpg" alt = "Sample profile">
             <h1 id = "posttitle">Maldives</h1>
             <img id = "post" src="images/maldives.jpg" alt = "Sample Post">
+            <a href ="/bookmarkedposts.php"><img id = "bookmark" src = "images/bookmark.png" alt = "bookmark">
+            </a>
+            <a href = "images/maldives.jpg"><img id = "fullscreen" src="images/fullscreen.png" alt ="Full screen button"></a>
             <img id = "poster" src = "images/poster.jpg" alt = "Sample Poster"> 
-            <h2 id = "postername">Kevin</h2>
+            <h2 id = "postername">Kevin22</h2>
             <h3 id ="likes"> 32 likes </h3>
+            <h3 id ="comments"> 0 comments</h3>
 
         </div>
-        <div id="comment">
+        <div id="addcomment">
 
-            <h3 id = "commentheader">Leave a Comment</h3>
+            <h3 id = "commentheader">Add a Comment:</h3>
           
-            <form action="post_comment" method="post" id="commentform">
-          
-            <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
-          
-            <input id ="commentsubmit" type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-            <input name="submit" type="submit" value="Submit"/>
-          
+            <form action="/postcomment.php" method="post">
+            <input id = "commentbox" type="text" name="comment">
+            <input id ="commentsubmitbtn" type="submit" name="comment_post_ID" value="Post">
             </form>
+
+        </div>
+
+
+
+
+
           
-          </div>
     </body>
 </html>
