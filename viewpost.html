@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>VisiTOUR - Maldives by username123</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,54 +18,88 @@
         <!-- Navigation Sidebar -->
         <div id="nav">
             <img id="logo" src="images/logo.png" alt="VisiTOUR Logo">
+            <svg id="green-circle"><ellipse/></svg>
+            <svg id="orange-circle"><ellipse/></svg>
             <div class="nav-btn-group">
-                <button class="nav-btn" id="nav-dashboard"><i class="bi bi-house-heart-fill"></i>&nbsp;&nbsp;&nbsp;Dashboard</button>
+                <a href=""><button id="nav-dashboard"><i class="bi bi-house-heart-fill"></i>&nbsp;&nbsp;&nbsp;Dashboard</button></a>
                 <div class="nav-btn-group" id="btns-logged-in">
-                    <button class="nav-btn" id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button>
-                    <button class="nav-btn" id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button>
-                    <button class="nav-btn" id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button>
-                    <button class="nav-btn" id="nav-edit"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button>
-                    <button class="nav-btn" id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button>
+                    <a href=""><button id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button></a>
+                    <a href=""><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
+                    <a href=""><button class="selected" id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
+                    <a href=""><button id="nav-edit"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
+                    <a href=""><button id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button></a>
                 </div>
                 <div class="nav-btn-group" id="btns-logged-out">
-                    <button class="nav-btn" id="nav-login"><i class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;&nbsp;Login</button>
-                    <button class="nav-btn" id="nav-register"><i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;&nbsp;Register</button>
+                    <a href=""><button id="nav-login"><i class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;&nbsp;Login</button></a>
+                    <a href=""><button id="nav-register"><i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;&nbsp;Register</button></a>
                 </div>
             </div>
         </div>
 
         <!-- Content Space -->
         <div id="main">
-            <!-- PUT YOUR CODES HERE -->
-            <h1 id = "profile">Kevin22</h1>
-            <h2 id = "profiletype">Traveler Pro</h2>
-            <img id = "profilepicture" src="images/poster.jpg" alt = "Sample profile">
-            <h1 id = "posttitle">Maldives</h1>
-            <img id = "post" src="images/maldives.jpg" alt = "Sample Post">
-            <a href ="/bookmarkedposts.php"><img id = "bookmark" src = "images/bookmark.png" alt = "bookmark">
-            </a>
-            <a href = "images/maldives.jpg"><img id = "fullscreen" src="images/fullscreen.png" alt ="Full screen button"></a>
-            <img id = "poster" src = "images/poster.jpg" alt = "Sample Poster"> 
-            <h2 id = "postername">Kevin22</h2>
-            <h3 id ="likes"> 32 likes </h3>
-            <h3 id ="comments"> 0 comments</h3>
-
+            <h1 id="post-title">Maldives</h1>
+            <div class="post-area">
+                <img src="images/maldives.jpg" alt="Sample Post">
+                <div class="post-nav">
+                    <a href="profile.html" class="post-user-view">
+                        <img src="images/tay.jpg" alt="Sample Poster">
+                        <p>username123</p>
+                    </a>
+                    <div class="post-btns">
+                        <button><i class="bi bi-heart-fill"></i></button>
+                        <button><i class="bi bi-bookmark-fill"></i></button>
+                    </div>
+                </div>
+                <div class="post-stats">
+                    <p><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;1009 likes</p>
+                    <p><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;14 bookmarks</p>
+                    <p><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;5 comments</p>
+                </div>
+                <div class="add-comment">
+                    <form action="#comment-textarea">
+                        <input id="comment-textarea" type="textarea" placeholder="Share your thoughts!">
+                        <input id="comment-btn" type="submit" value="Comment">
+                    </form>
+                </div>
+                <div class="comment-group">
+                    <div class="comment">
+                        <a href="profile.html" class="commenter">
+                            <img src="images/poster.jpg" alt="Sample Commenter">
+                            <p>kevin22</p>
+                        </a>
+                        <p class="comment-content">Wow! Nice post!</p>
+                    </div>
+                    <div class="comment">
+                        <a href="profile.html" class="commenter">
+                            <img src="images/v.jpg" alt="Sample Commenter">
+                            <p>vante95</p>
+                        </a>
+                        <p class="comment-content">Maldives looks so lovely! I just had to leave a comment.</p>
+                    </div>
+                    <div class="comment">
+                        <a href="profile.html" class="commenter">
+                            <img src="images/emma.jpg" alt="Sample Commenter">
+                            <p>emma09</p>
+                        </a>
+                        <p class="comment-content">Pretty photo :)</p>
+                    </div>
+                    <div class="comment">
+                        <a href="profile.html" class="commenter">
+                            <img src="images/olivia.jpg" alt="Sample Commenter">
+                            <p>alex23</p>
+                        </a>
+                        <p class="comment-content">Great work!!!</p>
+                    </div>
+                    <div class="comment">
+                        <a href="profile.html" class="commenter">
+                            <img src="images/zac.jpg" alt="Sample Commenter">
+                            <p>emman42</p>
+                        </a>
+                        <p class="comment-content">5th comment here :D</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="addcomment">
-
-            <h3 id = "commentheader">Add a Comment:</h3>
-          
-            <form action="/postcomment.php" method="post">
-            <input id = "commentbox" type="text" name="comment">
-            <input id ="commentsubmitbtn" type="submit" name="comment_post_ID" value="Post">
-            </form>
-
-        </div>
-
-
-
-
-
-          
     </body>
 </html>
