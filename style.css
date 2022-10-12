@@ -199,7 +199,11 @@
 
 /* bookmarks.html + index.html + profile.html */
 
-#bmk-title, #dash-title {
+#bmk-title{
+    padding: 5%;   
+}
+
+.title {
     color: var(--light);
     font-family: Abel;
     font-weight: 400;
@@ -305,8 +309,6 @@
     color: var(--link);
 }
 
-
-
 /* profile.html */
 
 .profile {
@@ -316,6 +318,7 @@
     align-items: center;
     width: 100%;
     padding: 2%;
+    padding-top: 3%;
 }
 
 .profile img {
