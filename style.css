@@ -46,6 +46,13 @@
     margin-bottom: 0;
 }
 
+.login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
 .input-txt {
     font-family: Abel;
     font-size: 22px;
@@ -53,8 +60,9 @@
     background-color: transparent;
     border: none;
     border-bottom: 2px solid white;
-    width: 30%;
-    margin: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .btn-blue {
@@ -65,10 +73,11 @@
     background-color: var(--blue);
     border: none;
     margin-top: 20px;
+    text-transform: uppercase;
 }
 
 #login-btn, #register-confirm{
-    width: 30%;
+    width: 100%;
 }
 
 #register-btn {
@@ -177,14 +186,6 @@
     color: black;
     border: 1px solid black;
     font-weight: 600;
-}
-
-#btns-logged-in { /*for when users are logged into an account*/
-    display: block; /*to make visible, set to "block". to make invisible, set to "none"*/
-}
-
-#btns-logged-out { /*for when users are not logged into an account*/
-    display: block; /*to make visible, set to "block". to make invisible, set to "none"*/
 }
 
 /* BODY */
