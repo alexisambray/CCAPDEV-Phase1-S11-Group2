@@ -197,7 +197,7 @@
     width: auto;
 }
 
-/* bookmarks.html + index.html */
+/* bookmarks.html + index.html + profile.html */
 
 #bmk-title, #dash-title {
     color: var(--light);
@@ -305,7 +305,59 @@
     color: var(--link);
 }
 
-/* viewpost.html + index.html(search) */
+
+
+/* profile.html */
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 2%;
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 3%;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+.display-name {
+    font-family: Abel;
+    font-weight: 400;
+    font-size: 32px;
+    color: white;
+    padding: 0;
+    margin-bottom: 2px;
+}
+
+.username {
+    font-family: Abel;
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-top: 2px;
+}
+
+.bio {
+    font-family: Abhaya Libre;
+    font-size: 18px;
+    color: var(--lgrey);
+    margin-top: 20px;
+}
+
+/* viewpost.html + search + profile.html(post-stats, card) */
 
 #post-title {
     color: var(--light);
@@ -404,6 +456,11 @@
     font-family: Abril Fatface;
     color: var(--light);
     padding-top: 10px;
+}
+
+.profile-post-stats {
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .add-comment {
