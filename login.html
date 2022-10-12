@@ -3,13 +3,13 @@
     <title>VisiTOUR Login</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <!-- External Stylesheet -->
         <link rel="stylesheet" href="style.css" type="text/css">
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <!-- Bootstrap JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     </head>
@@ -17,11 +17,11 @@
     <body>
         <div class="login">
             <a href="index.html"><img src="images/logo.png" alt="VisiTOUR Logo"></a>
-            <!-- <form method="POST" action="register.html" id="submitLogin"> -->                    
+            <form method="POST" action="index.html" id="login-form">                    
                 <input type="text" id="username" class="input-txt" required autocomplete="username" autofocus placeholder="Username"> 
                 <input type="password" id="pwd" class="input-txt" minlength="8" required autocomplete="current-password" placeholder="Password"> 
                 <input type="submit" id="login-btn" class="btn-blue" value="LOGIN">
-            <!-- </form> -->
+            </form>
             <div class="footer">
                 <p>Don't have an account?</p>
                 <a href="register.html">
