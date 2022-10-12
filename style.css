@@ -198,30 +198,14 @@
     width: auto;
 }
 
-/* bookmarks.html + index.html + profile.html */
+/* bookmarks.html + profile.html */
 
 #bmk-title{
-    padding: 5%;   
-}
-
-.title {
+    padding: 5%;
     color: var(--light);
     font-family: Abel;
     font-weight: 400;
     font-size: 32px;
-}
-
-#dash-subtl {
-    color: var(--lgrey);
-    font-family: Abril Fatface;
-    font-size: 18px;
-}
-
-.welcome {
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
 }
 
 .post-group {
@@ -361,7 +345,7 @@
     margin-top: 20px;
 }
 
-/* viewpost.html + search + profile.html(post-stats, card) */
+/* viewpost.html + profile.html(post-stats, card) */
 
 #post-title {
     color: var(--light);
@@ -473,11 +457,6 @@
     padding-bottom: 10px;
 }
 
-.search {
-    width: 100%;
-    padding: 3%;
-}
-
 #comment-box {
     background-color: var(--light);
     color: black;
@@ -487,17 +466,7 @@
     font-family: Abhaya Libre;
 }
 
-#search-box {
-    background-color: var(--light);
-    color: black;
-    border: 1px solid var(--dark);
-    border-radius: 10px;
-    width: 40%;
-    font-family: Abhaya Libre;
-    margin-left: 2%;
-}
-
-#comment-btn, #search-btn {
+#comment-btn {
     background-color: var(--dark);
     color: var(--light);
     border: 1px solid var(--dark);
@@ -557,76 +526,67 @@
 }
 
 /* index.html */
+
+.welcome {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
 #hello-title {
   color: #c0c4e7;
   font-family: "Abel", Sans-serif;
   font-weight: 400;
   font-size: 50px;
-  padding: 9%;
   line-height: 1;
 }
 
-#welcome {
+#welcome-title {
   color: #777b92;
-  font-family: Abril;
+  font-family: Abril Fatface;
   font-weight: 380;
   font-size: 20px;
-  padding: 5%;
-  margin-top: -14%;
-  margin-left: 4%;
 }
 
-#travel-title {
-  color: white;
-  font-family: "Abel", Sans-serif;
-  font-weight: 400;
-  padding: 0;
-  line-height: 1;
-  margin-left: 120px;
-}
-
-#view-title {
-  color: #d1f366;
-  font-family: "Abel", Sans-serif;
-  font-weight: 400;
-  padding: 0;
-  line-height: 1;
-  margin-left: 800px;
-  margin-top: -23px;
+.search-notif-div {
+    display: flex;
+    flex-direction: row;
 }
 
 .search-container {
     height: 50px;
-    margin-top: -20%;
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5%;
     border-radius: 14px;
-    display: block;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    block-size: 48px;
     width: 30%;
-    background-color: #1C1F37;
+    background-color: var(--dark);
 }
 
 .search-bar{
-  font-family: Abhaya;
+  font-family: Abhaya Libre;
   width: 100%;
-  max-width: 700px;
   color: #1C1F37;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
   border-radius: 60px;
-  padding: 10px 20px;
+  padding: 20px;
 }
 
 .search-bar input{
   background: transparent;
-  margin-top: -8%;
   flex: 1;
   color: white;
   border: 0;
+  border-radius: 14px;
   outline: none;
-  padding: 24px 20px;
   font-size: 20px;
 }
 
@@ -640,17 +600,19 @@
 
 .search-bar button {
   border: 0;
-  border-radius: 50%;
-  width: 60px;
-  height: 30px;
-  background: #1C1F37;
+  border-radius: 14px;
+  background: var(--dark);
   cursor: pointer;
-  margin-right: -8px;
-  margin-top: -30px;
+}
+
+.notification-container {
+    justify-self: flex-end;
+    align-self: center;
+    margin-left: 50%;
 }
 
 .notification-bar button img {
-  width: 30px;
+  width: 40px;
   background: transparent;
   vertical-align: middle;
   display: inline-block;
@@ -661,13 +623,6 @@
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background: #1C1F37;
+  background: var(--dark);
   cursor: pointer;
-  margin-left: 820px;
-  margin-top: 25px;
-}
-
-.post-group {
-  margin-top: 140px;
-  margin-right: 300px;
 }
