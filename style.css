@@ -190,6 +190,10 @@
 
 /* BODY */
 
+html {
+    background-color: var(--darkest);
+}
+
 #main {
     background-color: var(--darkest);
     margin-left: 220px;
@@ -588,6 +592,7 @@
   border-radius: 14px;
   outline: none;
   font-size: 20px;
+  width: 90%;
 }
 
 ::placeholder {
@@ -603,6 +608,7 @@
   border-radius: 14px;
   background: var(--dark);
   cursor: pointer;
+  width: 10%;
 }
 
 .notification-container {
