@@ -555,3 +555,119 @@
 .commenter p:hover {
     color: var(--link);
 }
+
+/* index.html */
+#hello-title {
+  color: #c0c4e7;
+  font-family: "Abel", Sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  padding: 9%;
+  line-height: 1;
+}
+
+#welcome {
+  color: #777b92;
+  font-family: Abril;
+  font-weight: 380;
+  font-size: 20px;
+  padding: 5%;
+  margin-top: -14%;
+  margin-left: 4%;
+}
+
+#travel-title {
+  color: white;
+  font-family: "Abel", Sans-serif;
+  font-weight: 400;
+  padding: 0;
+  line-height: 1;
+  margin-left: 120px;
+}
+
+#view-title {
+  color: #d1f366;
+  font-family: "Abel", Sans-serif;
+  font-weight: 400;
+  padding: 0;
+  line-height: 1;
+  margin-left: 800px;
+  margin-top: -23px;
+}
+
+.search-container {
+    height: 50px;
+    margin-top: -20%;
+    margin-left: 10px;
+    border-radius: 14px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    block-size: 48px;
+    width: 30%;
+    background-color: #1C1F37;
+}
+
+.search-bar{
+  font-family: Abhaya;
+  width: 100%;
+  max-width: 700px;
+  color: #1C1F37;
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 10px 20px;
+}
+
+.search-bar input{
+  background: transparent;
+  margin-top: -8%;
+  flex: 1;
+  color: white;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 20px;
+}
+
+::placeholder {
+  color: rgb(148, 133, 133);
+}
+
+.search-bar button img {
+  width: 25px;
+}
+
+.search-bar button {
+  border: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 30px;
+  background: #1C1F37;
+  cursor: pointer;
+  margin-right: -8px;
+  margin-top: -30px;
+}
+
+.notification-bar button img {
+  width: 30px;
+  background: transparent;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.notification-bar button {
+  border: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: #1C1F37;
+  cursor: pointer;
+  margin-left: 820px;
+  margin-top: 25px;
+}
+
+.post-group {
+  margin-top: 140px;
+  margin-right: 300px;
+}
