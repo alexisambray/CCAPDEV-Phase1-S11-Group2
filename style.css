@@ -631,4 +631,70 @@ html {
   height: 60px;
   background: var(--dark);
   cursor: pointer;
+	
+.post-group {
+  margin-top: 140px;
+  margin-right: 300px;
 }
+	
+/* create-post.html */
+#user-title {
+  color: var(--light);
+  font-family: Abel;
+  font-weight: 400;
+  font-size: 32px;
+  padding: 5%;
+  margin-left: 100px;
+}
+
+.icon-container img {
+  width: 70px;
+  margin-left: 50px;
+  margin-top: -205px;
+}
+
+.upload-container {
+  width: 375px;
+  height: 20px;
+  margin-left: 60px;
+  color:#626577;
+}
+
+.form-label {
+  font-family: Abel;
+  color: #d1f366;
+}
+
+.caption-container {
+  width: 600px;
+  height: 10px;
+  margin-top: 100px;
+}
+
+.caption-container input {
+  width: 600px;
+  height: 36px;
+  margin-left: 60px;
+  background-color: #ffffff;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.caption-label {
+  font-family: Abel;
+  color: #d1f366;
+  margin-left: 60px;
+}
+
+.save-container {
+  margin-top: 90px;
+  margin-left: 510px;
+}
+
+.save-container button {
+  color:#141627;
+  background-color: #d1f366;
+  font-family: Abel;
+  border-radius: 20px;
+  width: 150px;
+}
+
