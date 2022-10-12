@@ -9,12 +9,13 @@
     --dark: #1c1f37;
     --light: #c0c4e7;
     --grey: #626577;
+    --lgrey: #5f647e;
     --link: #d8ec8f;
     --blue: #4044ed;
 }
 
-
 /* login + register */
+
 .login {
     background-image: url(images/login-bg.png);
     background-repeat: no-repeat;
@@ -196,14 +197,26 @@
     width: auto;
 }
 
-/* bookmarks.html */
+/* bookmarks.html + index.html */
 
-#bmk-title {
+#bmk-title, #dash-title {
     color: var(--light);
     font-family: Abel;
     font-weight: 400;
     font-size: 32px;
-    padding: 5%;
+}
+
+#dash-subtl {
+    color: var(--lgrey);
+    font-family: Abril Fatface;
+    font-size: 18px;
+}
+
+.welcome {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .post-group {
@@ -292,7 +305,7 @@
     color: var(--link);
 }
 
-/* viewpost.html */
+/* viewpost.html + index.html(search) */
 
 #post-title {
     color: var(--light);
@@ -375,6 +388,14 @@
     color: var(--orange);
 }
 
+.post-desc {
+    text-align: justify;
+    font-family: Abhaya Libre;
+    font-size: 18px;
+    color: white;
+    margin: 10px;
+}
+
 .post-stats {
     display: flex;
     flex-direction: row;
@@ -391,6 +412,11 @@
     padding-bottom: 10px;
 }
 
+.search {
+    width: 100%;
+    padding: 3%;
+}
+
 #comment-box {
     background-color: var(--light);
     color: black;
@@ -400,7 +426,17 @@
     font-family: Abhaya Libre;
 }
 
-#comment-btn {
+#search-box {
+    background-color: var(--light);
+    color: black;
+    border: 1px solid var(--dark);
+    border-radius: 10px;
+    width: 40%;
+    font-family: Abhaya Libre;
+    margin-left: 2%;
+}
+
+#comment-btn, #search-btn {
     background-color: var(--dark);
     color: var(--light);
     border: 1px solid var(--dark);
