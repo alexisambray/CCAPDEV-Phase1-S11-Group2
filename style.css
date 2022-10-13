@@ -716,13 +716,14 @@
   }
 
 .editprofile_layout .choose_file{
-    font-family: Abel;
+    /* font-family: Abel; */
     margin-bottom: 5%;
     background-color: gray;
     border: 1px solid black;
     cursor: pointer;
     justify-content: center;
     font-size: 15px;
+    font-family: var(--bs-body-font-family);
 }
 
 .editprofile_layout .input{
