@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>VisiTOUR - My Bookmarks</title>
+        <title>VisiTOUR - bryan22</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,12 +21,11 @@
             <svg id="green-circle"><ellipse/></svg>
             <svg id="orange-circle"><ellipse/></svg>
             <div class="nav-btn-group">
-                
                 <a href="index-loggedin.html"><button id="nav-dashboard"><i class="bi bi-house-heart-fill"></i>&nbsp;&nbsp;&nbsp;Dashboard</button></a>
                 <!-- logged in -->
                 <a href="create-post.html"><button id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button></a>
                 <a href="profile.html"><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
-                <a href="bookmarks.html"><button class="selected" id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
+                <a href="bookmarks.html"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
                 <a href="editprofile.html"><button id="nav-edit"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
                 <a href="index.html"><button id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button></a>
             </div>
@@ -34,65 +33,25 @@
 
         <!-- Content Space -->
         <div id="main">
-            <h3 id="bmk-title"> Anni's Bookmarks</h3>
+            <div class="profile">
+                <img src="images/user4.jpg">
+                <div class="user-details">
+                    <h1 class="display-name">Bryan</h1>
+                    <h2 class="username">bryan22</h2>
+                    <p class="bio">U gotta get'cha get'cha head in the game.</p>
+                </div>
+            </div>
             <div class="post-group">
-                <div class="post-card">
-                    <a href="view-u1post1.html">
-                        <img src="images/u1Post1.jpeg">
-                        <p class="post-title">Sydney</p>
-                    </a>
-                    <hr>
-                    <a href="profile1.html" class="post-user">
-                        <img src="images/user1.jpg">
-                        <p>ellia14</p>
-                    </a>
-                </div>
-        
-                <div class="post-card">
-                    <a href="view-u2post1.html">
-                        <img src="images/u2Post1.jpeg">
-                        <p class="post-title">Paris</p>
-                    </a>
-                    <hr>
-                    <a href="profile2.html" class="post-user">
-                        <img src="images/user2.jpeg">
-                        <p>alex23</p>
-                    </a>
-                </div>
-        
-                <div class="post-card">
-                    <a href="view-u3post1.html">
-                        <img src="images/u3Post1.jpg">
-                        <p class="post-title">Bali</p>
-                    </a>
-                    <hr>
-                    <a href="profile3.html" class="post-user">
-                        <img src="images/user3.jpeg">
-                        <p>emman42</p>
-                    </a>
-                </div>
-        
                 <div class="post-card">
                     <a href="view-u4post1.html">
                         <img src="images/u4Post1.jpg">
                         <p class="post-title">Dubai</p>
-                    </a>
-                    <hr>
-                    <a href="profile4.html" class="post-user">
-                        <img src="images/user4.jpg">
-                        <p>bryan22</p>
-                    </a>
-                </div>
-        
-                <div class="post-card">
-                    <a href="view-u5post1.html">
-                        <img src="images/u5Post1.jpg">
-                        <p class="post-title">Korea</p>
-                    </a>
-                    <hr>
-                    <a href="profile5.html" class="post-user">
-                        <img src="images/user5.jpg">
-                        <p>vante95</p>
+                        <hr>
+                        <div class="post-stats profile-post-stats">
+                            <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;14</p>
+                            <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;10</p>
+                            <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;5</p>
+                        </div>
                     </a>
                 </div>
             </div>

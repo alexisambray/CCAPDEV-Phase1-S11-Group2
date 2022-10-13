@@ -21,39 +21,33 @@
             <svg id="green-circle"><ellipse/></svg>
             <svg id="orange-circle"><ellipse/></svg>
             <div class="nav-btn-group">
-                <a href="index.html"><button id="nav-dashboard"><i class="bi bi-house-heart-fill"></i>&nbsp;&nbsp;&nbsp;Dashboard</button></a>
-                <div class="nav-btn-group" id="btns-logged-in" style="display: block;">
-                    <a href="create-post.html"><button id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button></a>
-                    <a href="profile.html"><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
-                    <a href="bookmarks.html"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
-                    <a href="editprofile.html"><button id="nav-edit" class="selected"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
-                    <a href=""><button id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button></a>
-                </div>
-                <div class="nav-btn-group" id="btns-logged-out" style="display: block;">
-                    <a href="login.html"><button id="nav-login"><i class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;&nbsp;Login</button></a>
-                    <a href="register.html"><button id="nav-register"><i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;&nbsp;Register</button></a>
-                </div>
+                <a href="index-loggedin.html"><button id="nav-dashboard"><i class="bi bi-house-heart-fill"></i>&nbsp;&nbsp;&nbsp;Dashboard</button></a>
+                <!-- logged in-->
+                <a href="create-post.html"><button id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button></a>
+                <a href="profile.html"><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
+                <a href="bookmarks.html"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
+                <a href="editprofile.html"><button id="nav-edit" class="selected"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
+                <a href="index.html"><button id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button></a>
             </div>
         </div>
         <!-- Content Space -->
         <div id="main">
             <div class="editprofile_layout">
                 <h3 id="title">Edit Profile</h3>
-                <form action="">
+                <form action="profile.html">
                     <label for="profilepic" class="green_label">Profile Picture</label><br>
                     <input type="file" class="choose_file" id="profilepic" name="profile_picture" autofocus><br>
 
                     <label for="displayname" class="green_label">Display Name</label><br>
-                    <input type="text" class="input" id="displayname" name="display_name" required autofill autocomplete="nickname"><br>
+                    <input type="text" class="input" id="displayname" name="display_name" value="Anni" autofill autocomplete="nickname"><br>
 
                     <label for="pwd" class="green_label">Password</label><br>
-                    <input type="password" class="input" id="pwd" name="password" required minlength="8"><br>
+                    <input type="password" class="input" id="pwd" name="password" value="password" required minlength="8"><br>
 
                     <label for="pwd" class="green_label">Email</label><br>
-                    <input type="email" class="input" id="email" name="emailaddress" required autofill autocomplete="email"><br>
+                    <input type="email" class="input" id="email" name="emailaddress" value="sample@email.com" required autofill autocomplete="email"><br>
                     
                     <input type="submit" class="input_greencolor" id="updateprofile" name="update_profile" value="Update Profile">
-
                 </form>
             </div>
         </div>
