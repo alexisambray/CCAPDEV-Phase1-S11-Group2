@@ -665,7 +665,8 @@
 }
 
 .editprofile_layout .search-bar{
-    font-family: Abel;
+    /* font-family: Abel; */
+    font-family: var(--bs-body-font-family);
     background-color:var(--dark);
     border-radius: 7px;
     font-size: 1.5ex;
@@ -676,7 +677,8 @@
 }
 
 .editprofile_layout .search-bar_submit{
-    font-family: Abel;
+    /* font-family: Abel; */
+    font-family: var(--bs-body-font-family);
     padding-top: 2.5%;
     padding-bottom: 2.5%;
     background-color:var(--lime);
@@ -707,7 +709,7 @@
 
 .green_label{
     color: var(--lime);
-    font-family: Abel;
+    font-family: var(--bs-body-font-family);
     font-weight: 400;
     font-size: 18px;
     margin-bottom: 2%;
@@ -724,7 +726,7 @@
 }
 
 .editprofile_layout .input{
-    font-family: Abel;
+    /* font-family: Abel; */
     border-radius: 7px;
     height: 5vh;
     width: 40vw;
@@ -732,10 +734,11 @@
     font-size: 2ex;
     border: 2px black;
     margin-bottom: 5%;
+    font-family: var(--bs-body-font-family);
 }
 
 .editprofile_layout .input_greencolor{
-    font-family: Abel;
+    /* font-family: Abel; */
     background-color: var(--lime);
     margin-bottom: 5vh;
     border-radius: 7px;
@@ -744,4 +747,25 @@
     font-size: 18px;
     font-size: 2ex;
     border: 2px black;
+    font-family: var(--bs-body-font-family);
+}
+
+.editprofile_layout .notification-bar button img {
+  width: 30px;
+  background: transparent;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.editprofile_layout .notification-bar button {
+  border: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: #1C1F37;
+  cursor: pointer;
+  justify-content: right;
+  margin-left: 10%;
+  margin-top: 0px;
+  position:absolute;
 }
