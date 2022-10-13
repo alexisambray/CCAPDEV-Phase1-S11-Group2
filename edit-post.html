@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>VisiTOUR - Create Post</title>
+    <title>VisiTOUR - Edit Post</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -39,35 +39,30 @@
 
     <!-- Content Space -->
     <div id="main">
-      <h3 id="create-title">Anni's New Post</h3>
+      <h3 id="edit-title">Edit Post</h3>
 
-      <div class="icon-container">
-      <img src="images/icon.png"></button>
+      <div class="photo-container">
+      <img src="images/maldives.jpg">
       </div>
 
-      <form method="POST" action="viewpost.html" id="createpost-form">
-        <div class="upload-container">
-          <label class="form-label" for="customFile">Photo</label>
-          <input type="file" class="form-control" id="customFile" />
-          </div>
-    
-          <div class="caption-container">
+      <form method="POST" action="viewpost.html" id="editpost-form">
+        <div class="caption-container">
           <label class="caption-label">Caption</label>
           <input type="text" id="fname" name="fname">
           </div>
-    
+  
           <div class="caption-container">
           <label class="caption-label">Tags (separate with commas) </label>
           <input type="text" id="fname" name="fname">
           </div>
-    
+  
           <div class="caption-container">
           <label class="caption-label">Location</label>
           <input type="text" id="fname" name="fname">
           </div>
-    
+  
           <div class="save-container">
-          <button type="submit">Save &amp Upload</button>
+          <button type="submit">Save</button>
           </div>
       </form>
     </div>

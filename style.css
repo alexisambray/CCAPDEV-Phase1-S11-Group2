@@ -633,7 +633,7 @@ html {
   cursor: pointer;
 }
 
-/* create-post.html */
+/* create-post.html + edit-post.html */
 
 #create-title {
   color: var(--light);
@@ -651,6 +651,28 @@ html {
   margin-top: -205px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+#edit-title{
+    padding: 5%;
+    color: var(--light);
+    font-family: Abel;
+    font-weight: 400;
+    font-size: 32px;
+}
+
+.photo-container {    
+    margin-left: 60px;
+    margin-top: -50px;
+}
+
+.photo-container img {
+    width: 500px;
+    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 24px;
+    margin-bottom: -60px;
 }
 
 .upload-container {
