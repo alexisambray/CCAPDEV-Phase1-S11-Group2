@@ -652,7 +652,7 @@
     /* align-items: flex-start; */
     /* margin-left: 2vh; */
     margin-left: 5vh;
-    margin-bottom: 5vh;
+    margin-bottom: 8px;
   }
 
 .editprofile_layout .searchbar_container{
@@ -677,12 +677,13 @@
 
 .editprofile_layout .search-bar_submit{
     font-family: Abel;
-    padding-top: 5%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
     background-color:var(--lime);
     color: var(--darkest);
     border-radius: 7px;
-    height: 6vh;
-    width: 50vw;
+    /* height: 6vh;
+    width: 50vw; */
     font-size: 1.5ex;
     border: 2px black;
     margin-bottom: 5%;
@@ -699,8 +700,9 @@
     font-weight: 400;
     font-size: 32px;
     font-weight: bold;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    position:relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
 .green_label{
