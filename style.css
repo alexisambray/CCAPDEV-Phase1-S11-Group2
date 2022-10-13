@@ -3,596 +3,541 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 :root {
-    --lime: #d1f366;
-    --orange: #ec502c;
-    --darkest: #141627;
-    --dark: #1c1f37;
-    --light: #c0c4e7;
-    --grey: #626577;
-    --lgrey: #5f647e;
-    --link: #d8ec8f;
-    --blue: #4044ed;
+  --lime: #d1f366;
+  --orange: #ec502c;
+  --darkest: #141627;
+  --dark: #1c1f37;
+  --light: #c0c4e7;
+  --grey: #626577;
+  --link: #d8ec8f;
+  --blue: #4044ed;
 }
 
-/* login + register */
 
+/* login + register */
 .login {
-    background-image: url(images/login-bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-image: url(images/login-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .login a {
-    text-decoration: none;
-    text-align: center;
+  text-decoration: none;
+  text-align: center;
 }
 
 .login img {
-    width: 40%;
+  width: 40%;
 }
 
 .login p {
-    font-family: Abel;
-    font-size: 18px;
-    color: var(--light);
-    margin-top: 30px;
-    margin-bottom: 0;
-}
-
-.login form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 30%;
+  font-family: Abel;
+  font-size: 18px;
+  color: var(--light);
+  margin-top: 30px;
+  margin-bottom: 0;
 }
 
 .input-txt {
-    font-family: Abel;
-    font-size: 22px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid white;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  font-family: Abel;
+  font-size: 22px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  width: 30%;
+  margin: 10px;
 }
 
 .btn-blue {
-    font-family: Abel;
-    font-size: 22px;
-    font-weight: 600;
-    color: white;
-    background-color: var(--blue);
-    border: none;
-    margin-top: 20px;
-    text-transform: uppercase;
+  font-family: Abel;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  background-color: var(--blue);
+  border: none;
+  margin-top: 20px;
 }
 
-#login-btn, #register-confirm{
-    width: 100%;
+#login-btn,
+#register-confirm {
+  width: 30%;
 }
 
 #register-btn {
-    width: 150px;
+  width: 150px;
 }
 
 .footer {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 #go-back {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    font-family: Abel;
-    font-size: 18px;
-    color: var(--light);
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-family: Abel;
+  font-size: 18px;
+  color: var(--light);
 }
 
 #go-back:hover {
-    color: var(--link);
+  color: var(--link);
 }
 
 #register-title {
-    font-family: Abel;
-    font-size: 64px;
-    font-weight: 600;
-    color: white;
-    width: 30%;
-    text-align: left;
+  font-family: Abel;
+  font-size: 64px;
+  font-weight: 600;
+  color: white;
+  width: 30%;
+  text-align: left;
 }
 
 /* NAV BAR */
 
 #nav {
-    background-color: var(--darkest);
-    width: 220px;
-    height: 100vh;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--darkest);
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #logo {
-    width: 100%;
-    padding-top: 20%;
-    padding-bottom: 20%;
-    padding-left: 25%;
-    padding-right: 25%;
+  width: 100%;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  padding-left: 25%;
+  padding-right: 25%;
 }
 
 #green-circle {
-    position: absolute;
-    width: 137px;
-    height: 135.66px;
-    left: 230px;
-    top: 93.18px;
-    background: #90AB39;
-    filter: blur(75px);
+  position: absolute;
+  width: 137px;
+  height: 135.66px;
+  left: 230px;
+  top: 93.18px;
+  background: #90AB39;
+  filter: blur(75px);
 }
 
 #orange-circle {
-    position: absolute;
-    width: 137px;
-    height: 135.66px;
-    left: 252px;
-    top: 199.13px;
-    background: #CB4628;
-    filter: blur(75px);
+  position: absolute;
+  width: 137px;
+  height: 135.66px;
+  left: 252px;
+  top: 199.13px;
+  background: #CB4628;
+  filter: blur(75px);
 }
 
 .nav-btn-group {
-    position: block;
-    text-align: center;
-    width: 100%;
+  position: block;
+  text-align: center;
+  width: 100%;
 }
 
 .nav-btn-group button {
-    background-color: transparent;
-    font-family: Abel;
-    color: var(--light);
-    border: 1px solid transparent;
-    border-radius: 12px;
-    text-align: left;
-    width: 80%;
-    padding: 3%;
-    margin: 3%;
+  background-color: transparent;
+  font-family: Abel;
+  color: var(--light);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  text-align: left;
+  width: 80%;
+  padding: 3%;
+  margin: 3%;
 }
 
-.nav-btn-group button:hover{
-    background-color: var(--dark);
-    color: var(--light);
-    border: 1px solid var(--light);
-    border-radius: 12px;
+.nav-btn-group button:hover {
+  background-color: var(--dark);
+  color: var(--light);
+  border: 1px solid var(--light);
+  border-radius: 12px;
 }
 
-.nav-btn-group button.selected { /*for when the page is selected*/
-    background-color: var(--lime);
-    color: black;
-    border: 1px solid black;
-    font-weight: 600;
+.nav-btn-group button.selected {
+  /*for when the page is selected*/
+  background-color: var(--lime);
+  color: black;
+  border: 1px solid black;
+  font-weight: 600;
+}
+
+#btns-logged-in {
+  /*for when users are logged into an account*/
+  display: block;
+  /*to make visible, set to "block". to make invisible, set to "none"*/
+}
+
+#btns-logged-out {
+  /*for when users are not logged into an account*/
+  display: block;
+  /*to make visible, set to "block". to make invisible, set to "none"*/
 }
 
 /* BODY */
 
-html {
-    background-color: var(--darkest);
-}
-
 #main {
-    background-color: var(--darkest);
-    margin-left: 220px;
-    height: auto;
-    min-height: 100vh;
-    width: auto;
+  background-color: var(--darkest);
+  margin-left: 220px;
+  height: auto;
+  min-height: 100vh;
+  width: auto;
 }
 
-/* bookmarks.html + profile.html */
+/* bookmarks.html */
 
-#bmk-title{
-    padding: 5%;
-    color: var(--light);
-    font-family: Abel;
-    font-weight: 400;
-    font-size: 32px;
+#bmk-title {
+  color: var(--light);
+  font-family: Abel;
+  font-weight: 400;
+  font-size: 32px;
+  padding: 5%;
 }
 
 .post-group {
-    display: flex;
-    flex-flow: row wrap;
-	justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .post-group a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .post-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--dark);
-    border-radius: 24px;
-    width: 242px;
-    min-height: 292px;
-    max-height: 292px;
-    margin: 10px;
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--dark);
+  border-radius: 24px;
+  width: 242px;
+  min-height: 292px;
+  max-height: 292px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .post-card img {
-    width: 226px;
-    min-height: 180px;
-    max-height: 180px;
-    object-fit: cover;
-    border-radius: 24px;
-    margin-bottom: 10px;
+  width: 226px;
+  min-height: 180px;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 24px;
+  margin-bottom: 10px;
 }
 
 .post-card hr {
-    border: 1px dashed var(--grey);
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  border: 1px dashed var(--grey);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .post-title {
-    color: white;
-    width: 100%;
-    font-family: Abel;
-    font-size: 22px;
-    font-weight: 400;
-    padding: 0;
-    margin: 0;
+  color: white;
+  width: 100%;
+  font-family: Abel;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
 }
 
 .post-card p.post-title:hover {
-    color: var(--link);
+  color: var(--link);
 }
 
 .post-user {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
-    padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 5px;
 }
 
 .post-user img {
-    width: 33px;
-    min-height: 33px;
-    max-height: 33px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 33px;
+  min-height: 33px;
+  max-height: 33px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .post-user p {
-    color: var(--light);
-    font-family: Abel;
-    font-size: 20px;
-    font-weight: 400;
+  color: var(--light);
+  font-family: Abel;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .post-user p:hover {
-    color: var(--link);
+  color: var(--link);
 }
 
-/* profile.html */
-
-.profile {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    padding: 2%;
-    padding-top: 3%;
-}
-
-.profile img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-left: 3%;
-}
-
-.user-details {
-    display: flex;
-    flex-direction: column;
-    margin-left: 2%;
-}
-
-.display-name {
-    font-family: Abel;
-    font-weight: 400;
-    font-size: 32px;
-    color: white;
-    padding: 0;
-    margin-bottom: 2px;
-}
-
-.username {
-    font-family: Abel;
-    font-weight: 400;
-    font-size: 24px;
-    text-transform: uppercase;
-    color: var(--light);
-    margin-top: 2px;
-}
-
-.bio {
-    font-family: Abhaya Libre;
-    font-size: 18px;
-    color: var(--lgrey);
-    margin-top: 20px;
-}
-
-/* viewpost.html + profile.html(post-stats, card) */
+/* viewpost.html */
 
 #post-title {
-    color: var(--light);
-    font-family: Abel;
-    font-weight: 400;
-    text-align: center;
-    padding: 2%;
+  color: var(--light);
+  font-family: Abel;
+  font-weight: 400;
+  text-align: center;
+  padding: 2%;
 }
 
-.post-area{
-    text-align: center;
-    width: auto;
-    padding-left: 20%;
-    padding-right: 20%;
+.post-area {
+  text-align: center;
+  width: auto;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .post-area a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.post-area img{
-    width: 100%;
-    object-fit: cover;
-    border-radius: 24px;
+.post-area img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
 }
 
 .post-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    padding: 5px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .post-user-view {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
 }
 
 .post-user-view img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .post-user-view p {
-    font-family: Abel;
-    font-size: 23px;
-    font-weight: 400;
-    color: var(--lime)
+  font-family: Abel;
+  font-size: 23px;
+  font-weight: 400;
+  color: var(--lime)
 }
 
 .post-user-view p:hover {
-    color: var(--orange);
+  color: var(--orange);
 }
 
 .post-btns {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 20%;
 }
 
 .post-btns button {
-    color: var(--light);
-    width: 50px;
-    height: 50px;
-    border: 0px;
-    background-color: transparent;
-    font-size: 22px;
+  color: var(--light);
+  width: 50px;
+  height: 50px;
+  border: 0px;
+  background-color: transparent;
+  font-size: 22px;
 }
 
 .post-btns button:hover {
-    color: var(--orange);
-}
-
-.post-desc {
-    text-align: justify;
-    font-family: Abhaya Libre;
-    font-size: 18px;
-    color: white;
-    margin: 10px;
+  color: var(--orange);
 }
 
 .post-stats {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Abril Fatface;
-    color: var(--light);
-    padding-top: 10px;
-}
-
-.profile-post-stats {
-    margin-left: 3px;
-    margin-right: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Abril Fatface;
+  color: var(--light);
+  padding-top: 10px;
 }
 
 .add-comment {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #comment-box {
-    background-color: var(--light);
-    color: black;
-    border: 1px solid var(--dark);
-    border-radius: 10px;
-    width: 85%;
-    font-family: Abhaya Libre;
+  background-color: var(--light);
+  color: black;
+  border: 1px solid var(--dark);
+  border-radius: 10px;
+  width: 85%;
+  font-family: Abhaya Libre;
 }
 
 #comment-btn {
-    background-color: var(--dark);
-    color: var(--light);
-    border: 1px solid var(--dark);
-    border-radius: 10px;
-    font-family: Abel;
-    font-weight: 400;
+  background-color: var(--dark);
+  color: var(--light);
+  border: 1px solid var(--dark);
+  border-radius: 10px;
+  font-family: Abel;
+  font-weight: 400;
 }
 
 .comment-group {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: var(--dark);
-    border-radius: 24px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--dark);
+  border-radius: 24px;
 }
 
 .comment {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    padding: 5px;
-    border-bottom: 1px dashed var(--grey);
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  padding: 5px;
+  border-bottom: 1px dashed var(--grey);
 }
 
 .comment-content {
-    font-family: Abhaya Libre;
-    font-size: 18px;
-    color: white;
-    text-align: left;
-    padding: 0;
-    margin: 0;
+  font-family: Abhaya Libre;
+  font-size: 18px;
+  color: white;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 .commenter {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .commenter img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
-.commenter p{
-    font-family: Abel;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--light);
+.commenter p {
+  font-family: Abel;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--light);
 }
 
 .commenter p:hover {
-    color: var(--link);
+  color: var(--link);
 }
+
 
 /* index.html */
-
-.welcome {
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-}
-
 #hello-title {
   color: #c0c4e7;
   font-family: "Abel", Sans-serif;
   font-weight: 400;
   font-size: 50px;
+  padding: 9%;
   line-height: 1;
 }
 
-#welcome-title {
+#welcome {
   color: #777b92;
-  font-family: Abril Fatface;
+  font-family: Abril;
   font-weight: 380;
   font-size: 20px;
+  padding: 5%;
+  margin-top: -14%;
+  margin-left: 4%;
 }
 
-.search-notif-div {
-    display: flex;
-    flex-direction: row;
+#travel-title {
+  color: white;
+  font-family: "Abel", Sans-serif;
+  font-weight: 400;
+  padding: 0;
+  line-height: 1;
+  margin-left: 120px;
+}
+
+#view-title {
+  color: #d1f366;
+  font-family: "Abel", Sans-serif;
+  font-weight: 400;
+  padding: 0;
+  line-height: 1;
+  margin-left: 800px;
+  margin-top: -23px;
 }
 
 .search-container {
     height: 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 5%;
+    margin-top: -20%;
+    margin-left: 10px;
     border-radius: 14px;
-    display: flex;
-    flex-direction: row;
+    display: block;
     align-items: center;
     justify-content: center;
+    block-size: 48px;
     width: 30%;
-    background-color: var(--dark);
+    background-color: #1C1F37;
 }
 
 .search-bar{
-  font-family: Abhaya Libre;
+  font-family: Abhaya;
   width: 100%;
+  max-width: 700px;
   color: #1C1F37;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
   border-radius: 60px;
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .search-bar input{
   background: transparent;
+  margin-top: -8%;
   flex: 1;
   color: white;
   border: 0;
-  border-radius: 14px;
   outline: none;
+  padding: 24px 20px;
   font-size: 20px;
-  width: 90%;
 }
 
 ::placeholder {
@@ -605,20 +550,17 @@ html {
 
 .search-bar button {
   border: 0;
-  border-radius: 14px;
-  background: var(--dark);
+  border-radius: 50%;
+  width: 60px;
+  height: 30px;
+  background: #1C1F37;
   cursor: pointer;
-  width: 10%;
-}
-
-.notification-container {
-    justify-self: flex-end;
-    align-self: center;
-    margin-left: 50%;
+  margin-right: -8px;
+  margin-top: -30px;
 }
 
 .notification-bar button img {
-  width: 40px;
+  width: 30px;
   background: transparent;
   vertical-align: middle;
   display: inline-block;
@@ -629,12 +571,18 @@ html {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background: var(--dark);
+  background: #1C1F37;
   cursor: pointer;
+  margin-left: 820px;
+  margin-top: 25px;
+}
+
+.post-group {
+  margin-top: 140px;
+  margin-right: 300px;
 }
 
 /* create-post.html */
-
 #user-title {
   color: var(--light);
   font-family: Abel;
@@ -646,11 +594,8 @@ html {
 
 .icon-container img {
   width: 70px;
-  height: 70px;
   margin-left: 50px;
   margin-top: -205px;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 .upload-container {
@@ -688,7 +633,6 @@ html {
 .save-container {
   margin-top: 90px;
   margin-left: 510px;
-  margin-bottom: 30px;
 }
 
 .save-container button {
