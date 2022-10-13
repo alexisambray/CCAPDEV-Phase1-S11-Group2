@@ -635,7 +635,7 @@ html {
 
 /* create-post.html */
 
-#user-title {
+#create-title {
   color: var(--light);
   font-family: Abel;
   font-weight: 400;
@@ -657,6 +657,7 @@ html {
   width: 375px;
   height: 20px;
   margin-left: 60px;
+  margin-top: -50px;
   color:#626577;
 }
 
@@ -699,58 +700,14 @@ html {
   width: 150px;
 }
 
-/* Em's new update */
+/* editprofile.html */
+
 .editprofile_layout{
     font-family: Abel;
     display: block;
-    /* flex-flow: row wrap; */
     justify-content: left;
-    /* align-items: flex-start; */
-    /* margin-left: 2vh; */
     margin-left: 5vh;
-    margin-bottom: 8px;
   }
-
-.editprofile_layout .searchbar_container{
-    font-family: Abel;
-    height: 20%;
-    width: 50%;
-    padding-top: 5%;
-    display: flex;
-    flex-direction: row;
-}
-
-.editprofile_layout .search-bar{
-    /* font-family: Abel; */
-    font-family: var(--bs-body-font-family);
-    background-color:var(--dark);
-    border-radius: 7px;
-    font-size: 1.5ex;
-    border: 2px black;
-    margin-bottom: 5%;
-    color: var(--light);
-    flex: 2;
-}
-
-.editprofile_layout .search-bar_submit{
-    /* font-family: Abel; */
-    font-family: var(--bs-body-font-family);
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    background-color:var(--lime);
-    color: var(--darkest);
-    border-radius: 7px;
-    /* height: 6vh;
-    width: 50vw; */
-    font-size: 1.5ex;
-    border: 2px black;
-    margin-bottom: 5%;
-    color: var(--dark);
-    flex: 1;
-    justify-content: center;
-    justify-items: center;
-}
-
 
 .editprofile_layout #title {
     color: var(--light);
@@ -758,71 +715,48 @@ html {
     font-weight: 400;
     font-size: 32px;
     font-weight: bold;
-    position:relative;
+    position: relative;
     padding-top: 8px;
     padding-bottom: 8px;
+    margin-bottom: 1%;
+    margin-top: 2%;
   }
 
 .green_label{
     color: var(--lime);
-    font-family: var(--bs-body-font-family);
+    font-family: Abel;
     font-weight: 400;
     font-size: 18px;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
   }
 
 .editprofile_layout .choose_file{
-    /* font-family: Abel; */
-    margin-bottom: 5%;
+    font-family: Abhaya Libre;
+    margin-bottom: 3%;
     background-color: gray;
     border: 1px solid black;
+    border-radius: 7px;
     cursor: pointer;
     justify-content: center;
     font-size: 15px;
-    font-family: var(--bs-body-font-family);
 }
 
 .editprofile_layout .input{
-    /* font-family: Abel; */
+    font-family: Abhaya Libre;
     border-radius: 7px;
     height: 5vh;
     width: 40vw;
     font-size: 18px;
-    font-size: 2ex;
     border: 2px black;
-    margin-bottom: 5%;
-    font-family: var(--bs-body-font-family);
+    margin-bottom: 3%;
 }
 
 .editprofile_layout .input_greencolor{
-    /* font-family: Abel; */
+    font-family: Abel;
     background-color: var(--lime);
-    margin-bottom: 5vh;
+    margin-top: 1%;
     border-radius: 7px;
-    height: 5vw;
-    width: 15vw;
     font-size: 18px;
-    font-size: 2ex;
+    padding: 1%;
     border: 2px black;
-    font-family: var(--bs-body-font-family);
-}
-
-.editprofile_layout .notification-bar button img {
-  width: 30px;
-  background: transparent;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.editprofile_layout .notification-bar button {
-  border: 0;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  background: #1C1F37;
-  cursor: pointer;
-  justify-content: right;
-  margin-left: 10%;
-  margin-top: 0px;
-  position:absolute;
 }
