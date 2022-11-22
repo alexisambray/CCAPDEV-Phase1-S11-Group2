@@ -3,15 +3,24 @@
 <!-- Content Space -->
 <%
     var title;
+    var postID;
+
+    var poster = username;
+    var likeCount = 1033;
+    var bookmarkCount = 22;
+    var commentCount = 5;
+    
+    var commenter = "ellia14";
+    var comment = "Wow what a nice post!";
 %>
 <div id="main">
     <h1 id="post-title"><%= title %></h1>
     <div class="post-area">
         <img src="/images/myPost1.jpg">
         <div class="post-nav">
-            <a href="/profile/<%= username %>" class="post-user-view">
+            <a href="/profile/<%= poster %>" class="post-user-view">
                 <img src="/images/icon.jpg">
-                <p><%= username %></p>
+                <p><%= poster %></p>
             </a>
             <div class="post-btns">
                 <button id="likeBtn"><i class="bi bi-heart-fill"></i></button>
@@ -34,10 +43,13 @@
         </div>
         <div class="comment-group">
             <div class="comment">
-                <a href="/profile/<%= username %>" class="commenter">
-                    <img src="/images/user1.jpg">
-                    <p><%= username %></p>
-                </a>
+                <div class="commenter">
+                    <a href="/profile/<%= commenter %>" class="commenter">
+                        <img src="/images/user1.jpg">
+                        <p><%= commenter %></p>
+                    </a>
+                    <button class="delComment"><i class="bi bi-trash-fill"></i></button>
+                </div>
                 <p class="comment-content"><%= comment %></p>
             </div>
         </div>
