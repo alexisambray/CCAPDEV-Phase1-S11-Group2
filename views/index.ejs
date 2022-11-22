@@ -1,6 +1,12 @@
 <%- include("modules/header"); -%>
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
+<% 
+  var displayname = "John Doe";
+  var postID = 1;
+  var title = "Sydney";
+  var poster = "ellia14";
+%>
 <div id="main">
     <div class="search-notif-div">
       <!--Search navigation-->
@@ -19,71 +25,30 @@
     </div>
 
     <div class="welcome">
-      <h3 id="hello-title">Hello there, Visitor!</h3>
+      <h3 id="hello-title">
+        <% if (1 == 2) { %>
+          Hello there, Visitor!
+        <% } else { %>
+          Welcome back, <%= displayname %>!
+        <% } %>
+      </h3>
       <h4 id="welcome-title">Explore the world. Visit and tour.</h4>
     </div>
 
     <div class="post-group">
-      <div class="post-card">
-        <a href="viewlo-u1post1.html">
-            <img src="images/u1Post1.jpeg">
-            <p class="post-title">Sydney</p>
-        </a>
-        <hr>
-        <a href="lo-profile1.html" class="post-user">
-            <img src="images/user1.jpg">
-            <p>ellia14</p>
-        </a>
-      </div>
 
+      <!-- Post -->
       <div class="post-card">
-        <a href="viewlo-u2post1.html">
-            <img src="images/u2Post1.jpeg">
-            <p class="post-title">Paris</p>
+        <a href="/post/<%= poster %>/<%= postID %>-<%= title %>">
+            <img src="/images/u1Post1.jpeg">
+            <p class="post-title"><%= title %></p>
         </a>
         <hr>
-        <a href="lo-profile2.html" class="post-user">
-            <img src="images/user2.jpeg">
-            <p>alex23</p>
+        <a href="/profile/<%= poster %>" class="post-user">
+            <img src="/images/user1.jpg">
+            <p><%= poster %></p>
         </a>
       </div>
-
-      <div class="post-card">
-        <a href="viewlo-u3post1.html">
-            <img src="images/u3Post1.jpg">
-            <p class="post-title">Bali</p>
-        </a>
-        <hr>
-        <a href="lo-profile3.html" class="post-user">
-            <img src="images/user3.jpeg">
-            <p>emman42</p>
-        </a>
-      </div>
-
-      <div class="post-card">
-        <a href="viewlo-u4post1.html">
-            <img src="images/u4Post1.jpg">
-            <p class="post-title">Dubai</p>
-        </a>
-        <hr>
-        <a href="lo-profile4.html" class="post-user">
-            <img src="images/user4.jpg">
-            <p>bryan22</p>
-        </a>
-      </div>
-
-      <div class="post-card">
-        <a href="viewlo-u5post1.html">
-            <img src="images/u5Post1.jpg">
-            <p class="post-title">Korea</p>
-        </a>
-        <hr>
-        <a href="lo-profile5.html" class="post-user">
-            <img src="images/user5.jpg">
-            <p>vante95</p>
-        </a>
-      </div>
-    </div>
     
   </div>
 </div>
