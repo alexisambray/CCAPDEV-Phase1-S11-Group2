@@ -8,8 +8,6 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 
-//Variables
-
 //URL Routing
 
 /* GET index.ejs */
@@ -22,6 +20,9 @@ app.get("/", function(req, res){
 /* POST index.ejs - for after login */
 app.post("/", function(req, res){
     //call js here
+    res.locals.pagetitle = "Home";
+    res.locals.username = "placeholder";
+    res.render("/");
 });
 
 /* about.ejs */
@@ -40,6 +41,8 @@ app.get("/login", function(req, res){
 /* POST login.ejs - for after register */
 app.post("/login", function(req, res){
     //call js here
+    res.locals.pagetitle = "Login";
+    res.render("login");
 });
 
 /* register.ejs */
@@ -51,6 +54,9 @@ app.get("/register", function(req, res){
 /* for logout */
 app.get("/logout", function(req, res){
     //call js here
+    res.locals.pagetitle = "Home";
+    res.locals.username = "placeholder";
+    res.render("/");
 });
 
 /* GET profile.ejs */
@@ -62,8 +68,10 @@ app.get("/profile/:username", function(req, res){
 
 /* POST profile.ejs - for after edit-profile */
 app.post("/profile/:username", function(req, res){
-    res.locals.username = req.params.username;
     //call js here
+    res.locals.pagetitle = req.params.username;
+    res.locals.username = req.params.username;
+    res.render("profile");
 });
 
 /* edit-profile.ejs */
@@ -80,12 +88,22 @@ app.get("/bookmarks/:username", function(req, res){
     res.render("bookmarks");
 });
 
-/* view-post.ejs */
+/* GET view-post.ejs */
 app.get("/post/:username/:postID-:title", function(req, res){
     res.locals.pagetitle = req.params.title + " by " + req.params.username;
     res.locals.username = req.params.username;
     res.locals.postID = req.params.postID;
     res.locals.title = req.params.title;
+    res.render("view-post");
+});
+
+/* POST view-post.ejs - for after edit-post */
+app.post("/post/:username/:postID-:title", function(req, res){
+    res.locals.pagetitle = req.params.title + " by " + req.params.username;
+    res.locals.username = req.params.username;
+    res.locals.postID = req.params.postID;
+    res.locals.title = req.params.title;
+    //call js here
     res.render("view-post");
 });
 
