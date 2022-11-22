@@ -1,21 +1,26 @@
 <%- include("modules/header"); -%>
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
+<%
+    var displayname = "Anni";
+    var password = "password";
+    var email = "sample@gmail.com";
+%>
 <div id="main">
     <div class="editprofile_layout">
         <h3 id="title">Edit Profile</h3>
-        <form action="/profile">
+        <form method="POST" action="/profile/<%= username %>">
             <label for="profilepic" class="green_label">Profile Picture</label><br>
             <input type="file" class="choose_file" id="profilepic" name="profile_picture" accept="image/*" autofocus><br>
 
             <label for="displayname" class="green_label">Display Name</label><br>
-            <input type="text" class="input" id="displayname" name="display_name" value="Anni" autofill autocomplete="nickname"><br>
+            <input type="text" class="input" id="displayname" name="display_name" value="<%= displayname %>" autofill autocomplete="nickname"><br>
 
             <label for="pwd" class="green_label">Password</label><br>
-            <input type="password" class="input" id="pwd" name="password" value="password" required minlength="8"><br>
+            <input type="password" class="input" id="pwd" name="password" value="<%= password %>" required minlength="8"><br>
 
             <label for="pwd" class="green_label">Email</label><br>
-            <input type="email" class="input" id="email" name="emailaddress" value="sample@email.com" required autofill autocomplete="email"><br>
+            <input type="email" class="input" id="email" name="emailaddress" value="<%= email %>" required autofill autocomplete="email"><br>
             
             <input type="submit" class="input_greencolor" id="updateprofile" name="update_profile" value="Update Profile">
         </form>
