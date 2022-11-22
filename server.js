@@ -32,6 +32,15 @@ app.get("/about", function(req, res){
     res.render("about");
 });
 
+/* search.ejs */
+
+app.get("/search/", function(req, res){
+    res.locals.pagetitle = "Search result for " + res.locals.q;
+    res.locals.username = "placeholder";
+    res.locals.input = req.params.input;
+    res.render("search");
+});
+
 /* GET login.ejs */
 app.get("/login", function(req, res){
     res.locals.pagetitle = "Login";
