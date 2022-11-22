@@ -1,0 +1,46 @@
+<%- include("modules/header"); -%>
+<%- include("modules/nav"); -%>
+<!-- Content Space -->
+<%
+    var title;
+%>
+<div id="main">
+    <h1 id="post-title"><%= title %></h1>
+    <div class="post-area">
+        <img src="/images/myPost1.jpg">
+        <div class="post-nav">
+            <a href="/profile/<%= username %>" class="post-user-view">
+                <img src="/images/icon.jpg">
+                <p><%= username %></p>
+            </a>
+            <div class="post-btns">
+                <button id="likeBtn"><i class="bi bi-heart-fill"></i></button>
+                <button id="bookmarkBtn"><i class="bi bi-bookmark-fill"></i></button>
+                <button id="delpostBtn"><i class="bi bi-trash-fill"></i></button>
+                <a href="/post/edit/<%= username %>/<%= postID %>-<%= title %>"><button id="editpostBtn"><i class="bi bi-pencil-fill"></i></button></a>
+            </div>
+        </div>
+        <p class="post-desc">This is a photo of a beach in Maldives! I loved my trip here.</p>
+        <div class="post-stats">
+            <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;1013 likes</p>
+            <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;22 bookmarks</p>
+            <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;5 comments</p>
+        </div>
+        <div class="add-comment" style="display: block;">
+            <!--<form action="/postcomment.php" method="post">-->
+                <input id="comment-box" type="textarea" placeholder="Share your thoughts!">
+                <input id="comment-btn" type="submit" value="Comment">
+            <!--</form>-->
+        </div>
+        <div class="comment-group">
+            <div class="comment">
+                <a href="/profile1.html" class="commenter">
+                    <img src="/images/user1.jpg" alt="Sample Commenter">
+                    <p>ellia14</p>
+                </a>
+                <p class="comment-content">Wow! Nice post!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("modules/footer"); -%>
