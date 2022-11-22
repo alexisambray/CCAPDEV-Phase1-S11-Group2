@@ -3,9 +3,10 @@
     <a id="go-back" href="/login"><i class="bi bi-arrow-left"></i>&nbsp;Go Back</a>
     <p id="register-title">Register</p>
     <form method="POST" action="/login" id="register-form">
-        <input type="text" id="username" placeholder="Username" autocomplete="username" required autofocus class="input-txt">
+        <input type="text" id="username" placeholder="Username" autocomplete="username" required minlength="4" autofocus class="input-txt">
         <input type="password" id="pwd" placeholder="Password" required minlength="8" autocomplete="password" class="input-txt">
         <input type="password" id="pwdConfirm" placeholder="Confirm Password" required minlength="8" class="input-txt">
+        <p id="message"></p>
         <input type="email" id="email" placeholder="Email" required class="input-txt">
         <input type="submit" value="Register" class="btn-blue" id="register-confirm">
     </form>
