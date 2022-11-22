@@ -1,0 +1,42 @@
+<%- include("modules/header"); -%>
+<%- include("modules/nav"); -%>
+<!-- Content Space -->
+<% 
+    var postID = 1; 
+    var username;
+    var displayname = "Test";
+    var bio = "Hello world! This is my biography.";
+
+    var title = "Maldives";
+    var likeCount = 1013;
+    var bookmarkCount = 22;
+    var commentCount = 5;
+%>
+<div id="main">
+    <div class="profile">
+        <img src="/images/icon.jpg">
+        <div class="user-details">
+            <h1 class="display-name"><%= displayname %></h1>
+            <h2 class="username"><%= username %></h2>
+            <p class="bio"><%= bio %></p>
+        </div>
+    </div>
+    <div class="post-group">
+
+        <!-- Post -->
+        <div class="post-card">
+            <a href="/post/<%= username %>/<%= postID %>-<%= title %>">
+                <img src="/images/myPost1.jpg">
+                <p class="post-title"><%= title %></p>
+                <hr>
+                <div class="post-stats profile-post-stats">
+                    <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;<%= likeCount %></p>
+                    <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;<%= bookmarkCount %></p>
+                    <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;<%= commentCount%></p>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+</div>
+<%- include("modules/footer"); -%>
