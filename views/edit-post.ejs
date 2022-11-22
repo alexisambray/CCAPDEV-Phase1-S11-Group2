@@ -8,7 +8,7 @@
   <img src="/images/myPost1.jpg">
   </div>
 
-  <form method="POST" action="view-mypost1.html" id="editpost-form">
+  <form method="POST" action="/post/<%= username %>/<%= postID %>-<%= title %>" id="editpost-form">
     <div class="caption-container">
       <label class="caption-label">Caption</label>
       <input type="text" id="fname" name="fname" value="This is a photo of a beach in Maldives! I loved my trip here.">
@@ -21,7 +21,7 @@
 
       <div class="caption-container">
       <label class="caption-label">Location</label>
-      <input type="text" id="fname" name="fname" value="Maldives">
+      <input type="text" id="fname" name="fname" value="<%= title %>">
       </div>
 
       <div class="save-container">
