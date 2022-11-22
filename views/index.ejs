@@ -11,47 +11,33 @@
   var poster = "ellia14";
 %>
 <div id="main">
-    <div class="search-notif-div">
-      <!--Search navigation-->
-      <div class="search-container">
-        <form method="GET" action="/search/" class="search-bar" name="search-form" id="search-form">
-          <input type="text" placeholder="Search" name="q" id="searchbar" required>
-          <button type="Submit" id="search-btn"><img src="/images/search.png"></button>
-        </form>
-      </div>
+  <%- include("modules/searchbar"); -%>
 
-      <div class="notification-container" style="display: none;">
-        <form action="" class="notification-bar">
-          <button type="Notification"><img src="/images/notification.svg"></button>
-        </form>
-      </div>
+  <div class="welcome">
+    <h3 id="hello-title">
+      <% if (1 == 2) { %>
+        Hello there, Visitor!
+      <% } else { %>
+        Welcome back, <%= displayname %>!
+      <% } %>
+    </h3>
+    <h4 id="welcome-title">Explore the world. Visit and tour.</h4>
+  </div>
+
+  <div class="post-group">
+
+    <!-- Post -->
+    <div class="post-card">
+      <a href="/post/<%= poster %>/<%= postID %>-<%= title %>">
+          <img src="/images/u1Post1.jpeg">
+          <p class="post-title"><%= title %></p>
+      </a>
+      <hr>
+      <a href="/profile/<%= poster %>" class="post-user">
+          <img src="/images/user1.jpg">
+          <p><%= poster %></p>
+      </a>
     </div>
-
-    <div class="welcome">
-      <h3 id="hello-title">
-        <% if (1 == 2) { %>
-          Hello there, Visitor!
-        <% } else { %>
-          Welcome back, <%= displayname %>!
-        <% } %>
-      </h3>
-      <h4 id="welcome-title">Explore the world. Visit and tour.</h4>
-    </div>
-
-    <div class="post-group">
-
-      <!-- Post -->
-      <div class="post-card">
-        <a href="/post/<%= poster %>/<%= postID %>-<%= title %>">
-            <img src="/images/u1Post1.jpeg">
-            <p class="post-title"><%= title %></p>
-        </a>
-        <hr>
-        <a href="/profile/<%= poster %>" class="post-user">
-            <img src="/images/user1.jpg">
-            <p><%= poster %></p>
-        </a>
-      </div>
     
   </div>
 </div>
