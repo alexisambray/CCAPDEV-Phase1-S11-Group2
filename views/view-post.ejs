@@ -22,9 +22,9 @@
         </div>
         <p class="post-desc">This is a photo of a beach in Maldives! I loved my trip here.</p>
         <div class="post-stats">
-            <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;1013 likes</p>
-            <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;22 bookmarks</p>
-            <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;5 comments</p>
+            <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;<%= likeCount %> likes</p>
+            <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;<%= bookmarkCount %> bookmarks</p>
+            <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;<%= commentCount %> comments</p>
         </div>
         <div class="add-comment" style="display: block;">
             <!--<form action="/postcomment.php" method="post">-->
@@ -34,11 +34,11 @@
         </div>
         <div class="comment-group">
             <div class="comment">
-                <a href="/profile1.html" class="commenter">
-                    <img src="/images/user1.jpg" alt="Sample Commenter">
-                    <p>ellia14</p>
+                <a href="/profile/<%= username %>" class="commenter">
+                    <img src="/images/user1.jpg">
+                    <p><%= username %></p>
                 </a>
-                <p class="comment-content">Wow! Nice post!</p>
+                <p class="comment-content"><%= comment %></p>
             </div>
         </div>
     </div>
