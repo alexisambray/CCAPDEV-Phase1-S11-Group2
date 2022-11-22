@@ -9,21 +9,26 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 
 //Variables
-var username = 'username123';
-var title = 'Maldives';
 
 //URL Routing
 
 /* GET index.ejs */
 app.get("/", function(req, res){
     res.locals.pagetitle = "Home";
-    res.locals.username = username;
+    res.locals.username = "placeholder";
     res.render("index");
 });
 
 /* POST index.ejs - for after login */
 app.post("/", function(req, res){
     //call js here
+});
+
+/* about.ejs */
+app.get("/about", function(req, res){
+    res.locals.pagetitle = "About Us";
+    res.locals.username = "placeholder";
+    res.render("about");
 });
 
 /* GET login.ejs */
@@ -50,33 +55,37 @@ app.get("/logout", function(req, res){
 
 /* GET profile.ejs */
 app.get("/profile/:username", function(req, res){
-    res.locals.pagetitle = username;
-    res.locals.username = username;
+    res.locals.pagetitle = req.params.username;
+    res.locals.username = req.params.username;
     res.render("profile");
 });
 
 /* POST profile.ejs - for after edit-profile */
 app.post("/profile/:username", function(req, res){
+    res.locals.username = req.params.username;
     //call js here
 });
 
 /* edit-profile.ejs */
 app.get("/profile/edit/:username", function(req, res){
     res.locals.pagetitle = "Edit Profile";
-    res.locals.username = username;
+    res.locals.username = req.params.username;
     res.render("edit-profile");
 });
 
 /* bookmarks.ejs */
 app.get("/bookmarks/:username", function(req, res){
     res.locals.pagetitle = "My Bookmarks";
+    res.locals.username = req.params.username;
     res.render("bookmarks");
 });
 
 /* view-post.ejs */
 app.get("/post/:username/:postID-:title", function(req, res){
-    res.locals.pagetitle = title + " by " + username;
-    res.locals.username = username;
+    res.locals.pagetitle = req.params.title + " by " + req.params.username;
+    res.locals.username = req.params.username;
+    res.locals.postID = req.params.postID;
+    res.locals.title = req.params.title;
     res.render("view-post");
 });
 
@@ -89,7 +98,9 @@ app.get("/create-post", function(req, res){
 /* edit-post.ejs */
 app.get("/post/edit/:username/:postID-:title", function(req, res){
     res.locals.pagetitle = "Edit Post";
-    res.locals.username = username;
+    res.locals.username = req.params.username;
+    res.locals.postID = req.params.postID;
+    res.locals.title = req.params.title;
     res.render("edit-post");
 });
 
