@@ -1,3 +1,5 @@
+<% var username = "placeholder" %>
+
 <!-- Navigation Sidebar -->
 <div id="nav">
     <img id="logo" src="/images/logo.png" alt="VisiTOUR Logo">
@@ -15,9 +17,11 @@
         <!-- logged in -->
             <a href="/create-post"><button id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button></a>
             <a href="/profile/<%= username %>"><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
-            <a href="/bookmarks"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
+            <a href="/bookmarks/<%= username %>"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
             <a href="/profile/edit/<%= username %>"><button id="nav-edit"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
             <a href="/logout"><button id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button></a>
         <% } %>
+        
+        <a href="/about"><button id="nav-about"><i class="bi bi-info-circle-fill"></i>&nbsp;&nbsp;&nbsp;About</button></a>
     </div>
 </div>
