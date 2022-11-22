@@ -434,7 +434,7 @@ html {
     font-size: 22px;
 }
 
-.post-btns button:hover {
+.post-btns button:hover, .delComment:hover {
     color: var(--orange);
 }
 
@@ -533,6 +533,12 @@ html {
 
 .commenter p:hover {
     color: var(--link);
+}
+
+.delComment {
+    color: var(--light);
+    background-color: transparent;
+    border: 0px;
 }
 
 /* index.html */
