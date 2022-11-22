@@ -1,22 +1,5 @@
 /** FOR JQUERY */
 
-/* nav bar */
-
-//change selected page
-const btnIDs = ['nav-dashboard', 'nav-create', 'nav-profile', 'nav-bookmarks', 'nav-edit'];
-
-function changePage(currPage){
-    for(i = 0; i < btnIDs.length; i++){
-        var pageID = "#" + btnIDs[i];
-
-        if(currPage == btnIDs[i]){
-            $(pageID).addClass("selected");
-        }else{
-            $(pageID).removeClass("selected");
-        }
-    }
-}
-
 /* register */
 
 //check if password and confirm password matches
