@@ -9,25 +9,25 @@
   <img src="/images/icon.jpg"></button>
   </div>
 
-  <form method="POST" action="profile.html" id="createpost-form">
+  <form method="POST" action="profile.html" id="createpost-form" name="createpost-form">
     <div class="upload-container">
       <label class="form-label" for="customFile">Photo</label>
-      <input type="file" class="form-control" id="customFile" accept="image/*"/>
+      <input type="file" class="form-control" name="photo" id="customFile" accept="image/*"/>
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Caption</label>
-      <input type="text" id="fname" name="fname">
+      <input type="text" id="caption" name="caption">
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Tags (separate with commas) </label>
-      <input type="text" id="fname" name="fname">
+      <input type="text" id="tags" name="tags">
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Location</label>
-      <input type="text" id="fname" name="fname">
+      <input type="text" id="location" name="location">
       </div>
 
       <div class="save-container">

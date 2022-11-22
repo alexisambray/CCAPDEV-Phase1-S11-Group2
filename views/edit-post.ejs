@@ -8,20 +8,20 @@
   <img src="/images/myPost1.jpg">
   </div>
 
-  <form method="POST" action="/post/<%= username %>/<%= postID %>-<%= title %>" id="editpost-form">
+  <form method="POST" action="/post/<%= username %>/<%= postID %>-<%= title %>" id="editpost-form" name="editpost-form">
     <div class="caption-container">
       <label class="caption-label">Caption</label>
-      <input type="text" id="fname" name="fname" value="This is a photo of a beach in Maldives! I loved my trip here.">
+      <input type="text" id="caption" name="caption" value="This is a photo of a beach in Maldives! I loved my trip here.">
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Tags (separate with commas) </label>
-      <input type="text" id="fname" name="fname" value="Maldives, Travel, Photography">
+      <input type="text" id="tags" name="tags" value="Maldives, Travel, Photography">
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Location</label>
-      <input type="text" id="fname" name="fname" value="<%= title %>">
+      <input type="text" id="location" name="location" value="<%= title %>">
       </div>
 
       <div class="save-container">
