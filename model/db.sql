@@ -3,13 +3,17 @@ UNLOCK TABLES;
 CREATE DATABASE IF NOT EXISTS `mpdb`;
 USE `mpdb`;
 
--- users table ------
+DROP TABLE IF EXISTS `Comments`;
+DROP TABLE IF EXISTS `User_Bookmarks`;
+DROP TABLE IF EXISTS `User_Posts`;
 DROP TABLE IF EXISTS `Users`;
+
+-- users table ------
 CREATE TABLE `Users` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(32) NOT NULL,
   `Email` varchar(50) NOT NULL, 
-  `ProfilePic`  BLOB NOT NULL,
+  `ProfilePic`  BLOB DEFAULT NULL,
   `DisplayName` varchar(20) NOT NULL, 
   `Bio` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Username`)
@@ -23,16 +27,13 @@ INSERT INTO `users` VALUES ('brylil','p4ssw0rD','brylil@gmail.com',LOAD_FILE('/i
 
 LOCK TABLES `users` WRITE;
 
-
-
 -- user_posts table ------
 UNLOCK TABLES;
-DROP TABLE IF EXISTS `User_Posts`;
 CREATE TABLE `User_Posts` (
   `PostID` int NOT NULL,   
   `Title` varchar(30) NOT NULL,  
   `Username` varchar(20) NOT NULL,   
-  `Photo` BLOB NOT NULL,   
+  `Photo` BLOB DEFAULT NULL,   
   `Date` DATE NOT NULL,
   `Tags` varchar(50) DEFAULT NULL,
   `Caption` varchar(280) DEFAULT NULL,   
@@ -61,9 +62,8 @@ LOCK TABLES `User_Posts` WRITE;
 
 -- user_bookmarks table ------
 UNLOCK TABLES;
-DROP TABLE IF EXISTS `User_Bookmarks`;
 CREATE TABLE `User_Bookmarks` (
-  `Username` varchar(20) DEFAULT NULL,
+  `Username` varchar(20) NOT NULL,
   `PostID` int NOT NULL,   
   PRIMARY KEY (`Username`, `PostID`),
   FOREIGN KEY (`Username`) REFERENCES Users (`Username`),
@@ -93,7 +93,6 @@ LOCK TABLES `User_Bookmarks` WRITE;
 
 -- comments table ------
 UNLOCK TABLES;
-DROP TABLE IF EXISTS `Comments`;
 CREATE TABLE `Comments` (
   `CommentID` int NOT NULL,   
   `PostID` int NOT NULL,  
@@ -109,11 +108,11 @@ ALTER TABLE Comments
 
 LOCK TABLES `comments` WRITE;
 
-INSERT INTO `comments` VALUES (1,1,'emman','This looks good!','2022-23-11'),
-(2,2,'alexis','go girl!','2022-23-11'),
-(3,3,'ellia','What a nice photo','2022-23-11'),
-(4,4,'ccapdev','First comment','2022-23-11'),
-(5,5,'brylil','First comment','2022-23-11');
+INSERT INTO `comments` VALUES (1,1,'emman','This looks good!','2022-11-23'),
+(2,2,'alexis','go girl!','2022-11-23'),
+(3,3,'ellia','What a nice photo','2022-11-23'),
+(4,4,'ccapdev','First comment','2022-11-23'),
+(5,5,'brylil','First comment','2022-11-23');
 
 -- testing purposes
 -- SELECT * FROM comments;
