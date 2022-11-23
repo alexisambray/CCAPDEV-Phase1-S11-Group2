@@ -1,12 +1,29 @@
 //Packages express and body-parser declaration
 const express = require("express");
 const bodyParser = require("body-parser");
+const mysql = require("mysql");
 
 //App
 const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
+
+//Database
+const db = mysql.createConnection({
+	host: 'localhost',
+    user: 'root',
+    password: '',
+    database: ''
+});
+
+db.connect(function(err) {
+	if (err) {
+		console.error('error connecting: ' + err.stack);
+return;
+	}
+console.log('connected as id ' + db.threadid);
+});
 
 //URL Routing
 
