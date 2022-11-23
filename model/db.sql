@@ -51,8 +51,8 @@ ALTER TABLE User_Posts
 INSERT INTO `User_Posts` VALUES (1,'Maldives','brylil','/images/myPost1.jpg','2022-11-23','','Picture I took!','0','0','0'),
 (2,'Philippines','elliamae','/images/myPost2.jpg','2022-11-23','','Look at this place!','0','0','0'),
 (3,'Sweden','emman','/images/myPost3.jpg','2022-11-23','','What a dazzling view','0','0','0'),
-(4,'NYC','alexis','/images/myPost4.jpg','2022-11-23','','New York City','0','0','0'),
-(5,'Toronto','ccapdev','/images/myPost5.jpg','2022-11-23','','I am now in Canada wow','0','0','0');
+(4,'NYC','alexis','/images/myPost4.jpeg','2022-11-23','','New York City','0','0','0'),
+(5,'Toronto','ccapdev','/images/myPost5.jpeg','2022-11-23','','I am now in Canada wow','0','0','0');
 
 LOCK TABLES `User_Posts` WRITE;
 
