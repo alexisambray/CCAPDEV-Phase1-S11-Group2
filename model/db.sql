@@ -20,10 +20,10 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `users` VALUES ('brylil','p4ssw0rD','brylil@gmail.com',LOAD_FILE('/images/icon.jpg'), 'Bryan', 'Asian traveller'),
-('elliamae','password27','ellia@yahoo.com',LOAD_FILE('/images/icon.jpg'),'Ellia',''),
+('elliamae','password27','ellia@yahoo.com',LOAD_FILE('/images/icon.jpg'),'Ellia','Hello world! This is my bio'),
 ('emman','password32','emman@gmail.com',LOAD_FILE('/images/icon.jpg'),'Emman',''),
 ('alexis','PassWerd455','alex23@hotmail.com',LOAD_FILE('/images/icon.jpg'),'Alexis',''),
-('ccapdev','password322','kev32@gmail.com',LOAD_FILE('/images/icon.jpg'),'Apdev','');
+('ccapdev','password322','apdev@gmail.com',LOAD_FILE('/images/icon.jpg'),'Apdev','');
 
 LOCK TABLES `users` WRITE;
 
