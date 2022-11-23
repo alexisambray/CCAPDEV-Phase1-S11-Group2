@@ -15,7 +15,9 @@ const db = mysql.createConnection({
 	host: 'localhost',
     user: 'root',
     password: 'ccapdev123',
-    database: 'mpdb'
+    database: 'mpdb',
+
+    multipleStatements: true
 });
 
 db.connect(function(err) {
@@ -33,7 +35,7 @@ app.get("/", function(req, res){
     res.locals.username = "placeholder";
 
     //sql
-    let select_posts = "SELECT p.username, p.postID, p.title, u.ProfilePic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username;";
+    let select_posts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username;";
     let query = db.query(select_posts, (err, rows) => {
         if (err) throw err;
         res.render("index", {
@@ -48,7 +50,7 @@ app.post("/", function(req, res){
     //call js here
     res.locals.pagetitle = "Home";
     res.locals.username = "placeholder";
-    res.render("/");
+    res.render("index");
 });
 
 /* about.ejs */
@@ -59,7 +61,6 @@ app.get("/about", function(req, res){
 });
 
 /* search.ejs */
-
 app.get("/search/", function(req, res){
     res.locals.pagetitle = "Search result for " + res.locals.q;
     res.locals.username = "placeholder";
@@ -96,9 +97,24 @@ app.get("/logout", function(req, res){
 
 /* GET profile.ejs */
 app.get("/profile/:username", function(req, res){
-    res.locals.pagetitle = req.params.username;
-    res.locals.username = req.params.username;
-    res.render("profile");
+    //sql
+    let get_userprofile = "SELECT u.username, u.profilepic, u.displayname, u.bio FROM users u WHERE u.username = '" + req.params.username + "'";
+    var user;
+    let query1 = db.query(get_userprofile, (err, result) => {
+        if (err) throw err;
+        user = result[0];
+    }); 
+
+    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, p.likecount, p.bookmarkcount, p.commentcount FROM user_posts p WHERE p.username = '" + req.params.username + "'";
+
+    let query2 = db.query(get_userposts, (err, rows) => {
+        if (err) throw err;
+        res.render("profile", {
+            pagetitle : req.params.username,
+            myposts : rows,
+            user : user
+        });
+    }); 
 });
 
 /* POST profile.ejs - for after edit-profile */
