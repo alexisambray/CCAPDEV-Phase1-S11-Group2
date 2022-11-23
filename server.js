@@ -11,27 +11,36 @@ app.use(express.static(__dirname + "/public"));
 
 //Database
 const db = mysql.createConnection({
+    //Note: modify this part to match your local settings!
 	host: 'localhost',
     user: 'root',
-    password: '',
-    database: ''
+    password: 'ccapdev123',
+    database: 'mpdb'
 });
 
 db.connect(function(err) {
 	if (err) {
 		console.error('error connecting: ' + err.stack);
-return;
+        return;
 	}
-console.log('connected as id ' + db.threadid);
+    console.log('Connected as ID ' + db.threadId);
 });
 
 //URL Routing
 
 /* GET index.ejs */
 app.get("/", function(req, res){
-    res.locals.pagetitle = "Home";
     res.locals.username = "placeholder";
-    res.render("index");
+
+    //sql
+    let select_posts = "SELECT p.username, p.postID, p.title, u.ProfilePic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username;";
+    let query = db.query(select_posts, (err, rows) => {
+        if (err) throw err;
+        res.render("index", {
+            pagetitle : "Home",
+            posts : rows
+        });
+    });
 });
 
 /* POST index.ejs - for after login */
@@ -150,5 +159,5 @@ app.get("/post/edit/:username/:postID-:title", function(req, res){
 
 //Listener
 app.listen(3000, function() {
-    console.log("Server started on port 3000.");
+    console.log("Server started on port 3000");
 });
