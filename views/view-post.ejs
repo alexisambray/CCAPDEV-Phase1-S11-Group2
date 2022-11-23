@@ -1,39 +1,27 @@
 <%- include("modules/header"); -%>
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
-<%
-    var title;
-    var postID;
-
-    var poster = username;
-    var likeCount = 1033;
-    var bookmarkCount = 22;
-    var commentCount = 5;
-    
-    var commenter = "ellia14";
-    var comment = "Wow what a nice post!";
-%>
 <div id="main">
-    <h1 id="post-title"><%= title %></h1>
+    <h1 id="post-title"><%= post.Title %></h1>
     <div class="post-area">
-        <img src="/images/myPost1.jpg">
+        <img src="<%= post.Photo %>">
         <div class="post-nav">
-            <a href="/profile/<%= poster %>" class="post-user-view">
-                <img src="/images/icon.jpg">
-                <p><%= poster %></p>
+            <a href="/profile/<%= post.Username %>" class="post-user-view">
+                <img src="<%= post.profilepic %>">
+                <p><%= post.Username %></p>
             </a>
             <div class="post-btns">
                 <button id="likeBtn"><i class="bi bi-heart-fill"></i></button>
                 <button id="bookmarkBtn"><i class="bi bi-bookmark-fill"></i></button>
                 <button id="delpostBtn"><i class="bi bi-trash-fill"></i></button>
-                <a href="/post/edit/<%= username %>/<%= postID %>-<%= title %>"><button id="editpostBtn"><i class="bi bi-pencil-fill"></i></button></a>
+                <a href="/post/edit/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"><button id="editpostBtn"><i class="bi bi-pencil-fill"></i></button></a>
             </div>
         </div>
-        <p class="post-desc">This is a photo of a beach in Maldives! I loved my trip here.</p>
+        <p class="post-desc"><%= post.Caption %></p>
         <div class="post-stats">
-            <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;<%= likeCount %> likes</p>
-            <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;<%= bookmarkCount %> bookmarks</p>
-            <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;<%= commentCount %> comments</p>
+            <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;<%= post.LikeCount %> likes</p>
+            <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;<%= post.BookmarkCount %> bookmarks</p>
+            <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;<%= post.CommentCount %> comments</p>
         </div>
         <div class="add-comment" style="display: block;">
             <!--<form action="/postcomment.php" method="post">-->
@@ -42,16 +30,18 @@
             <!--</form>-->
         </div>
         <div class="comment-group">
+            <% comments.forEach(function(comment){ %>
             <div class="comment">
                 <div class="commenter">
-                    <a href="/profile/<%= commenter %>" class="commenter">
-                        <img src="/images/user1.jpg">
-                        <p><%= commenter %></p>
+                    <a href="/profile/<%= comment.Username %>" class="commenter">
+                        <img src="<%= comment.profilepic %>">
+                        <p><%= comment.Username %></p>
                     </a>
                     <button class="delComment"><i class="bi bi-trash-fill"></i></button>
                 </div>
-                <p class="comment-content"><%= comment %></p>
+                <p class="comment-content"><%= comment.Comment %></p>
             </div>
+            <% }); %>
         </div>
     </div>
 </div>
