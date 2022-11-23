@@ -7,6 +7,7 @@ Prerequisites:
 - Check if installed successfully by typing “node --version” in CMD
 - Install Nodemon to your machine globally by typing “npm install -g nodemon” in CMD
 - Check if installed successfully by typing “nodemon --version” in CMD
+- Under Database in server.js, modify username and password to your settings
 
 Instructions:
 - CD to the application location
