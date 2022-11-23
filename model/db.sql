@@ -13,17 +13,18 @@ CREATE TABLE `Users` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(32) NOT NULL,
   `Email` varchar(50) NOT NULL, 
-  `ProfilePic`  BLOB DEFAULT NULL,
+  `ProfilePic`  BLOB NOT NULL,
   `DisplayName` varchar(20) NOT NULL, 
   `Bio` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `users` VALUES ('brylil','p4ssw0rD','brylil@gmail.com',LOAD_FILE('/images/icon.jpg'), 'Bryan', 'Asian traveller'),
-('elliamae','password27','ellia@yahoo.com',LOAD_FILE('/images/icon.jpg'),'Ellia','Hello world! This is my bio'),
-('emman','password32','emman@gmail.com',LOAD_FILE('/images/icon.jpg'),'Emman',''),
-('alexis','PassWerd455','alex23@hotmail.com',LOAD_FILE('/images/icon.jpg'),'Alexis',''),
-('ccapdev','password322','apdev@gmail.com',LOAD_FILE('/images/icon.jpg'),'Apdev','');
+/* NOTE: Modify insert into photo field from text to actual images */
+INSERT INTO `users` VALUES ('brylil','p4ssw0rD','brylil@gmail.com','/images/icon.jpg', 'Bryan', 'Asian traveller'),
+('elliamae','password27','ellia@yahoo.com','/images/icon.jpg','Ellia','Hello world! This is my bio'),
+('emman','password32','emman@gmail.com','/images/icon.jpg','Emman',''),
+('alexis','PassWerd455','alex23@hotmail.com','/images/icon.jpg','Alexis',''),
+('ccapdev','password322','apdev@gmail.com','/images/icon.jpg','Apdev','');
 
 LOCK TABLES `users` WRITE;
 
@@ -33,7 +34,7 @@ CREATE TABLE `User_Posts` (
   `PostID` int NOT NULL,   
   `Title` varchar(30) NOT NULL,  
   `Username` varchar(20) NOT NULL,   
-  `Photo` BLOB DEFAULT NULL,   
+  `Photo` BLOB NOT NULL,   
   `Date` DATE NOT NULL,
   `Tags` varchar(50) DEFAULT NULL,
   `Caption` varchar(280) DEFAULT NULL,   
@@ -46,11 +47,12 @@ CREATE TABLE `User_Posts` (
 ALTER TABLE User_Posts
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username);
 
-INSERT INTO `User_Posts` VALUES (1,'Maldives','brylil',LOAD_FILE('/images/myPost1.jpg'),'2022-11-23','','Picture I took!','0','0','0'),
-(2,'Philippines','elliamae',LOAD_FILE('/images/myPost2.jpg'),'2022-11-23','','Look at this place!','0','0','0'),
-(3,'Sweden','emman',LOAD_FILE('/images/myPost3.jpg'),'2022-11-23','','What a dazzling view','0','0','0'),
-(4,'NYC','alexis',LOAD_FILE('/images/myPost4.jpg'),'2022-11-23','','New York City','0','0','0'),
-(5,'Toronto','ccapdev',LOAD_FILE('/images/myPost5.jpg'),'2022-11-23','','I am now in Canada wow','0','0','0');
+/* NOTE: Modify insert into photo field from text to actual images */
+INSERT INTO `User_Posts` VALUES (1,'Maldives','brylil','/images/myPost1.jpg','2022-11-23','','Picture I took!','0','0','0'),
+(2,'Philippines','elliamae','/images/myPost2.jpg','2022-11-23','','Look at this place!','0','0','0'),
+(3,'Sweden','emman','/images/myPost3.jpg','2022-11-23','','What a dazzling view','0','0','0'),
+(4,'NYC','alexis','/images/myPost4.jpg','2022-11-23','','New York City','0','0','0'),
+(5,'Toronto','ccapdev','/images/myPost5.jpg','2022-11-23','','I am now in Canada wow','0','0','0');
 
 LOCK TABLES `User_Posts` WRITE;
 
@@ -73,7 +75,7 @@ CREATE TABLE `User_Bookmarks` (
 -- UNLOCK TABLES;
 /*ALTER TABLE User_Bookmarks
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username),
-    ADD FOREIGN KEY (PostID) REFERENCES User_Posts (PostID);*/
+  ADD FOREIGN KEY (PostID) REFERENCES User_Posts (PostID);*/
 
 INSERT INTO `User_Bookmarks` VALUES ('brylil',1),
 ('elliamae',2),
