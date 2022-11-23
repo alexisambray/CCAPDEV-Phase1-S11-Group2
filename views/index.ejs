@@ -3,12 +3,6 @@
 <!-- Content Space -->
 <% 
   var displayname = "John Doe";
-
-  var input = "test";
-
-  var postID = 1;
-  var title = "Sydney";
-  var poster = "ellia14";
 %>
 <div id="main">
   <%- include("modules/searchbar"); -%>
@@ -35,7 +29,7 @@
       </a>
       <hr>
       <a href="/profile/<%= post.username %>" class="post-user">
-          <img src="<%= post.profilepic%>">
+          <img src="<%= post.profilepic %>">
           <p><%= post.username %></p>
       </a>
     </div>
