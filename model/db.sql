@@ -110,7 +110,7 @@ LOCK TABLES `comments` WRITE;
 
 INSERT INTO `comments` VALUES (1,1,'emman','This looks good!','2022-11-23'),
 (2,2,'alexis','go girl!','2022-11-23'),
-(3,3,'ellia','What a nice photo','2022-11-23'),
+(3,3,'elliamae','What a nice photo','2022-11-23'),
 (4,4,'ccapdev','First comment','2022-11-23'),
 (5,5,'brylil','First comment','2022-11-23');
 
@@ -122,8 +122,8 @@ INSERT INTO `comments` VALUES (1,1,'emman','This looks good!','2022-11-23'),
 
 
 -- User_Notifications Table --
-/* UNLOCK TABLES;
-DROP TABLE IF EXISTS `User_Notifications`;
+UNLOCK TABLES;
+/*DROP TABLE IF EXISTS `User_Notifications`;
 CREATE TABLE `User_Notifications` (
 `NotifID` int NOT NULL,    
 `Username` varchar(20) NOT NULL,   
