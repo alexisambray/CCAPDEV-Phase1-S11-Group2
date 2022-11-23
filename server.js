@@ -106,7 +106,6 @@ app.get("/profile/:username", function(req, res){
     }); 
 
     let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, p.likecount, p.bookmarkcount, p.commentcount FROM user_posts p WHERE p.username = '" + req.params.username + "'";
-
     let query2 = db.query(get_userposts, (err, rows) => {
         if (err) throw err;
         res.render("profile", {
@@ -134,9 +133,22 @@ app.get("/profile/edit/:username", function(req, res){
 
 /* bookmarks.ejs */
 app.get("/bookmarks/:username", function(req, res){
-    res.locals.pagetitle = "My Bookmarks";
-    res.locals.username = req.params.username;
-    res.render("bookmarks");
+    let get_userprofile = "SELECT u.displayname FROM users u WHERE u.username = '" + req.params.username + "'";
+    var dname;
+    let query1 = db.query(get_userprofile, (err, result) => {
+        if (err) throw err;
+        dname = result[0];
+    }); 
+
+    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.params.username + "' AND b.postID = p.postID;";
+    let query2 = db.query(get_userposts, (err, rows) => {
+        if (err) throw err;
+        res.render("bookmarks", {
+            pagetitle : "My Bookmarks",
+            bookmarked : rows,
+            dname : dname
+        });
+    }); 
 });
 
 /* GET view-post.ejs */
