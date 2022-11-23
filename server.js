@@ -153,11 +153,22 @@ app.get("/bookmarks/:username", function(req, res){
 
 /* GET view-post.ejs */
 app.get("/post/:username/:postID-:title", function(req, res){
-    res.locals.pagetitle = req.params.title + " by " + req.params.username;
-    res.locals.username = req.params.username;
-    res.locals.postID = req.params.postID;
-    res.locals.title = req.params.title;
-    res.render("view-post");
+    let get_post = "SELECT p.*, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.postID = '" + req.params.postID + "';";
+    var upost;
+    let query1 = db.query(get_post, (err, result) => {
+        if (err) throw err;
+        upost = result[0];
+    });
+
+    let get_comments = "SELECT c.*, u.profilepic FROM comments c JOIN users u ON c.username = u.username WHERE c.postID = '" + req.params.postID + "';";
+    let query2 = db.query(get_comments, (err, rows) => {
+        if (err) throw err;
+        res.render("view-post", {
+            pagetitle : req.params.title + " by " + req.params.username,
+            comments : rows,
+            post : upost
+        });
+    });
 });
 
 /* POST view-post.ejs - for after edit-post */
