@@ -13,6 +13,14 @@ $('#pwd, #pwdConfirm').keyup(function () {
     }
 });
 
+//do not allow space in username
+$('#username').on('keypress', function(e) {
+    if (e.which == 32){
+        console.log('Space Detected');
+        return false;
+    }
+});
+
 /* view post */
 
 //when button is clicked, change css + call js function
