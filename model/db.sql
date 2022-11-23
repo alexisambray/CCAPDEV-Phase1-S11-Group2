@@ -48,11 +48,11 @@ ALTER TABLE User_Posts
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username);
 
 /* NOTE: Modify insert into photo field from text to actual images */
-INSERT INTO `User_Posts` VALUES (1,'Maldives','brylil','/images/myPost1.jpg','2022-11-23','','Picture I took!','0','0','0'),
-(2,'Philippines','elliamae','/images/myPost2.jpg','2022-11-23','','Look at this place!','0','0','0'),
-(3,'Sweden','emman','/images/myPost3.jpg','2022-11-23','','What a dazzling view','0','0','0'),
-(4,'NYC','alexis','/images/myPost4.jpeg','2022-11-23','','New York City','0','0','0'),
-(5,'Toronto','ccapdev','/images/myPost5.jpeg','2022-11-23','','I am now in Canada wow','0','0','0');
+INSERT INTO `User_Posts` VALUES (1,'Maldives','brylil','/images/myPost1.jpg','2022-11-23','','Picture I took!','1','2','1'),
+(2,'Philippines','elliamae','/images/myPost2.jpg','2022-11-23','','Look at this place!','1','2','2'),
+(3,'Sweden','emman','/images/myPost3.jpg','2022-11-23','','What a dazzling view','1','1','1'),
+(4,'NYC','alexis','/images/myPost4.jpeg','2022-11-23','','New York City','1','0','0'),
+(5,'Toronto','ccapdev','/images/myPost5.jpeg','2022-11-23','','I am now in Canada wow','1','0','1');
 
 LOCK TABLES `User_Posts` WRITE;
 
@@ -113,7 +113,7 @@ LOCK TABLES `comments` WRITE;
 INSERT INTO `comments` VALUES (1,1,'emman','This looks good!','2022-11-23'),
 (2,2,'alexis','go girl!','2022-11-23'),
 (3,3,'elliamae','What a nice photo','2022-11-23'),
-(4,4,'ccapdev','First comment','2022-11-23'),
+(4,2,'ccapdev','I love this!!!','2022-11-23'),
 (5,5,'brylil','First comment','2022-11-23');
 
 -- testing purposes
@@ -121,6 +121,29 @@ INSERT INTO `comments` VALUES (1,1,'emman','This looks good!','2022-11-23'),
 -- SELECT * FROM User_Bookmarks;
 -- SELECT * FROM Users;
 -- SELECT * FROM User_Posts;
+
+-- likes table ------
+UNLOCK TABLES;
+CREATE TABLE `Likes` (
+  `Username` varchar(20) NOT NULL,
+  `PostID` int NOT NULL,   
+  PRIMARY KEY (`Username`, `PostID`),
+  FOREIGN KEY (`Username`) REFERENCES Users (`Username`),
+  FOREIGN KEY (`PostID`) REFERENCES User_Posts (`PostID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- UNLOCK TABLES;
+/*ALTER TABLE User_Bookmarks
+	ADD FOREIGN KEY (Username) REFERENCES Users (Username),
+  ADD FOREIGN KEY (PostID) REFERENCES User_Posts (PostID);*/
+
+INSERT INTO `Likes` VALUES ('brylil',5),
+('elliamae',4),
+('emman',3),
+('alexis',2),
+('alexis',1);
+
+LOCK TABLES `User_Bookmarks` WRITE;
 
 
 -- User_Notifications Table --
