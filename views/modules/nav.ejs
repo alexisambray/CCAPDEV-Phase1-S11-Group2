@@ -1,5 +1,3 @@
-<% var username = "brylil" %>
-
 <!-- Navigation Sidebar -->
 <div id="nav">
     <img id="logo" src="/images/logo.png" alt="VisiTOUR Logo">
@@ -9,16 +7,16 @@
         <a href="/"><button id="nav-dashboard"><i class="bi bi-house-heart-fill"></i>&nbsp;&nbsp;&nbsp;Dashboard</button></a>
         
         <!-- logged out -->
-        <% if(1==2) { %>
+        <% if(!session.isAuth) { %>
             <a href="/login"><button id="nav-login"><i class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;&nbsp;Login</button></a>
             <a href="/register"><button id="nav-register"><i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;&nbsp;Register</button></a>
         <% } else { %>
 
         <!-- logged in -->
             <a href="/create-post"><button id="nav-create"><i class="bi bi-image"></i>&nbsp;&nbsp;&nbsp;Create Post</button></a>
-            <a href="/profile/<%= username %>"><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
-            <a href="/bookmarks/<%= username %>"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
-            <a href="/profile/edit/<%= username %>"><button id="nav-edit"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
+            <a href="/profile/<%= session.username %>"><button id="nav-profile"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;&nbsp;User Profile</button></a>
+            <a href="/bookmarks"><button id="nav-bookmarks"><i class="bi bi-bookmark-heart-fill"></i>&nbsp;&nbsp;&nbsp;User Bookmarks</button></a>
+            <a href="/profile/edit/<%= session.username %>"><button id="nav-edit"><i class="bi bi-pencil-square"></i>&nbsp;&nbsp;&nbsp;Edit Profile</button></a>
             <a href="/logout"><button id="nav-logout"><i class="bi bi-box-arrow-right"></i>&nbsp;&nbsp;&nbsp;Logout</button></a>
         <% } %>
         

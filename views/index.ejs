@@ -1,18 +1,15 @@
 <%- include("modules/header"); -%>
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
-<% 
-  var displayname = "John Doe";
-%>
 <div id="main">
   <%- include("modules/searchbar"); -%>
 
   <div class="welcome">
     <h3 id="hello-title">
-      <% if (1 == 2) { %>
+      <% if (!session.isAuth) { %>
         Hello there, Visitor!
       <% } else { %>
-        Welcome back, <%= displayname %>!
+        Welcome back, <%= session.displayname %>!
       <% } %>
     </h3>
     <h4 id="welcome-title">Explore the world. Visit and tour.</h4>

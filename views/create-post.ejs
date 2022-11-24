@@ -1,9 +1,8 @@
 <%- include("modules/header"); -%>
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
-<% var username; %>
 <div id="main">
-  <h3 id="create-title"><%= username %>'s New Post</h3>
+  <h3 id="create-title"><%= session.displayname %>'s New Post</h3>
 
   <div class="icon-container">
   <img src="/images/icon.jpg"></button>
