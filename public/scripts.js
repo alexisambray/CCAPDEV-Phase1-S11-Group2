@@ -14,7 +14,7 @@ $('#pwd, #pwdConfirm').keyup(function () {
 });
 
 //do not allow space in username
-$('#username').on('keypress', function(e) {
+$('#username, #pwd, #pwdConfirm, #email').on('keypress', function(e) {
     if (e.which == 32){
         console.log('Space Detected');
         return false;
