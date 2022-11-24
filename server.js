@@ -61,7 +61,7 @@ app.use(express.json());
 
 /* GET index.ejs */
 app.get("/", function(req, res){
-    let select_posts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username;";
+    let select_posts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username ORDER BY p.postID DESC;";
     let query = db.query(select_posts, (err, rows) => {
         if (err) throw err;
         res.render("index", {
@@ -148,7 +148,7 @@ app.get("/profile/:username", function(req, res){
         user = result[0];
     }); 
 
-    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, p.likecount, p.bookmarkcount, p.commentcount FROM user_posts p WHERE p.username = '" + req.params.username + "'";
+    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, p.likecount, p.bookmarkcount, p.commentcount FROM user_posts p WHERE p.username = '" + req.params.username + "' ORDER BY p.postID DESC";
     let query2 = db.query(get_userposts, (err, rows) => {
         if (err) throw err;
         res.render("profile", {
@@ -185,7 +185,7 @@ app.get("/profile/delete/:username", function(req, res){
 
 /* bookmarks.ejs */
 app.get("/bookmarks", function(req, res){
-    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.session.username + "' AND b.postID = p.postID;";
+    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.session.username + "' AND b.postID = p.postID ORDER BY p.postID DESC;";
     let query = db.query(get_userposts, (err, rows) => {
         if (err) throw err;
         res.render("bookmarks", {
@@ -251,7 +251,7 @@ app.post("/post/comment/:username/:postID-:title", function(req,res){
 
 /* for delete-comment */
 app.post("/post/:postID/comment/:commentID/delete", function(req,res){
-    
+
 });
 
 /* for likes */
