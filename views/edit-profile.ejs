@@ -3,7 +3,7 @@
 <!-- Content Space -->
 <div id="main">
     <div class="editprofile_layout">
-        <h3 id="title">Edit Profile <a href="/" id="delProfileBtn"><button class="input_greencolor" id="deleteprofile">Delete Profile</button></a></h3>
+        <h3 id="title">Edit Profile <button class="input_greencolor" id="deleteprofile" data-bs-toggle="modal" data-bs-target="#modal">Delete Profile</button></h3>
         <form method="POST" action="/profile/<%= user.Username %>" id="editprofile-form" name="editprofile-form">
             <label for="profilepic" class="green_label">Profile Picture</label><br>
             <input type="file" class="choose_file" id="profilepic" name="profilepic" accept="image/*" autofocus><br>
@@ -24,4 +24,22 @@
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Warning: Deletion is Permanent</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete your account?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I change my mind</button>
+          <a href="/profile/delete/<%= user.Username %>"><button type="button" class="btn btn-danger">Yes, delete this</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
 <%- include("modules/footer"); -%>
