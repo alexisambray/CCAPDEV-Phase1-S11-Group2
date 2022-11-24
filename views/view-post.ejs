@@ -11,8 +11,8 @@
                 <p><%= post.Username %></p>
             </a>
 
-            <% if(session.isAuth) { %>
             <div class="post-btns">
+            <% if(session.isAuth) { %>
                 <a href="/post/like/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"></a><button id="likeBtn"><i class="bi bi-heart-fill"></i></button></a>
                 <a href="/post/bookmark/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"><button id="bookmarkBtn"><i class="bi bi-bookmark-fill"></i></button></a>
                 
@@ -20,8 +20,8 @@
                 <button id="delpostBtn" data-bs-toggle="modal" data-bs-target="#modal"><i class="bi bi-trash-fill"></i></button>
                 <a href="/post/edit/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"><button id="editpostBtn"><i class="bi bi-pencil-fill"></i></button></a>
                 <% } %>
-            </div>
             <% } %>
+            </div>
 
         </div>
         <p class="post-desc"><%= post.Caption %></p>
