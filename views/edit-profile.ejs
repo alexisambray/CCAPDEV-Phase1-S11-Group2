@@ -12,7 +12,7 @@
             <input type="text" class="input" id="displayname" name="displayname" value="<%= user.DisplayName %>" autofill autocomplete="nickname" maxlength="20"><br>
 
             <label for="pwd" class="green_label">Password</label><br>
-            <input type="password" class="input" id="pwd" name="pwd" value="<%= user.Password %>" required minlength="8"><br>
+            <input type="password" class="input" id="pwd" name="pwd" minlength="8"><br>
 
             <label for="pwd" class="green_label">Email</label><br>
             <input type="email" class="input" id="email" name="email" value="<%= user.Email %>" required autofill autocomplete="email" maxlength="50"><br>
