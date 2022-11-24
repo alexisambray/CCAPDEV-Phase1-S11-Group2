@@ -10,12 +10,19 @@
                 <img src="<%= post.profilepic %>">
                 <p><%= post.Username %></p>
             </a>
+
+            <% if(session.isAuth) { %>
             <div class="post-btns">
-                <button id="likeBtn"><i class="bi bi-heart-fill"></i></button>
-                <button id="bookmarkBtn"><i class="bi bi-bookmark-fill"></i></button>
-                <button id="delpostBtn"><i class="bi bi-trash-fill"></i></button>
+                <a href="/post/like/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"></a><button id="likeBtn"><i class="bi bi-heart-fill"></i></button></a>
+                <a href="/post/bookmark/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"><button id="bookmarkBtn"><i class="bi bi-bookmark-fill"></i></button></a>
+                
+                <% if(session.username == post.Username) { %>
+                <button id="delpostBtn" data-bs-toggle="modal" data-bs-target="#modal"><i class="bi bi-trash-fill"></i></button>
                 <a href="/post/edit/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"><button id="editpostBtn"><i class="bi bi-pencil-fill"></i></button></a>
+                <% } %>
             </div>
+            <% } %>
+
         </div>
         <p class="post-desc"><%= post.Caption %></p>
         <div class="post-stats">
@@ -23,12 +30,16 @@
             <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;<%= post.BookmarkCount %> bookmarks</p>
             <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;<%= post.CommentCount %> comments</p>
         </div>
+
+        <% if(session.isAuth) { %>
         <div class="add-comment" style="display: block;">
-            <!--<form action="/postcomment.php" method="post">-->
+            <form action="/post/comment/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>" method="post">
                 <input id="comment-box" type="textarea" placeholder="Share your thoughts!">
                 <input id="comment-btn" type="submit" value="Comment">
-            <!--</form>-->
+            </form>
         </div>
+        <% } %>
+
         <div class="comment-group">
             <% comments.forEach(function(comment){ %>
             <div class="comment">
@@ -37,12 +48,34 @@
                         <img src="<%= comment.profilepic %>">
                         <p><%= comment.Username %></p>
                     </a>
-                    <button class="delComment"><i class="bi bi-trash-fill"></i></button>
+
+                    <% if(session.username == post.Username || session.username == comment.Username) { %>
+                    <a href="/post/<%= post.PostID %>/comment/<%= comment.CommentID %>/delete"><button class="delComment"><i class="bi bi-trash-fill"></i></button></a>
+                    <% } %>
+
                 </div>
                 <p class="comment-content"><%= comment.Comment %></p>
             </div>
             <% }); %>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Warning: Deletion is Permanent</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this post?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, I change my mind</button>
+        <a href="/post/delete/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>"><button type="button" class="btn btn-danger">Yes, delete this</button></a>
+      </div>
+    </div>
+  </div>
 </div>
 <%- include("modules/footer"); -%>
