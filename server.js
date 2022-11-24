@@ -50,6 +50,8 @@ app.get("/", function(req, res){
 app.post("/", function(req, res){
     //call js here
     res.redirect("/");
+
+    /*login failed res.redirect("/login?error=" + encodeURIComponent('wrongcreds'));*/
 });
 
 /* about.ejs */
@@ -75,20 +77,17 @@ app.post("/login", function(req, res){
     console.log(req.body.username + " " + req.body.email);
     var query1 = db.query(check, (err, results) => {
         if(err) throw err;
-        console.log(results.length);
         if(results.length == 0){ //no duplicates
-            let hash = md5(req.body.pwd);
-            let pfp = '/images/icon.jpg'
-            console.log(req.body.pwd + " " + hash);
+            let hash = md5(req.body.pwd); //encrypt password
+            let pfp = '/images/icon.jpg' //default profile picture
             let data = {Username: req.body.username, Password: hash, Email: req.body.email, ProfilePic: pfp, DisplayName: req.body.username, Bio: null};
             let insertuser = "INSERT INTO users SET ?";
-            /*let query2 = db.query(insertuser, data,(err, results) => {
+            let query2 = db.query(insertuser, data,(err, results) => {
                 if(err) throw err;
-                res.redirect("/login");
-            });*/
-            res.send(data);
+                res.redirect("/login?reg=" + encodeURIComponent('success'));
+            });
         }else{
-            res.send("Username/Email already used.");
+            res.redirect("/register?error=" + encodeURIComponent('usedcreds'));
         }
     });
 });
