@@ -3,6 +3,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const md5 = require("md5");
+const jsdom = require("jsdom");
+const dom = new jsdom.JSDOM("");
+const jquery = require("jquery")(dom.window);
 
 //App
 const app = express();
