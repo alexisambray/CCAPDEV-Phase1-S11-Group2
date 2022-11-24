@@ -1,6 +1,9 @@
-/** FOR JQUERY */
+/** FOR JQUERY UNRELATED TO NODEJS */
 
-/* register */
+//variables
+const urlParams = new URLSearchParams(window.location.search);
+
+/* register + login */
 
 //check if password and confirm password matches
 $('#pwd, #pwdConfirm').keyup(function () {
@@ -12,6 +15,27 @@ $('#pwd, #pwdConfirm').keyup(function () {
         $('#register-confirm').prop("disabled", true).css({'background-color': 'var(--lgrey)', 'color': 'var(--light)'});
     }
 });
+
+//alert if username/email already used
+$('#regisAlert').hide();
+const regParam = urlParams.get('error');
+if(regParam == "usedcreds") {
+    $('#regisAlert').show();
+}
+
+//alert if register success
+$('#regpassAlert').hide();
+const regpassParam = urlParams.get('reg');
+if(regpassParam == "success") {
+    $('#regpassAlert').show();
+}
+
+//alert if username/password incorrect
+$('#loginAlert').hide();
+const loginParam = urlParams.get('error');
+if(loginParam == "wrongcreds") {
+    $('#loginAlert').show();
+}
 
 //do not allow space in username
 $('#username, #pwd, #pwdConfirm, #email').on('keypress', function(e) {
