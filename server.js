@@ -120,9 +120,14 @@ app.post("/profile/:username", function(req, res, next){
 
 /* edit-profile.ejs */
 app.get("/profile/edit/:username", function(req, res){
-    res.locals.pagetitle = "Edit Profile";
-    res.locals.username = req.params.username;
-    res.render("edit-profile");
+    let get_userprofile = "SELECT u.* FROM users u WHERE u.username = '" + req.params.username + "'";
+    let query1 = db.query(get_userprofile, (err, result) => {
+        if (err) throw err;
+        res.render("edit-profile", {
+            pagetitle : "Edit Profile",
+            user : result[0]
+        });
+    });
 });
 
 /* bookmarks.ejs */
@@ -179,11 +184,14 @@ app.get("/create-post", function(req, res){
 
 /* edit-post.ejs */
 app.get("/post/edit/:username/:postID-:title", function(req, res){
-    res.locals.pagetitle = "Edit Post";
-    res.locals.username = req.params.username;
-    res.locals.postID = req.params.postID;
-    res.locals.title = req.params.title;
-    res.render("edit-post");
+    let get_post = "SELECT p.*, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.postID = '" + req.params.postID + "';";
+    let query1 = db.query(get_post, (err, result) => {
+        if (err) throw err;
+        res.render("edit-post", {
+            pagetitle : "Edit Post",
+            post : result[0]
+        });
+    });
 });
 
 //Listener
