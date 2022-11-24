@@ -77,8 +77,8 @@ CREATE TABLE `User_Bookmarks` (
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username),
   ADD FOREIGN KEY (PostID) REFERENCES User_Posts (PostID);*/
 
-INSERT INTO `User_Bookmarks` VALUES ('brylil',1),
-('elliamae',2),
+INSERT INTO `User_Bookmarks` VALUES ('brylil',2),
+('elliamae',1),
 ('emman',3),
 ('alexis',2),
 ('alexis',1);
