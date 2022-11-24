@@ -178,6 +178,11 @@ app.get("/profile/edit/:username", function(req, res){
     });
 });
 
+/* for delete-profile */
+app.get("/profile/delete/:username", function(req, res){
+    
+});
+
 /* bookmarks.ejs */
 app.get("/bookmarks", function(req, res){
     let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.session.username + "' AND b.postID = p.postID;";
@@ -232,6 +237,31 @@ app.get("/post/edit/:username/:postID-:title", function(req, res){
             post : result[0]
         });
     });
+});
+
+/* for delete-post */
+app.get("/post/delete/:username/:postID-:title", function(req, res){
+    
+});
+
+/* for add-comment */
+app.post("/post/comment/:username/:postID-:title", function(req,res){
+
+});
+
+/* for delete-comment */
+app.post("/post/:postID/comment/:commentID/delete", function(req,res){
+    
+});
+
+/* for likes */
+app.post("/post/like/:username/:postID-:title", function(req,res){
+
+});
+
+/* for bookmarks */
+app.post("/post/bookmark/:username/:postID-:title", function(req,res){
+
 });
 
 //Listener
