@@ -1,4 +1,4 @@
-//Packages express and body-parser declaration
+//Packages declaration
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
@@ -6,12 +6,8 @@ const md5 = require("md5");
 const jsdom = require("jsdom");
 const dom = new jsdom.JSDOM("");
 const jquery = require("jquery")(dom.window);
-
-//App
-const app = express();
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(__dirname + "/public"));
+const session = require("express-session");
+const MySQLStore = require('express-mysql-session')(session);
 
 //Database
 const db = mysql.createConnection({
@@ -30,12 +26,41 @@ db.connect(function(err) {
     console.log('Connected as ID ' + db.threadId);
 });
 
+//Session
+const sessionStore = new MySQLStore({
+    expiration: 10800000,
+    createDatabaseTable: true,
+    schema: {
+		tableName: 'sessions',
+		columnNames: {
+			session_id: 'session_id',
+			expires: 'expires',
+			data: 'data'
+		}
+	}
+},db);
+
+//App
+const app = express();
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(__dirname + "/public"));
+app.use(session({
+    secret : 'visitourmpgrp2', //key that will sign cookie
+    resave: false, //false = do not create new session for every req
+    saveUninitialized: false, //false = don't save if session has not been modified
+    store: sessionStore //where the session will be stored
+}));
+app.use(function(req,res,next){ //allow views to access session
+    res.locals.session = req.session;
+    next();
+});
+app.use(express.json());
+
 //URL Routing
 
 /* GET index.ejs */
 app.get("/", function(req, res){
-    res.locals.username = "placeholder";
-
     let select_posts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username;";
     let query = db.query(select_posts, (err, rows) => {
         if (err) throw err;
@@ -48,10 +73,20 @@ app.get("/", function(req, res){
 
 /* POST index.ejs - for after login */
 app.post("/", function(req, res){
-    //call js here
-    res.redirect("/");
-
-    /*login failed res.redirect("/login?error=" + encodeURIComponent('wrongcreds'));*/
+    let hash = md5(req.body.pwd); //encrypt password
+    let check = "SELECT * FROM users WHERE username = '" + req.body.username + "' AND password = '" + hash + "'";
+    console.log(req.body.username + " " + hash);
+    var query1 = db.query(check, (err, results) => {
+        if(err) throw err;
+        if(results.length == 1){ //username and password exist and match
+            req.session.username = results[0].Username; //create session
+            req.session.displayname = results[0].DisplayName;
+            req.session.isAuth = true;
+            res.redirect("/");
+        }else{
+            res.redirect("/login?error=" + encodeURIComponent('wrongcreds'));
+        }
+    });
 });
 
 /* about.ejs */
@@ -74,7 +109,6 @@ app.get("/login", function(req, res){
 /* POST login.ejs - for after register */
 app.post("/login", function(req, res){
     let check = "SELECT * FROM users WHERE username = '" + req.body.username + "' OR email = '" + req.body.email + "'";
-    console.log(req.body.username + " " + req.body.email);
     var query1 = db.query(check, (err, results) => {
         if(err) throw err;
         if(results.length == 0){ //no duplicates
@@ -99,8 +133,10 @@ app.get("/register", function(req, res){
 
 /* for logout */
 app.get("/logout", function(req, res){
-    //call js here
-    res.redirect("/");
+    req.session.destroy((err) => {
+        if (err) throw err;
+        res.redirect("/");
+    });
 });
 
 /* GET profile.ejs */
@@ -143,21 +179,13 @@ app.get("/profile/edit/:username", function(req, res){
 });
 
 /* bookmarks.ejs */
-app.get("/bookmarks/:username", function(req, res){
-    let get_userprofile = "SELECT u.displayname FROM users u WHERE u.username = '" + req.params.username + "'";
-    var dname;
-    let query1 = db.query(get_userprofile, (err, result) => {
-        if (err) throw err;
-        dname = result[0];
-    }); 
-
-    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.params.username + "' AND b.postID = p.postID;";
-    let query2 = db.query(get_userposts, (err, rows) => {
+app.get("/bookmarks", function(req, res){
+    let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.session.username + "' AND b.postID = p.postID;";
+    let query = db.query(get_userposts, (err, rows) => {
         if (err) throw err;
         res.render("bookmarks", {
             pagetitle : "My Bookmarks",
-            bookmarked : rows,
-            dname : dname
+            bookmarked : rows
         });
     }); 
 });
