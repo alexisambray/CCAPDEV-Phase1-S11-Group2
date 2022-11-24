@@ -46,11 +46,9 @@ app.get("/", function(req, res){
 });
 
 /* POST index.ejs - for after login */
-app.post("/", function(req, res){
+app.post("/login", function(req, res){
     //call js here
-    res.locals.pagetitle = "Home";
-    res.locals.username = "placeholder";
-    res.render("index");
+    res.redirect("/");
 });
 
 /* about.ejs */
@@ -75,10 +73,9 @@ app.get("/login", function(req, res){
 });
 
 /* POST login.ejs - for after register */
-app.post("/login", function(req, res){
+app.post("/register", function(req, res){
     //call js here
-    res.locals.pagetitle = "Login";
-    res.render("login");
+    res.redirect("/login");
 });
 
 /* register.ejs */
@@ -90,9 +87,7 @@ app.get("/register", function(req, res){
 /* for logout */
 app.get("/logout", function(req, res){
     //call js here
-    res.locals.pagetitle = "Home";
-    res.locals.username = "placeholder";
-    res.render("/");
+    res.redirect("/");
 });
 
 /* GET profile.ejs */
@@ -117,11 +112,10 @@ app.get("/profile/:username", function(req, res){
 });
 
 /* POST profile.ejs - for after edit-profile */
-app.post("/profile/:username", function(req, res){
+app.post("/profile/:username-edited", function(req, res, next){
     //call js here
-    res.locals.pagetitle = req.params.username;
-    res.locals.username = req.params.username;
-    res.render("profile");
+    res.redirect("/profile/" + req.params.username);
+    next();
 });
 
 /* edit-profile.ejs */
@@ -172,13 +166,9 @@ app.get("/post/:username/:postID-:title", function(req, res){
 });
 
 /* POST view-post.ejs - for after edit-post */
-app.post("/post/:username/:postID-:title", function(req, res){
-    res.locals.pagetitle = req.params.title + " by " + req.params.username;
-    res.locals.username = req.params.username;
-    res.locals.postID = req.params.postID;
-    res.locals.title = req.params.title;
+app.post("/post/:username/:postID-:title-edited", function(req, res){
     //call js here
-    res.render("view-post");
+    res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
 });
 
 /* create-post.ejs */
