@@ -2,6 +2,9 @@
 <div class="login">
     <a id="go-back" href="/login"><i class="bi bi-arrow-left"></i>&nbsp;Back to Login</a>
     <p id="register-title">Register</p>
+    <div class="alert alert-danger" role="alert" id="regisAlert">
+        <p style="text-align: center; color: var(--orange); padding: 0; margin: 0;">Username and/or Email already used</p>
+    </div>
     <form method="POST" action="/login" id="register-form" name="register-form">
         <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required minlength="4" maxlength="20" autofocus class="input-txt">
         <input type="password" id="pwd" name="pwd" placeholder="Password" required minlength="8" autocomplete="password" class="input-txt">
