@@ -672,6 +672,7 @@ html {
     font-family: Abel;
     font-weight: 400;
     font-size: 32px;
+    width: fit-content;
 }
 
 .photo-container {    
@@ -712,7 +713,7 @@ html {
   height: 36px;
   margin-left: 60px;
   background-color: #ffffff;
-    border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .caption-label {
@@ -729,7 +730,7 @@ html {
 
 .save-container button {
   color:#141627;
-  background-color: #d1f366;
+  background-color: var(--lime);
   font-family: Abel;
   border-radius: 20px;
   width: 150px;
@@ -799,10 +800,7 @@ html {
 #deleteprofile {
     background-color: var(--orange);
     padding: 0.5%;
-}
-
-#delProfileBtn {
-    margin-left: 5%;
+    margin-left: 2.5%;
 }
 
 /* about.html */
