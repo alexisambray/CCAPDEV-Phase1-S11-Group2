@@ -794,3 +794,12 @@ html {
     padding: 1%;
     border: 2px black;
 }
+
+#deleteprofile {
+    background-color: var(--orange);
+    padding: 0.5%;
+}
+
+#delProfileBtn {
+    margin-left: 5%;
+}
