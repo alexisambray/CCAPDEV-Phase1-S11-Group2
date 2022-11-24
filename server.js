@@ -46,7 +46,7 @@ app.get("/", function(req, res){
 });
 
 /* POST index.ejs - for after login */
-app.post("/login", function(req, res){
+app.post("/", function(req, res){
     //call js here
     res.redirect("/");
 });
@@ -73,7 +73,7 @@ app.get("/login", function(req, res){
 });
 
 /* POST login.ejs - for after register */
-app.post("/register", function(req, res){
+app.post("/login", function(req, res){
     //call js here
     res.redirect("/login");
 });
@@ -112,7 +112,7 @@ app.get("/profile/:username", function(req, res){
 });
 
 /* POST profile.ejs - for after edit-profile */
-app.post("/profile/:username-edited", function(req, res, next){
+app.post("/profile/:username", function(req, res, next){
     //call js here
     res.redirect("/profile/" + req.params.username);
     next();
@@ -166,7 +166,7 @@ app.get("/post/:username/:postID-:title", function(req, res){
 });
 
 /* POST view-post.ejs - for after edit-post */
-app.post("/post/:username/:postID-:title-edited", function(req, res){
+app.post("/post/:username/:postID-:title", function(req, res){
     //call js here
     res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
 });
