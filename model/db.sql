@@ -3,6 +3,7 @@ UNLOCK TABLES;
 CREATE DATABASE IF NOT EXISTS `mpdb`;
 USE `mpdb`;
 
+DROP TABLE IF EXISTS `Likes`;
 DROP TABLE IF EXISTS `Comments`;
 DROP TABLE IF EXISTS `User_Bookmarks`;
 DROP TABLE IF EXISTS `User_Posts`;
@@ -19,12 +20,12 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/* NOTE: Modify insert into photo field from text to actual images */
-INSERT INTO `users` VALUES ('brylil','p4ssw0rD','brylil@gmail.com','/images/icon.jpg', 'Bryan', 'Asian traveller'),
-('elliamae','password27','ellia@yahoo.com','/images/icon.jpg','Ellia','Hello world! This is my bio'),
-('emman','password32','emman@gmail.com','/images/icon.jpg','Emman',''),
-('alexis','PassWerd455','alex23@hotmail.com','/images/icon.jpg','Alexis',''),
-('ccapdev','password322','apdev@gmail.com','/images/icon.jpg','Apdev','');
+/*Note: All sample passwords are "password" in md5 hash*/
+INSERT INTO `users` VALUES ('brylil','5f4dcc3b5aa765d61d8327deb882cf99','brylil@gmail.com','/images/icon.jpg', 'Bryan', 'Asian traveller'),
+('elliamae','5f4dcc3b5aa765d61d8327deb882cf99','ellia@yahoo.com','/images/icon.jpg','Ellia','Hello world! This is my bio'),
+('emman','5f4dcc3b5aa765d61d8327deb882cf99','emman@gmail.com','/images/icon.jpg','Emman',''),
+('alexis','5f4dcc3b5aa765d61d8327deb882cf99','alex23@hotmail.com','/images/icon.jpg','Alexis',''),
+('ccapdev','5f4dcc3b5aa765d61d8327deb882cf99','apdev@gmail.com','/images/icon.jpg','Apdev','');
 
 LOCK TABLES `users` WRITE;
 
@@ -47,7 +48,6 @@ CREATE TABLE `User_Posts` (
 ALTER TABLE User_Posts
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username);
 
-/* NOTE: Modify insert into photo field from text to actual images */
 INSERT INTO `User_Posts` VALUES (1,'Maldives','brylil','/images/myPost1.jpg','2022-11-23','','Picture I took!','1','2','1'),
 (2,'Philippines','elliamae','/images/myPost2.jpg','2022-11-23','','Look at this place!','1','2','2'),
 (3,'Sweden','emman','/images/myPost3.jpg','2022-11-23','','What a dazzling view','1','1','1'),
