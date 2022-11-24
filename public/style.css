@@ -803,3 +803,15 @@ html {
 #delProfileBtn {
     margin-left: 5%;
 }
+
+/* about.html */
+
+.desc {
+    font-family: Abel;
+    color: white;
+    margin-left: 3%;
+    margin-right: 3%;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: justify;
+}
