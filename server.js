@@ -15,9 +15,7 @@ const db = mysql.createConnection({
 	host: 'localhost',
     user: 'root',
     password: 'ccapdev123',
-    database: 'mpdb',
-
-    multipleStatements: true
+    database: 'mpdb'
 });
 
 db.connect(function(err) {
@@ -34,7 +32,6 @@ db.connect(function(err) {
 app.get("/", function(req, res){
     res.locals.username = "placeholder";
 
-    //sql
     let select_posts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username;";
     let query = db.query(select_posts, (err, rows) => {
         if (err) throw err;
@@ -53,35 +50,35 @@ app.post("/", function(req, res){
 
 /* about.ejs */
 app.get("/about", function(req, res){
-    res.locals.pagetitle = "About Us";
     res.locals.username = "placeholder";
-    res.render("about");
+    res.render("about", {pagetitle : "About Us"});
 });
 
 /* search.ejs */
 app.get("/search/", function(req, res){
-    res.locals.pagetitle = "Search result for " + res.locals.q;
     res.locals.username = "placeholder";
-    res.locals.input = req.params.input;
-    res.render("search");
+    res.render("search", {pagetitle : "Search result for '" + res.locals.q + "'"});
 });
 
 /* GET login.ejs */
 app.get("/login", function(req, res){
-    res.locals.pagetitle = "Login";
-    res.render("login");
+    res.render("login", {pagetitle : "Login"});
 });
 
 /* POST login.ejs - for after register */
 app.post("/login", function(req, res){
-    //call js here
-    res.redirect("/login");
+    /*let data = {Username: req.body.username, email: req.body.email, phone_no: req.body.phone_no};
+    let sql = "INSERT INTO users SET ?";
+    let query = db.query(sql, data,(err, results) => {
+      if(err) throw err;
+      res.redirect("/login");
+    });*/
+    res.send(req.body);
 });
 
 /* register.ejs */
 app.get("/register", function(req, res){
-    res.locals.pagetitle = "Register";
-    res.render("register");
+    res.render("register", {pagetitle : "Register"});
 });
 
 /* for logout */
@@ -92,7 +89,6 @@ app.get("/logout", function(req, res){
 
 /* GET profile.ejs */
 app.get("/profile/:username", function(req, res){
-    //sql
     let get_userprofile = "SELECT u.username, u.profilepic, u.displayname, u.bio FROM users u WHERE u.username = '" + req.params.username + "'";
     var user;
     let query1 = db.query(get_userprofile, (err, result) => {
@@ -112,10 +108,10 @@ app.get("/profile/:username", function(req, res){
 });
 
 /* POST profile.ejs - for after edit-profile */
-app.post("/profile/:username", function(req, res, next){
+app.post("/profile/:username", function(req, res){
     //call js here
-    res.redirect("/profile/" + req.params.username);
-    next();
+    res.send(req.body);
+    /*res.redirect("/profile/" + req.params.username);*/
 });
 
 /* edit-profile.ejs */
