@@ -9,7 +9,7 @@
             <input type="file" class="choose_file" id="profilepic" name="profilepic" accept="image/*" autofocus><br>
 
             <label for="displayname" class="green_label">Display Name</label><br>
-            <input type="text" class="input" id="displayname" name="displayname" value="<%= user.DisplayName %>" autofill autocomplete="nickname" maxlength="20"><br>
+            <input type="text" class="input" id="displayname" name="displayname" value="<%= user.DisplayName %>" required autofill autocomplete="nickname" maxlength="20"><br>
 
             <label for="pwd" class="green_label">Password</label><br>
             <input type="password" class="input" id="pwd" name="pwd" minlength="8"><br>
