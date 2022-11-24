@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
+const md5 = require("md5");
 
 //App
 const app = express();
@@ -67,13 +68,26 @@ app.get("/login", function(req, res){
 
 /* POST login.ejs - for after register */
 app.post("/login", function(req, res){
-    /*let data = {Username: req.body.username, email: req.body.email, phone_no: req.body.phone_no};
-    let sql = "INSERT INTO users SET ?";
-    let query = db.query(sql, data,(err, results) => {
-      if(err) throw err;
-      res.redirect("/login");
-    });*/
-    res.send(req.body);
+    let check = "SELECT * FROM users WHERE username = '" + req.body.username + "' OR email = '" + req.body.email + "'";
+    console.log(req.body.username + " " + req.body.email);
+    var query1 = db.query(check, (err, results) => {
+        if(err) throw err;
+        console.log(results.length);
+        if(results.length == 0){ //no duplicates
+            let hash = md5(req.body.pwd);
+            let pfp = '/images/icon.jpg'
+            console.log(req.body.pwd + " " + hash);
+            let data = {Username: req.body.username, Password: hash, Email: req.body.email, ProfilePic: pfp, DisplayName: req.body.username, Bio: null};
+            let insertuser = "INSERT INTO users SET ?";
+            /*let query2 = db.query(insertuser, data,(err, results) => {
+                if(err) throw err;
+                res.redirect("/login");
+            });*/
+            res.send(data);
+        }else{
+            res.send("Username/Email already used.");
+        }
+    });
 });
 
 /* register.ejs */
