@@ -9,12 +9,12 @@
         <% bookmarked.forEach(function(post){ %>
         <div class="post-card">
             <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
-                <img src="<%= post.photo %>">
+                <img src="<%= post.photo %>" alt="<%= post.title %>">
                 <p class="post-title"><%= post.title %></p>
             </a>
             <hr>
             <a href="/profile/<%= post.username %>" class="post-user">
-                <img src="<%= post.profilepic %>">
+                <img src="<%= post.profilepic %>" alt="<%= post.username %>">
                 <p><%= post.username %></p>
             </a>
         </div>
