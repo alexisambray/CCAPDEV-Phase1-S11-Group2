@@ -436,7 +436,7 @@ html {
 }
 
 .post-btns button:hover, .delComment:hover {
-    color: var(--orange);
+    color: var(--lime);
 }
 
 .post-desc {
