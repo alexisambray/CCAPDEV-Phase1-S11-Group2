@@ -428,6 +428,11 @@ app.get("/post/:username/:postID-:title", function(req, res){
 
 /* POST view-post.ejs - for after edit-post */
 app.post("/post/:username/:postID-:title", function(req, res){
+    //check if title is whitespace only
+    if (req.body.location.trim().length == 0){
+        return res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title + "?error=" + encodeURIComponent('title-is-null'));
+    }
+    
     let data = {Caption: req.body.caption, Tags: req.body.tags, Title: req.body.location};
     let update_post = "UPDATE user_posts SET ? WHERE postID = " + req.params.postID;
     let query = db.query(update_post, data,(err) => {
