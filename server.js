@@ -196,9 +196,7 @@ app.post("/profile/:username", function(req, res){
 
     //check if no file
     if (!req.files || Object.keys(req.files).length === 0){
-        console.log("no icon");
     }else{
-        console.log("icon");
         //grab file
         let photo = req.files.profilepic;
 
@@ -226,29 +224,22 @@ app.post("/profile/:username", function(req, res){
         
         //update profile picture
         let update_icon = "UPDATE users SET ProfilePic = '/images/icons/" + fname + "' WHERE Username = '" + req.session.username + "'";
-        let queryui = db.query(update_icon, (err) => { if (err) throw err; console.log("icon updated") });
+        let queryui = db.query(update_icon, (err) => { if (err) throw err; });
     }
 
     //check if password null
     if (req.body.pwd.length == 0){
-        console.log("null")
     }else{
-        console.log("not null")
         let hash = md5(req.body.pwd); //encrypt password
-        console.log(req.body.pwd)
-        console.log(hash)
         let update_pwd = "UPDATE users SET Password = '" + hash + "' WHERE Username = '" + req.session.username + "'";
-        let queryup = db.query(update_pwd, (err) => { if (err) throw err; console.log("pwd updated") });
+        let queryup = db.query(update_pwd, (err) => { if (err) throw err; });
     }
 
     //check if email matches
     let querygu = db.query(get_user, (err, result) => { 
         if (err) throw err; 
         if(result[0].Email == req.body.email){
-            console.log("same email")
         }else{
-            console.log("diff email")
-
             //check if email exists
             let get_email = "SELECT * FROM users WHERE email = '" + result[0].Email + "'";
             let queryge = db.query(get_email, (err, email) => { 
@@ -259,7 +250,7 @@ app.post("/profile/:username", function(req, res){
                 }
                 console.log("email does not exist")
                 let update_email = "UPDATE users SET Email = '" + req.body.email + "' WHERE Username = '" + req.session.username + "'";
-                let queryue = db.query(update_email, (err) => { if (err) throw err; console.log("email updated") });
+                let queryue = db.query(update_email, (err) => { if (err) throw err; });
             });
         }
     });
@@ -269,7 +260,6 @@ app.post("/profile/:username", function(req, res){
     let update_profile = "UPDATE users SET ? WHERE Username = '" + req.session.username + "'";
     let queryu = db.query(update_profile, data,(err) => {
         if (err) throw err;
-        console.log("dn and bio updated");
         req.session.displayname = req.body.displayname; //change displayname in session
         res.redirect("/profile/" + req.session.username);
     });
