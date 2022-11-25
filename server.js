@@ -128,7 +128,7 @@ app.post("/login", function(req, res){
         if(err) throw err;
         if(results.length == 0){ //no duplicates
             let hash = md5(req.body.pwd); //encrypt password
-            let pfp = '/images/icon.jpg' //default profile picture
+            let pfp = '/images/icons/icon.jpg' //default profile picture
             let data = {Username: req.body.username, Password: hash, Email: req.body.email, ProfilePic: pfp, DisplayName: req.body.username, Bio: null};
             let insertuser = "INSERT INTO users SET ?";
             let query2 = db.query(insertuser, data,(err, results) => {
@@ -346,8 +346,16 @@ app.post("/post/:username/:postID-:title", function(req, res){
 
 /* create-post.ejs */
 app.get("/create-post", function(req, res){
-    res.locals.pagetitle = "Create Post";
-    res.render("create-post");
+    let get_userprofile = "SELECT u.username, u.profilepic, u.displayname, u.bio FROM users u WHERE u.username = '" + req.session.username + "'";
+    var user;
+    let query1 = db.query(get_userprofile, (err, result) => {
+        if (err) throw err;
+        user = result[0];
+        res.render("create-post", {
+            pagetitle : "Create Post",
+            user : user
+        });
+    }); 
 });
 
 /* edit-post.ejs */
