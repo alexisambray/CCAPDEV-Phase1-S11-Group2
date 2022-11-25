@@ -1,13 +1,6 @@
 <%- include("modules/header"); -%>
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
-<% 
-var input = "hello"; 
-
-var postID = 1;
-var poster = "taylor13";
-var title = "Australia";
-%>
 <div id="main">
   <%- include("modules/searchbar"); -%>
 
@@ -18,17 +11,20 @@ var title = "Australia";
   <div class="post-group">
 
     <!-- Post -->
+    <% posts.forEach(function(post){ %>
     <div class="post-card">
-      <a href="/post/<%= poster %>/<%= postID %>-<%= title %>">
-          <img src="/images/u1Post1.jpeg">
-          <p class="post-title"><%= title %></p>
+      <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
+          <img src="<%= post.photo %>">
+          <p class="post-title"><%= post.title %></p>
       </a>
       <hr>
-      <a href="/profile/<%= poster %>" class="post-user">
-          <img src="/images/user1.jpg">
-          <p><%= poster %></p>
+      <a href="/profile/<%= post.username %>" class="post-user">
+          <img src="<%= post.profilepic %>">
+          <p><%= post.username %></p>
       </a>
     </div>
+    <% }); %>
+   
     
   </div>
 </div>
