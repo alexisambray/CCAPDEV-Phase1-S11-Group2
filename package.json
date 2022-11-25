@@ -1,11 +1,11 @@
 {
   "name": "ccapdev-mp-group2",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the Phase 2 submission of Group 2 S11 for CCAPDEV Machine Project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
