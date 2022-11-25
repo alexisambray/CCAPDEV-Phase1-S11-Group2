@@ -310,8 +310,12 @@ app.get("/post/:username/:postID-:title", function(req, res){
 
 /* POST view-post.ejs - for after edit-post */
 app.post("/post/:username/:postID-:title", function(req, res){
-    //call js here
-    res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
+    let data = {Caption: req.body.caption, Tags: req.body.tags, Title: req.body.location};
+    let update_post = "UPDATE user_posts SET ? WHERE postID = " + req.params.postID;
+    let query = db.query(update_post, data,(err, results) => {
+        if(err) throw err;
+        res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
+    });
 });
 
 /* create-post.ejs */
