@@ -6,6 +6,7 @@
 
   <div class="welcome">
     <h3 id="hello-title">Search results for "<%= input %>"</h3>
+    <h4 id="welcome-title" style="font-family: Abel">Results are based on matches made to post author, title, and tags.</h4>
   </div>
 
   <div class="post-group">
@@ -14,12 +15,12 @@
     <% posts.forEach(function(post){ %>
     <div class="post-card">
       <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
-          <img src="<%= post.photo %>">
+          <img src="<%= post.photo %>" alt="<%= post.title %>">
           <p class="post-title"><%= post.title %></p>
       </a>
       <hr>
       <a href="/profile/<%= post.username %>" class="post-user">
-          <img src="<%= post.profilepic %>">
+          <img src="<%= post.profilepic %>" alt="<%= post.username %>">
           <p><%= post.username %></p>
       </a>
     </div>

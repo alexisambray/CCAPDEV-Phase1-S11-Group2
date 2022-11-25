@@ -3,7 +3,7 @@
 <!-- Content Space -->
 <div id="main">
     <div class="profile">
-        <img src="<%= user.profilepic %>">
+        <img src="<%= user.profilepic %>" alt="<%= user.username %>">
         <div class="user-details">
             <h1 class="display-name"><%= user.displayname %></h1>
             <h2 class="username"><%= user.username %></h2>
@@ -16,7 +16,7 @@
         <% myposts.forEach(function(post){ %>
         <div class="post-card">
             <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
-                <img src="<%= post.photo %>">
+                <img src="<%= post.photo %>" alt="<%= post.title %>">
                 <p class="post-title"><%= post.title %></p>
                 <hr>
                 <div class="post-stats profile-post-stats">

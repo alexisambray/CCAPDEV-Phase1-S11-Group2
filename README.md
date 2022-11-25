@@ -14,5 +14,8 @@ Prerequisites:
 
 Instructions:
 - CD to the application location
-- Type “node server.js” in CMD (or “node server.js” for developers)
+- Type “npm start” in CMD 
+    - Alternative scripts:
+        - “node server.js”
+        - “nodemon server.js” for developers
 - Type “localhost:3000” in your preferred browser

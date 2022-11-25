@@ -4,10 +4,10 @@
 <div id="main">
     <h1 id="post-title"><%= post.Title %></h1>
     <div class="post-area">
-        <img src="<%= post.Photo %>">
+        <img src="<%= post.Photo %>" alt="<%= post.Title %>">
         <div class="post-nav">
             <a href="/profile/<%= post.Username %>" class="post-user-view">
-                <img src="<%= post.profilepic %>">
+                <img src="<%= post.profilepic %>" alt="<%= post.Username %>">
                 <p><%= post.Username %></p>
             </a>
 
@@ -45,7 +45,7 @@
             <div class="comment">
                 <div class="commenter">
                     <a href="/profile/<%= comment.Username %>" class="commenter">
-                        <img src="<%= comment.profilepic %>">
+                        <img src="<%= comment.profilepic %>" alt="<%= comment.Username %>">
                         <p><%= comment.Username %></p>
                     </a>
 
