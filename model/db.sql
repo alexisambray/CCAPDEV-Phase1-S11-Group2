@@ -49,11 +49,11 @@ ALTER TABLE User_Posts
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username);
 
 INSERT INTO `User_Posts` (`Title`, `Username`, `Photo`, `Date`, `Tags`, `Caption`, `LikeCount`, `BookmarkCount`, `CommentCount`)
-VALUES ('Maldives','brylil','/images/myPost1.jpg','2022-11-23','','Picture I took!','1','2','1'),
-('Philippines','elliamae','/images/myPost2.jpg','2022-11-23','','Look at this place!','1','2','2'),
-('Sweden','emman','/images/myPost3.jpg','2022-11-23','','What a dazzling view','1','1','1'),
-('NYC','alexis','/images/myPost4.jpeg','2022-11-23','','New York City','1','0','0'),
-('Toronto','ccapdev','/images/myPost5.jpeg','2022-11-23','','I am now in Canada wow','1','0','1');
+VALUES ('Maldives','brylil','/images/myPost1.jpg','2022-11-23','travel, photography, beach','Picture I took!','1','2','1'),
+('Philippines','elliamae','/images/myPost2.jpg','2022-11-23','photography, beach','Look at this place!','1','2','2'),
+('Sweden','emman','/images/myPost3.jpg','2022-11-23','travel','What a dazzling view','1','1','1'),
+('NYC','alexis','/images/myPost4.jpeg','2022-11-23','photo, travel, city','New York City','1','0','0'),
+('Toronto','ccapdev','/images/myPost5.jpeg','2022-11-23','city','I am now in Canada wow','1','0','1');
 
 LOCK TABLES `User_Posts` WRITE;
 
