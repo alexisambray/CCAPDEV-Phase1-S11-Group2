@@ -8,7 +8,15 @@
   <img src="<%= user.profilepic %>"></button>
   </div>
 
-  <form method="POST" action="profile.html" id="createpost-form" name="createpost-form">
+  <div class="alert alert-danger" role="alert" id="invalidAlert" style="width: fit-content; position: absolute; top: 155px; left: 700px">
+    <p style="text-align: center; color: var(--orange); padding: 0; margin: 0;">Invalid photo file</p>
+  </div>
+
+  <div class="alert alert-danger" role="alert" id="nullAlert" style="width: fit-content; position: absolute; top: 155px; left: 700px">
+    <p style="text-align: center; color: var(--orange); padding: 0; margin: 0;">No file uploaded</p>
+  </div>
+
+  <form method="POST" action="/create-post" enctype="multipart/form-data" id="createpost-form" name="createpost-form">
     <div class="upload-container">
       <label class="form-label" for="customFile">Photo</label>
       <input type="file" class="form-control" name="photo" id="customFile" accept="image/*" required/>

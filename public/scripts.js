@@ -58,6 +58,16 @@ $('#location').keyup(function () {
     }
 });
 
+//alert if invalid or no file
+$('#invalidAlert').hide();
+$('#nullAlert').hide();
+const createParam = urlParams.get('error');
+if(createParam == "invalid") {
+    $('#invalidAlert').show();
+}else if(createParam == "null") {
+    $('#nullAlert').show();
+}
+
 /* search */
 
 //do not allow whitespace only for search
