@@ -39,9 +39,9 @@ CREATE TABLE `User_Posts` (
   `Date` DATE NOT NULL,
   `Tags` varchar(50) DEFAULT NULL,
   `Caption` varchar(280) DEFAULT NULL,   
-  `LikeCount` int NOT NULL,   
-  `BookmarkCount` int NOT NULL,  
-  `CommentCount` int NOT NULL,
+  `LikeCount` int NOT NULL DEFAULT '0',   
+  `BookmarkCount` int NOT NULL DEFAULT '0',  
+  `CommentCount` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`PostID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
