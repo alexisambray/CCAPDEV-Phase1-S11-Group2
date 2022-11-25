@@ -11,17 +11,17 @@
   <form method="POST" action="/post/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>" id="editpost-form" name="editpost-form">
     <div class="caption-container">
       <label class="caption-label">Caption</label>
-      <input type="text" id="caption" name="caption" value="<%= post.Caption %>">
+      <input type="text" id="caption" name="caption" maxlength="280" value="<%= post.Caption %>">
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Tags (separate with commas) </label>
-      <input type="text" id="tags" name="tags" value="<%= post.Tags %>">
+      <input type="text" id="tags" name="tags" maxlength="50" value="<%= post.Tags %>">
       </div>
 
       <div class="caption-container">
       <label class="caption-label">Location</label>
-      <input type="text" id="location" name="location" value="<%= post.Title %>" required>
+      <input type="text" id="location" name="location" maxlength="30" value="<%= post.Title %>" required>
       </div>
 
       <div class="save-container">
