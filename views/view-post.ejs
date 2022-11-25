@@ -50,7 +50,7 @@
                     </a>
 
                     <% if(session.username == post.Username || session.username == comment.Username) { %>
-                    <a href="/post/<%= post.PostID %>/comment/<%= comment.CommentID %>/delete"><button class="delComment"><i class="bi bi-trash-fill"></i></button></a>
+                    <a href="/post/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>/comment/<%= comment.CommentID %>/delete"><button class="delComment"><i class="bi bi-trash-fill"></i></button></a>
                     <% } %>
 
                 </div>
