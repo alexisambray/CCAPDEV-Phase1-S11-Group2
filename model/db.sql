@@ -21,11 +21,11 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Note: All sample passwords are "password" in md5 hash*/
-INSERT INTO `users` VALUES ('brylil','5f4dcc3b5aa765d61d8327deb882cf99','brylil@gmail.com','/images/user3.jpeg', 'Bryan', 'Asian traveller'),
-('elliamae','5f4dcc3b5aa765d61d8327deb882cf99','ellia@yahoo.com','/images/user1.jpg','Ellia','Hello world! This is my bio'),
-('emman','5f4dcc3b5aa765d61d8327deb882cf99','emman@gmail.com','/images/user4.jpg','Emman','Bon voyage!'),
-('alexis','5f4dcc3b5aa765d61d8327deb882cf99','alex23@hotmail.com','/images/user2.jpeg','Alexis','I like photography'),
-('ccapdev','5f4dcc3b5aa765d61d8327deb882cf99','apdev@gmail.com','/images/user5.jpg','Apdev','This is MP Phase 2.');
+INSERT INTO `users` VALUES ('brylil','5f4dcc3b5aa765d61d8327deb882cf99','brylil@gmail.com','/images/icons/user3.jpeg', 'Bryan', 'Asian traveller'),
+('elliamae','5f4dcc3b5aa765d61d8327deb882cf99','ellia@yahoo.com','/images/icons/user1.jpg','Ellia','Hello world! This is my bio'),
+('emman','5f4dcc3b5aa765d61d8327deb882cf99','emman@gmail.com','/images/icons/user4.jpg','Emman','Bon voyage!'),
+('alexis','5f4dcc3b5aa765d61d8327deb882cf99','alex23@hotmail.com','/images/icons/user2.jpeg','Alexis','I like photography'),
+('ccapdev','5f4dcc3b5aa765d61d8327deb882cf99','apdev@gmail.com','/images/icons/user5.jpg','Apdev','This is MP Phase 2.');
 
 LOCK TABLES `users` WRITE;
 
@@ -49,11 +49,11 @@ ALTER TABLE User_Posts
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username);
 
 INSERT INTO `User_Posts` (`Title`, `Username`, `Photo`, `Date`, `Tags`, `Caption`, `LikeCount`, `BookmarkCount`, `CommentCount`)
-VALUES ('Maldives','brylil','/images/myPost1.jpg','2022-11-23','travel, photography, beach','Picture I took!','1','2','1'),
-('Philippines','elliamae','/images/myPost2.jpg','2022-11-23','photography, beach','Look at this place!','1','2','2'),
-('Sweden','emman','/images/myPost3.jpg','2022-11-23','travel','What a dazzling view','1','1','1'),
-('NYC','alexis','/images/myPost4.jpeg','2022-11-23','photo, travel, city','New York City','1','0','0'),
-('Toronto','ccapdev','/images/myPost5.jpeg','2022-11-23','city','I am now in Canada wow','1','0','1');
+VALUES ('Maldives','brylil','/images/posts/myPost1.jpg','2022-11-23','travel, photography, beach','Picture I took!','1','2','1'),
+('Philippines','elliamae','/images/posts/myPost2.jpg','2022-11-23','photography, beach','Look at this place!','1','2','2'),
+('Sweden','emman','/images/posts/myPost3.jpg','2022-11-23','travel','What a dazzling view','1','1','1'),
+('NYC','alexis','/images/posts/myPost4.jpeg','2022-11-23','photo, travel, city','New York City','1','0','0'),
+('Toronto','ccapdev','/images/posts/myPost5.jpeg','2022-11-23','city','I am now in Canada wow','1','0','1');
 
 LOCK TABLES `User_Posts` WRITE;
 
