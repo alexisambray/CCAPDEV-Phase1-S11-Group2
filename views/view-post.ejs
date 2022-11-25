@@ -34,7 +34,7 @@
         <% if(session.isAuth) { %>
         <div class="add-comment" style="display: block;">
             <form action="/post/comment/<%= post.Username %>/<%= post.PostID %>-<%= post.Title %>" method="post">
-                <input id="comment-box" type="textarea" placeholder="Share your thoughts!">
+                <input id="comment-box" name="comment" type="textarea" placeholder="Share your thoughts!">
                 <input id="comment-btn" type="submit" value="Comment">
             </form>
         </div>
