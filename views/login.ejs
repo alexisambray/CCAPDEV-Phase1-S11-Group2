@@ -1,0 +1,23 @@
+<%- include("modules/header"); -%>
+<div class="login">
+    <a id="go-back" href="/"><i class="bi bi-arrow-left"></i>&nbsp;Back to Dashboard</a>
+    <img src="/images/logo.png" alt="VisiTOUR Logo">
+    <div class="alert alert-success" role="alert" id="regpassAlert">
+        <p style="text-align: center; color: black; padding: 0; margin: 0;">Registration successful!</p>
+    </div>
+    <div class="alert alert-danger" role="alert" id="loginAlert">
+        <p style="text-align: center; color: var(--orange); padding: 0; margin: 0;">Username and/or Password is incorrect</p>
+    </div>
+    <form method="POST" action="/" id="login-form" name="login-form">                    
+        <input type="text" id="username" name="username" class="input-txt" minlength="4" maxlength="20" required autocomplete="username" autofocus placeholder="Username"> 
+        <input type="password" id="pwd" name="pwd" class="input-txt" minlength="8" required autocomplete="password" placeholder="Password"> 
+        <input type="submit" id="login-btn" class="btn-blue" value="LOGIN">
+    </form>
+    <div class="footer">
+        <p>Don't have an account?</p>
+        <a href="/register">
+            <button id="register-btn" class="btn-blue">REGISTER</button>
+        </a>
+    </div>
+</div>
+<%- include("modules/footer"); -%>

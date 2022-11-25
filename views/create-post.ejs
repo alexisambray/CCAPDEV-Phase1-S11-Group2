@@ -1,0 +1,37 @@
+<%- include("modules/header"); -%>
+<%- include("modules/nav"); -%>
+<!-- Content Space -->
+<div id="main">
+  <h3 id="create-title"><%= session.displayname %>'s New Post</h3>
+
+  <div class="icon-container">
+  <img src="/images/icon.jpg"></button>
+  </div>
+
+  <form method="POST" action="profile.html" id="createpost-form" name="createpost-form">
+    <div class="upload-container">
+      <label class="form-label" for="customFile">Photo</label>
+      <input type="file" class="form-control" name="photo" id="customFile" accept="image/*" required/>
+      </div>
+
+      <div class="caption-container">
+      <label class="caption-label">Caption</label>
+      <input type="text" id="caption" name="caption" maxlength="280">
+      </div>
+
+      <div class="caption-container">
+      <label class="caption-label">Tags (separate with commas) </label>
+      <input type="text" id="tags" name="tags" maxlength="50">
+      </div>
+
+      <div class="caption-container">
+      <label class="caption-label">Location</label>
+      <input type="text" id="location" name="location" maxlength="30" required>
+      </div>
+
+      <div class="save-container">
+      <button type="submit">Save &amp Upload</button>
+      </div>
+  </form>
+</div>
+<%- include("modules/footer"); -%>

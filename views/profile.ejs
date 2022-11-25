@@ -1,0 +1,33 @@
+<%- include("modules/header"); -%>
+<%- include("modules/nav"); -%>
+<!-- Content Space -->
+<div id="main">
+    <div class="profile">
+        <img src="<%= user.profilepic %>">
+        <div class="user-details">
+            <h1 class="display-name"><%= user.displayname %></h1>
+            <h2 class="username"><%= user.username %></h2>
+            <p class="bio"><%= user.bio %></p>
+        </div>
+    </div>
+    <div class="post-group">
+
+        <!-- Post -->
+        <% myposts.forEach(function(post){ %>
+        <div class="post-card">
+            <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
+                <img src="<%= post.photo %>">
+                <p class="post-title"><%= post.title %></p>
+                <hr>
+                <div class="post-stats profile-post-stats">
+                    <p class="like-count"><i class="bi bi-heart-fill"></i>&nbsp;&nbsp;<%= post.likecount %></p>
+                    <p class="bookmark-count"><i class="bi bi-bookmark-fill"></i>&nbsp;&nbsp;<%= post.bookmarkcount %></p>
+                    <p class="comment-count"><i class="bi bi-chat-fill"></i>&nbsp;&nbsp;<%= post.commentcount %></p>
+                </div>
+            </a>
+        </div>
+        <% }); %>
+
+    </div>
+</div>
+<%- include("modules/footer"); -%>

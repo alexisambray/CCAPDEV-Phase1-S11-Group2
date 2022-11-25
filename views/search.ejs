@@ -1,0 +1,31 @@
+<%- include("modules/header"); -%>
+<%- include("modules/nav"); -%>
+<!-- Content Space -->
+<div id="main">
+  <%- include("modules/searchbar"); -%>
+
+  <div class="welcome">
+    <h3 id="hello-title">Search results for "<%= input %>"</h3>
+  </div>
+
+  <div class="post-group">
+
+    <!-- Post -->
+    <% posts.forEach(function(post){ %>
+    <div class="post-card">
+      <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
+          <img src="<%= post.photo %>">
+          <p class="post-title"><%= post.title %></p>
+      </a>
+      <hr>
+      <a href="/profile/<%= post.username %>" class="post-user">
+          <img src="<%= post.profilepic %>">
+          <p><%= post.username %></p>
+      </a>
+    </div>
+    <% }); %>
+   
+    
+  </div>
+</div>
+<%- include("modules/footer"); -%>

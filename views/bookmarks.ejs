@@ -1,0 +1,25 @@
+<%- include("modules/header"); -%>
+<%- include("modules/nav"); -%>
+<!-- Content Space -->
+<div id="main">
+    <h3 id="bmk-title"><%= session.displayname %>'s Bookmarks</h3>
+    <div class="post-group">
+
+        <!-- Post -->
+        <% bookmarked.forEach(function(post){ %>
+        <div class="post-card">
+            <a href="/post/<%= post.username %>/<%= post.postID %>-<%= post.title %>">
+                <img src="<%= post.photo %>">
+                <p class="post-title"><%= post.title %></p>
+            </a>
+            <hr>
+            <a href="/profile/<%= post.username %>" class="post-user">
+                <img src="<%= post.profilepic %>">
+                <p><%= post.username %></p>
+            </a>
+        </div>
+        <% }); %>
+
+    </div>
+</div>
+<%- include("modules/footer"); -%>

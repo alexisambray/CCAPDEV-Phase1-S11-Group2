@@ -1,0 +1,31 @@
+{
+  "name": "ccapdev-mp-group2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisambray/CCAPDEV-Phase1-S11-Group2.git"
+  },
+  "author": "Alvarez, Ambray, Ang, Umali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexisambray/CCAPDEV-Phase1-S11-Group2/issues"
+  },
+  "homepage": "https://github.com/alexisambray/CCAPDEV-Phase1-S11-Group2#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.1",
+    "jsdom": "^20.0.3",
+    "md5": "^2.3.0",
+    "mysql": "^2.18.1"
+  }
+}
