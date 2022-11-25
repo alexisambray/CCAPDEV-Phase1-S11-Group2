@@ -15,7 +15,9 @@ const db = mysql.createConnection({
 	host: 'localhost',
     user: 'root',
     password: 'ccapdev123',
-    database: 'mpdb'
+    database: 'mpdb',
+    clearExpired: true,
+    checkExpirationInterval: 60000 //1 minute in ms
 });
 
 db.connect(function(err) {
@@ -28,7 +30,7 @@ db.connect(function(err) {
 
 //Session
 const sessionStore = new MySQLStore({
-    expiration: 10800000,
+    expiration: 3600000, //1 hour in ms
     createDatabaseTable: true,
     schema: {
 		tableName: 'sessions',
@@ -57,6 +59,14 @@ app.use(function(req,res,next){ //allow views to access session
 });
 app.use(express.json());
 
+//Today's Date Stamp
+const ts_today = new Date();
+const date_today = ts_today.getDate();
+const month_today = ts_today.getMonth() + 1;
+const year_today = ts_today.getFullYear();
+const today = year_today + "-" + month_today + "-" + date_today;
+console.log("Accessed on " + today);
+
 //URL Routing
 
 /* GET index.ejs */
@@ -75,8 +85,7 @@ app.get("/", function(req, res){
 app.post("/", function(req, res){
     let hash = md5(req.body.pwd); //encrypt password
     let check = "SELECT * FROM users WHERE username = '" + req.body.username + "' AND password = '" + hash + "'";
-    console.log(req.body.username + " " + hash);
-    var query1 = db.query(check, (err, results) => {
+    var query = db.query(check, (err, results) => {
         if(err) throw err;
         if(results.length == 1){ //username and password exist and match
             req.session.username = results[0].Username; //create session
@@ -169,7 +178,7 @@ app.post("/profile/:username", function(req, res){
 /* edit-profile.ejs */
 app.get("/profile/edit/:username", function(req, res){
     let get_userprofile = "SELECT u.* FROM users u WHERE u.username = '" + req.params.username + "'";
-    let query1 = db.query(get_userprofile, (err, result) => {
+    let query = db.query(get_userprofile, (err, result) => {
         if (err) throw err;
         res.render("edit-profile", {
             pagetitle : "Edit Profile",
@@ -180,7 +189,84 @@ app.get("/profile/edit/:username", function(req, res){
 
 /* for delete-profile */
 app.get("/profile/delete/:username", function(req, res){
-    
+    console.log("Deleting user: " + req.params.username);
+
+    //sql statements
+    let get_comments = "SELECT * FROM comments WHERE username = '" + req.params.username + "'";
+    let del_comments = "DELETE FROM comments WHERE username = '" + req.params.username + "'";
+    let get_likes = "SELECT * FROM likes WHERE username = '" + req.params.username + "'";
+    let del_likes = "DELETE FROM likes WHERE username = '" + req.params.username + "'";
+    let get_bookmarks = "SELECT * FROM user_bookmarks WHERE username = '" + req.params.username + "'";
+    let del_bookmarks = "DELETE FROM user_bookmarks WHERE username = '" + req.params.username + "'";
+    let get_posts = "SELECT * FROM user_posts WHERE username = '" + req.params.username + "'";
+    let del_posts = "DELETE FROM user_posts WHERE username = '" + req.params.username + "'";
+    let del_profile = "DELETE FROM users WHERE username = '" + req.params.username + "'";
+
+    //delete all comments made by user
+    let queryc1 = db.query(get_comments, (err, rows) => {
+        if (err) throw err;
+        rows.forEach(function(row){
+            //update post statistics of affected posts
+            let update_comments = "UPDATE `user_posts` SET CommentCount = CommentCount-1 WHERE PostID = " + row.PostID;
+            let queryc2 = db.query(update_comments, (err) => { if (err) throw err; });
+        });
+        let queryc3 = db.query(del_comments, (err) => {
+            if (err) throw err;
+            console.log("Step 1 complete: Comments deleted");
+        });
+    });
+
+    //delete all likes made by user
+    let queryl1 = db.query(get_likes, (err, rows) => {
+        if (err) throw err;
+        rows.forEach(function(row){
+            //update post statistics of affected posts
+            let update_likes = "UPDATE `user_posts` SET LikeCount = LikeCount-1 WHERE PostID = " + row.PostID;
+            let queryl2 = db.query(update_likes, (err) => { if (err) throw err; });
+        });
+        let queryl3 = db.query(del_likes, (err) => {
+            if (err) throw err;
+            console.log("Step 2 complete: Likes deleted");
+        });
+    });
+
+    //delete all bookmarks made by user
+    let queryb1 = db.query(get_bookmarks, (err, rows) => {
+        if (err) throw err;
+        rows.forEach(function(row){
+            //update post statistics of affected posts
+            let update_bookmarks = "UPDATE `user_posts` SET BookmarkCount = BookmarkCount-1 WHERE PostID = " + row.PostID;
+            let queryl2 = db.query(update_bookmarks, (err) => { if (err) throw err; });
+        });
+        let queryb3 = db.query(del_bookmarks, (err) => {
+            if (err) throw err;
+            console.log("Step 3 complete: Bookmarks deleted");
+        });
+    });
+
+    //delete all posts made by user
+    let queryp1 = db.query(get_posts, (err, rows) => {
+        if (err) throw err;
+        rows.forEach(function(row){
+            //delete all comments, likes, and bookmarks made on the post
+            let del_pcomments = "DELETE FROM comments WHERE PostID = " + row.PostID;
+            let del_plikes = "DELETE FROM likes WHERE PostID = " + row.PostID;
+            let del_pbookmarks = "DELETE FROM user_bookmarks WHERE PostID = " + row.PostID;
+            let queryp2 = db.query(del_pcomments, (err) => { if (err) throw err; });
+            let queryp3 = db.query(del_plikes, (err) => { if (err) throw err; });
+            let queryp4 = db.query(del_pbookmarks, (err) => { if (err) throw err; });
+        });
+        let queryp4 = db.query(del_posts, (err) => {
+            if (err) throw err;
+            console.log("Step 4 complete: Posts deleted");
+            //delete user
+            let queryu = db.query(del_profile, (err) => {
+                if (err) throw err;
+                console.log("Step 5 complete: User deleted");
+                res.redirect("/logout"); //logout user since their account no longer exists
+            });
+        });
+    });
 });
 
 /* bookmarks.ejs */
@@ -204,7 +290,7 @@ app.get("/post/:username/:postID-:title", function(req, res){
         upost = result[0];
     });
 
-    let get_comments = "SELECT c.*, u.profilepic FROM comments c JOIN users u ON c.username = u.username WHERE c.postID = '" + req.params.postID + "';";
+    let get_comments = "SELECT c.*, u.profilepic FROM comments c JOIN users u ON c.username = u.username WHERE c.postID = '" + req.params.postID + "' ORDER BY c.commentID DESC;";
     let query2 = db.query(get_comments, (err, rows) => {
         if (err) throw err;
         res.render("view-post", {
@@ -246,12 +332,29 @@ app.get("/post/delete/:username/:postID-:title", function(req, res){
 
 /* for add-comment */
 app.post("/post/comment/:username/:postID-:title", function(req,res){
-
+    let data = {PostID: req.params.postID, Username: req.session.username, Comment: req.body.comment, Date: today};
+    let add_comment = "INSERT INTO `comments` SET ?";
+    let query1 = db.query(add_comment, data,(err, results) => {
+        if(err) throw err;
+        let inc_commentcount = "UPDATE `user_posts` SET CommentCount = CommentCount+1 WHERE PostID = '" + req.params.postID + "'";
+        let query2 = db.query(inc_commentcount, (err, result) => { //increment comment count
+            if (err) throw err;
+            res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
+        });
+    });
 });
 
 /* for delete-comment */
-app.post("/post/:postID/comment/:commentID/delete", function(req,res){
-
+app.get("/post/:username/:postID-:title/comment/:commentID/delete", function(req,res){
+    let del_comment = "DELETE FROM `comments` WHERE CommentID = " + req.params.commentID;
+    let query1 = db.query(del_comment,(err) => {
+        if(err) throw err;
+        let dec_commentcount = "UPDATE `user_posts` SET CommentCount = CommentCount-1 WHERE PostID = '" + req.params.postID + "'";
+        let query2 = db.query(dec_commentcount, (err) => { //decrement comment count
+            if (err) throw err;
+            res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
+        });
+    });
 });
 
 /* for likes */
