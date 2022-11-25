@@ -265,6 +265,7 @@ app.get("/profile/delete/:username", function(req, res){
         let queryp4 = db.query(del_posts, (err) => {
             if (err) throw err;
             console.log("Step 4 complete: Posts deleted");
+
             //delete user
             let queryu = db.query(del_profile, (err) => {
                 if (err) throw err;
@@ -333,7 +334,38 @@ app.get("/post/edit/:username/:postID-:title", function(req, res){
 
 /* for delete-post */
 app.get("/post/delete/:username/:postID-:title", function(req, res){
-    
+    console.log("Deleting post: " + req.params.postID + "-" + req.params.username);
+
+    //sql statements
+    let del_comments = "DELETE FROM comments WHERE postID = " + req.params.postID;
+    let del_likes = "DELETE FROM likes WHERE postID = " + req.params.postID;
+    let del_bookmarks = "DELETE FROM user_bookmarks WHERE postID = " + req.params.postID;
+    let del_post = "DELETE FROM user_posts WHERE postID = " + req.params.postID;
+
+    //delete comments associated with post
+    let queryc = db.query(del_comments, (err) => {
+        if (err) throw err;
+        console.log("Step 1 complete: Comments deleted");
+    });
+
+    //delete likes associated with post
+    let queryl = db.query(del_likes, (err) => {
+        if (err) throw err;
+        console.log("Step 2 complete: Likes deleted");
+    });
+
+    //delete bookmarks associated with post
+    let queryb = db.query(del_bookmarks, (err) => {
+        if (err) throw err;
+        console.log("Step 3 complete: Bookmarks deleted");
+    });
+
+    //delete post
+    let queryp = db.query(del_post, (err) => {
+        if (err) throw err;
+        console.log("Step 4 complete: Post deleted");
+        res.redirect("/profile/" + req.params.username);
+    });
 });
 
 /* for add-comment */
