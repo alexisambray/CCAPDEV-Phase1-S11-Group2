@@ -100,14 +100,20 @@ app.post("/", function(req, res){
 
 /* about.ejs */
 app.get("/about", function(req, res){
-    res.locals.username = "placeholder";
     res.render("about", {pagetitle : "About Us"});
 });
 
 /* search.ejs */
-app.get("/search/", function(req, res){
-    res.locals.username = "placeholder";
-    res.render("search", {pagetitle : "Search result for '" + res.locals.q + "'"});
+app.get("/search", function(req, res){
+    let search = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.username = u.username AND p.username LIKE '%" + req.query.q + "%' OR p.title LIKE '%" + req.query.q + "%' OR p.tags LIKE '%" + req.query.q + "%' ORDER BY p.postID DESC";
+    let query = db.query(search, (err, rows) => {
+        if (err) throw err;
+        res.render("search", {
+            pagetitle : "Search result for \"" + req.query.q + "\"",
+            input : req.query.q,
+            posts : rows
+        });
+    });
 });
 
 /* GET login.ejs */
