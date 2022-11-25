@@ -21,11 +21,11 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Note: All sample passwords are "password" in md5 hash*/
-INSERT INTO `users` VALUES ('brylil','5f4dcc3b5aa765d61d8327deb882cf99','brylil@gmail.com','/images/icon.jpg', 'Bryan', 'Asian traveller'),
-('elliamae','5f4dcc3b5aa765d61d8327deb882cf99','ellia@yahoo.com','/images/icon.jpg','Ellia','Hello world! This is my bio'),
-('emman','5f4dcc3b5aa765d61d8327deb882cf99','emman@gmail.com','/images/icon.jpg','Emman',''),
-('alexis','5f4dcc3b5aa765d61d8327deb882cf99','alex23@hotmail.com','/images/icon.jpg','Alexis',''),
-('ccapdev','5f4dcc3b5aa765d61d8327deb882cf99','apdev@gmail.com','/images/icon.jpg','Apdev','');
+INSERT INTO `users` VALUES ('brylil','5f4dcc3b5aa765d61d8327deb882cf99','brylil@gmail.com','/images/user3.jpeg', 'Bryan', 'Asian traveller'),
+('elliamae','5f4dcc3b5aa765d61d8327deb882cf99','ellia@yahoo.com','/images/user1.jpg','Ellia','Hello world! This is my bio'),
+('emman','5f4dcc3b5aa765d61d8327deb882cf99','emman@gmail.com','/images/user4.jpg','Emman','Bon voyage!'),
+('alexis','5f4dcc3b5aa765d61d8327deb882cf99','alex23@hotmail.com','/images/user2.jpeg','Alexis','I like photography'),
+('ccapdev','5f4dcc3b5aa765d61d8327deb882cf99','apdev@gmail.com','/images/user5.jpg','Apdev','This is MP Phase 2.');
 
 LOCK TABLES `users` WRITE;
 
