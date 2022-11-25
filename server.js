@@ -7,7 +7,10 @@ const jsdom = require("jsdom");
 const dom = new jsdom.JSDOM("");
 const jquery = require("jquery")(dom.window);
 const session = require("express-session");
-const MySQLStore = require('express-mysql-session')(session);
+const MySQLStore = require("express-mysql-session")(session);
+const fileUpload = require("express-fileupload");
+const path = require("path");
+const fs = require("fs");
 
 //Database
 const db = mysql.createConnection({
@@ -58,6 +61,7 @@ app.use(function(req,res,next){ //allow views to access session
     next();
 });
 app.use(express.json());
+app.use(fileUpload());
 
 //Today's Date Stamp
 const ts_today = new Date();
@@ -66,6 +70,17 @@ const month_today = ts_today.getMonth() + 1;
 const year_today = ts_today.getFullYear();
 const today = year_today + "-" + month_today + "-" + date_today;
 console.log("Accessed on " + today);
+
+//Random Key Generator (for image uploads)
+function picKey() {
+    var key = '';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var chars_length = chars.length;
+    for ( var i = 0; i < 10; i++ ) {
+        key += chars.charAt(Math.floor(Math.random() * chars_length));
+    }
+    return key;
+}
 
 //URL Routing
 
@@ -131,7 +146,7 @@ app.post("/login", function(req, res){
             let pfp = '/images/icons/icon.jpg' //default profile picture
             let data = {Username: req.body.username, Password: hash, Email: req.body.email, ProfilePic: pfp, DisplayName: req.body.username, Bio: null};
             let insertuser = "INSERT INTO users SET ?";
-            let query2 = db.query(insertuser, data,(err, results) => {
+            let query2 = db.query(insertuser, data,(err) => {
                 if(err) throw err;
                 res.redirect("/login?reg=" + encodeURIComponent('success'));
             });
@@ -176,14 +191,93 @@ app.get("/profile/:username", function(req, res){
 
 /* POST profile.ejs - for after edit-profile */
 app.post("/profile/:username", function(req, res){
-    //call js here
-    res.send(req.body);
-    /*res.redirect("/profile/" + req.params.username);*/
+    //sql statements
+    let get_user = "SELECT * FROM users WHERE username = '" + req.session.username + "'";
+
+    //check if no file
+    if (!req.files || Object.keys(req.files).length === 0){
+        console.log("no icon");
+    }else{
+        console.log("icon");
+        //grab file
+        let photo = req.files.profilepic;
+
+        //check if valid extension
+        const extensionName = path.extname(photo.name).toLowerCase(); // fetch the file extension
+        const allowedExtension = ['.png','.jpg','.jpeg'];
+        if(!allowedExtension.includes(extensionName)){ //invalid file
+            return res.status(422).redirect("/profile/" + req.session.username + "?error=" + encodeURIComponent('invalid-icon'));
+        }
+
+        //delete old icon
+        let querygi = db.query(get_user, (err, result) => {
+            if (err) throw err;
+            if (result[0].ProfilePic != "/images/icons/icon.jpg"){
+                fs.unlink(__dirname + "/public/" + result[0].ProfilePic, (err) => { if (err) throw err; }); //delete profile picture file
+            }
+        });
+
+        //rename file
+        let fname = req.session.username + extensionName;
+        let fpath = __dirname + "/public/images/icons/" + fname;
+        
+        //move file to desired position
+        photo.mv(fpath, function(err){ if (err) return res.status(500).send(err); });
+        
+        //update profile picture
+        let update_icon = "UPDATE users SET ProfilePic = '/images/icons/" + fname + "' WHERE Username = '" + req.session.username + "'";
+        let queryui = db.query(update_icon, (err) => { if (err) throw err; console.log("icon updated") });
+    }
+
+    //check if password null
+    if (req.body.pwd.length == 0){
+        console.log("null")
+    }else{
+        console.log("not null")
+        let hash = md5(req.body.pwd); //encrypt password
+        console.log(req.body.pwd)
+        console.log(hash)
+        let update_pwd = "UPDATE users SET Password = '" + hash + "' WHERE Username = '" + req.session.username + "'";
+        let queryup = db.query(update_pwd, (err) => { if (err) throw err; console.log("pwd updated") });
+    }
+
+    //check if email matches
+    let querygu = db.query(get_user, (err, result) => { 
+        if (err) throw err; 
+        if(result[0].Email == req.body.email){
+            console.log("same email")
+        }else{
+            console.log("diff email")
+
+            //check if email exists
+            let get_email = "SELECT * FROM users WHERE email = '" + result[0].Email + "'";
+            let queryge = db.query(get_email, (err, email) => { 
+                if (err) throw err; 
+                if(email[0].length != 0){
+                    console.log("email exists")
+                    return res.redirect("/profile/" + req.session.username + "?error=" + encodeURIComponent('email-already-used'));
+                }
+                console.log("email does not exist")
+                let update_email = "UPDATE users SET Email = '" + req.body.email + "' WHERE Username = '" + req.session.username + "'";
+                let queryue = db.query(update_email, (err) => { if (err) throw err; console.log("email updated") });
+            });
+        }
+    });
+
+    //update other information
+    let data = {DisplayName: req.body.displayname, Bio: req.body.bio};
+    let update_profile = "UPDATE users SET ? WHERE Username = '" + req.session.username + "'";
+    let queryu = db.query(update_profile, data,(err) => {
+        if (err) throw err;
+        console.log("dn and bio updated");
+        req.session.displayname = req.body.displayname; //change displayname in session
+        res.redirect("/profile/" + req.session.username);
+    });
 });
 
 /* edit-profile.ejs */
 app.get("/profile/edit/:username", function(req, res){
-    let get_userprofile = "SELECT u.* FROM users u WHERE u.username = '" + req.params.username + "'";
+    let get_userprofile = "SELECT * FROM users WHERE username = '" + req.params.username + "'";
     let query = db.query(get_userprofile, (err, result) => {
         if (err) throw err;
         res.render("edit-profile", {
@@ -206,6 +300,7 @@ app.get("/profile/delete/:username", function(req, res){
     let del_bookmarks = "DELETE FROM user_bookmarks WHERE username = '" + req.params.username + "'";
     let get_posts = "SELECT * FROM user_posts WHERE username = '" + req.params.username + "'";
     let del_posts = "DELETE FROM user_posts WHERE username = '" + req.params.username + "'";
+    let get_profile = "SELECT * FROM users WHERE username = '" + req.params.username + "'";
     let del_profile = "DELETE FROM users WHERE username = '" + req.params.username + "'";
 
     //delete all comments made by user
@@ -261,16 +356,23 @@ app.get("/profile/delete/:username", function(req, res){
             let queryp2 = db.query(del_pcomments, (err) => { if (err) throw err; });
             let queryp3 = db.query(del_plikes, (err) => { if (err) throw err; });
             let queryp4 = db.query(del_pbookmarks, (err) => { if (err) throw err; });
+            fs.unlink(__dirname + "/public/" + row.Photo, (err) => { if (err) throw err; }); //delete photo file
         });
-        let queryp4 = db.query(del_posts, (err) => {
+        let queryp5 = db.query(del_posts, (err) => {
             if (err) throw err;
             console.log("Step 4 complete: Posts deleted");
 
             //delete user
-            let queryu = db.query(del_profile, (err) => {
+            let queryu1 = db.query(get_profile, (err, result) => {
                 if (err) throw err;
-                console.log("Step 5 complete: User deleted");
-                res.redirect("/logout"); //logout user since their account no longer exists
+                if (result[0].ProfilePic != "/images/icons/icon.jpg"){
+                    fs.unlink(__dirname + "/public/" + result[0].ProfilePic, (err) => { if (err) throw err; }); //delete profile picture file
+                }
+                let queryu2 = db.query(del_profile, (err) => {
+                    if (err) throw err;
+                    console.log("Step 5 complete: User deleted");
+                    res.redirect("/logout"); //logout user since their account no longer exists
+                });
             });
         });
     });
@@ -338,13 +440,13 @@ app.get("/post/:username/:postID-:title", function(req, res){
 app.post("/post/:username/:postID-:title", function(req, res){
     let data = {Caption: req.body.caption, Tags: req.body.tags, Title: req.body.location};
     let update_post = "UPDATE user_posts SET ? WHERE postID = " + req.params.postID;
-    let query = db.query(update_post, data,(err, results) => {
+    let query = db.query(update_post, data,(err) => {
         if(err) throw err;
         res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
     });
 });
 
-/* create-post.ejs */
+/* GET create-post.ejs */
 app.get("/create-post", function(req, res){
     let get_userprofile = "SELECT u.username, u.profilepic, u.displayname, u.bio FROM users u WHERE u.username = '" + req.session.username + "'";
     var user;
@@ -356,6 +458,46 @@ app.get("/create-post", function(req, res){
             user : user
         });
     }); 
+});
+
+/* POST create-post.ejs - for after create-post */
+app.post("/create-post", function(req, res){
+    //variables for form data
+    var caption = req.body.caption;
+    var tags = req.body.tags;
+    var title = req.body.location;
+
+    //check if no file
+    if (!req.files || Object.keys(req.files).length === 0){
+        return res.redirect("/create-post?error=" + encodeURIComponent('null'));
+    }
+    
+    //grab file
+    let photo = req.files.photo;
+
+    //check if valid extension
+    const extensionName = path.extname(photo.name).toLowerCase(); // fetch the file extension
+    const allowedExtension = ['.png','.jpg','.jpeg'];
+    if(!allowedExtension.includes(extensionName)){ //invalid file
+        return res.status(422).redirect("/create-post?error=" + encodeURIComponent('invalid'));
+    }
+
+    //rename file
+    let fname = req.session.username + "-" + title + "-" + picKey() + extensionName;
+    let fpath = __dirname + "/public/images/posts/" + fname;
+    
+    //move file to desired position
+    photo.mv(fpath, function(err){ if (err) return res.status(500).send(err); });
+
+    //add to database
+    var file = "/images/posts/" + fname;
+    let data = {Title: title, Username: req.session.username, Photo: file, Date: today, Tags: tags, Caption: caption};
+    let upload = "INSERT INTO user_posts SET ?";
+    let query = db.query(upload, data,(err) => {
+        if(err) throw err;
+        console.log("Post upload successful");
+        res.redirect("/profile/" + req.session.username);  
+    });
 });
 
 /* edit-post.ejs */
@@ -378,6 +520,7 @@ app.get("/post/delete/:username/:postID-:title", function(req, res){
     let del_comments = "DELETE FROM comments WHERE postID = " + req.params.postID;
     let del_likes = "DELETE FROM likes WHERE postID = " + req.params.postID;
     let del_bookmarks = "DELETE FROM user_bookmarks WHERE postID = " + req.params.postID;
+    let get_post = "SELECT * FROM user_posts WHERE postID = " + req.params.postID;
     let del_post = "DELETE FROM user_posts WHERE postID = " + req.params.postID;
 
     //delete comments associated with post
@@ -399,10 +542,17 @@ app.get("/post/delete/:username/:postID-:title", function(req, res){
     });
 
     //delete post
-    let queryp = db.query(del_post, (err) => {
+    let queryp1 = db.query(get_post, (err, result) => {
         if (err) throw err;
-        console.log("Step 4 complete: Post deleted");
-        res.redirect("/profile/" + req.params.username);
+        fs.unlink(__dirname + "/public/" + result[0].Photo, (err) => { //delete photo file
+            if (err) throw err;
+            console.log("Step 4 complete: Photo deleted");
+        });
+        let query2 = db.query(del_post, (err) => {
+            if (err) throw err;
+            console.log("Step 5 complete: Post deleted");
+            res.redirect("/profile/" + req.params.username);
+        });
     });
 });
 
@@ -410,7 +560,7 @@ app.get("/post/delete/:username/:postID-:title", function(req, res){
 app.post("/post/comment/:username/:postID-:title", function(req,res){
     let data = {PostID: req.params.postID, Username: req.session.username, Comment: req.body.comment, Date: today};
     let add_comment = "INSERT INTO `comments` SET ?";
-    let query1 = db.query(add_comment, data,(err, results) => {
+    let query1 = db.query(add_comment, data,(err) => {
         if(err) throw err;
         let inc_commentcount = "UPDATE `user_posts` SET CommentCount = CommentCount+1 WHERE PostID = '" + req.params.postID + "'";
         let query2 = db.query(inc_commentcount, (err, result) => { //increment comment count

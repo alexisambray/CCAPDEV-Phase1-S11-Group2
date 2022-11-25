@@ -4,7 +4,7 @@
 <div id="main">
     <div class="editprofile_layout">
         <h3 id="title">Edit Profile <button class="input_greencolor" id="deleteprofile" data-bs-toggle="modal" data-bs-target="#modal">Delete Profile</button></h3>
-        <form method="POST" action="/profile/<%= user.Username %>" id="editprofile-form" name="editprofile-form">
+        <form method="POST" action="/profile/<%= user.Username %>" enctype="multipart/form-data" id="editprofile-form" name="editprofile-form">
             <label for="profilepic" class="green_label">Profile Picture</label><br>
             <input type="file" class="choose_file" id="profilepic" name="profilepic" accept="image/*" autofocus><br>
 
