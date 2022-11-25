@@ -291,19 +291,45 @@ app.get("/bookmarks", function(req, res){
 /* GET view-post.ejs */
 app.get("/post/:username/:postID-:title", function(req, res){
     let get_post = "SELECT p.*, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.postID = '" + req.params.postID + "';";
-    var upost;
+    var upost, like, bookmark;
     let query1 = db.query(get_post, (err, result) => {
         if (err) throw err;
         upost = result[0];
     });
 
+    if(req.session.isAuth){
+        //check if post is liked
+        let check_likes = "SELECT * FROM likes WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
+        let queryl = db.query(check_likes, (err, result) => {
+            if (err) throw err;
+            if(result.length == 1){ //liked
+                like = "<i class='bi bi-heart-fill'></i>";
+            }else{
+                like = "<i class='bi bi-heart'></i>";
+            }
+        });
+
+        //check if post is bookmarked
+        let check_bookmarks = "SELECT * FROM user_bookmarks WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
+        let queryb = db.query(check_bookmarks, (err, result) => {
+            if (err) throw err;
+            if(result.length == 1){ //bookmarked
+                bookmark = "<i class='bi bi-bookmark-fill'></i>";
+            }else{
+                bookmark = "<i class='bi bi-bookmark'></i>";
+            }
+        });
+    }
+    
     let get_comments = "SELECT c.*, u.profilepic FROM comments c JOIN users u ON c.username = u.username WHERE c.postID = '" + req.params.postID + "' ORDER BY c.commentID DESC;";
     let query2 = db.query(get_comments, (err, rows) => {
         if (err) throw err;
         res.render("view-post", {
             pagetitle : req.params.title + " by " + req.params.username,
             comments : rows,
-            post : upost
+            post : upost,
+            likeBtn : like,
+            bookmarkBtn : bookmark
         });
     });
 });
@@ -400,13 +426,61 @@ app.get("/post/:username/:postID-:title/comment/:commentID/delete", function(req
 });
 
 /* for likes */
-app.post("/post/like/:username/:postID-:title", function(req,res){
-
+app.get("/post/like/:username/:postID-:title", function(req,res){
+    //check if post is liked
+    let check_likes = "SELECT * FROM likes WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
+    let query = db.query(check_likes, (err, result) => {
+        if (err) throw err;
+        if(result.length == 0){ //not liked
+            //like post
+            let like = "INSERT INTO likes SET username = '" + req.session.username + "', postID = " + req.params.postID;
+            let queryl = db.query(like, (err) => { 
+                if (err) throw err; 
+                //increment like count
+                let inc_lcount = "UPDATE `user_posts` SET LikeCount = LikeCount+1 WHERE PostID = " + req.params.postID;
+                let queryil = db.query(inc_lcount, (err) => { if (err) throw err; });
+            });
+        }else{ //liked
+            //unlike post
+            let del_like = "DELETE FROM likes WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
+            let queryul = db.query(del_like, (err) => { 
+                if (err) throw err; 
+                //decrement like count
+                let dec_lcount = "UPDATE `user_posts` SET LikeCount = LikeCount-1 WHERE PostID = " + req.params.postID;
+                let querydl = db.query(dec_lcount, (err) => { if (err) throw err; });
+            });
+        }
+        res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
+    });
 });
 
 /* for bookmarks */
-app.post("/post/bookmark/:username/:postID-:title", function(req,res){
-
+app.get("/post/bookmark/:username/:postID-:title", function(req,res){
+    //check if post is bookmarked
+    let check_bookmarks = "SELECT * FROM user_bookmarks WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
+    let query = db.query(check_bookmarks, (err, result) => {
+        if (err) throw err;
+        if(result.length == 0){ //not bookmarked
+            //bookmark post
+            let bookmark = "INSERT INTO user_bookmarks SET username = '" + req.session.username + "', postID = " + req.params.postID;
+            let queryb = db.query(bookmark, (err) => { 
+                if (err) throw err; 
+                //increment bookmark count
+                let inc_bcount = "UPDATE `user_posts` SET BookmarkCount = BookmarkCount+1 WHERE PostID = " + req.params.postID;
+                let queryib = db.query(inc_bcount, (err) => { if (err) throw err; });
+            });
+        }else{ //bookmarked
+            //unbookmark post
+            let del_bookmark = "DELETE FROM user_bookmarks WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
+            let queryub = db.query(del_bookmark, (err) => { 
+                if (err) throw err; 
+                //decrement bookmark count
+                let dec_bcount = "UPDATE `user_posts` SET BookmarkCount = BookmarkCount-1 WHERE PostID = " + req.params.postID;
+                let querydb = db.query(dec_bcount, (err) => { if (err) throw err; });
+            });
+        }
+        res.redirect("/post/" + req.params.username + "/" + req.params.postID + "-" + req.params.title);
+    });
 });
 
 //Listener
