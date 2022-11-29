@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const md5 = require("md5");
+const bcrypt = require("bcrypt");
 const jsdom = require("jsdom");
 const dom = new jsdom.JSDOM("");
 const jquery = require("jquery")(dom.window);
@@ -98,15 +98,18 @@ app.get("/", function(req, res){
 
 /* POST index.ejs - for after login */
 app.post("/", function(req, res){
-    let hash = md5(req.body.pwd); //encrypt password
-    let check = "SELECT * FROM users WHERE username = '" + req.body.username + "' AND password = '" + hash + "'";
+    let check = "SELECT * FROM users WHERE username = '" + req.body.username + "'";
     var query = db.query(check, (err, results) => {
         if(err) throw err;
-        if(results.length == 1){ //username and password exist and match
-            req.session.username = results[0].Username; //create session
-            req.session.displayname = results[0].DisplayName;
-            req.session.isAuth = true;
-            res.redirect("/");
+        if(results.length == 1){ //username exist
+            if(bcrypt.compareSync(req.body.pwd, results[0].Password)){ //password matches
+                req.session.username = results[0].Username; //create session
+                req.session.displayname = results[0].DisplayName;
+                req.session.isAuth = true;
+                res.redirect("/");
+            }else{
+                res.redirect("/login?error=" + encodeURIComponent('wrongcreds'));
+            }
         }else{
             res.redirect("/login?error=" + encodeURIComponent('wrongcreds'));
         }
@@ -142,7 +145,7 @@ app.post("/login", function(req, res){
     var query1 = db.query(check, (err, results) => {
         if(err) throw err;
         if(results.length == 0){ //no duplicates
-            let hash = md5(req.body.pwd); //encrypt password
+            let hash = bcrypt.hashSync(req.body.pwd, 10); //encrypt password
             let pfp = '/images/icons/icon.jpg' //default profile picture
             let data = {Username: req.body.username, Password: hash, Email: req.body.email, ProfilePic: pfp, DisplayName: req.body.username, Bio: null};
             let insertuser = "INSERT INTO users SET ?";
@@ -230,7 +233,7 @@ app.post("/profile/:username", function(req, res){
     //check if password null
     if (req.body.pwd.length == 0){
     }else{
-        let hash = md5(req.body.pwd); //encrypt password
+        let hash = bcrypt.hashSync(req.body.pwd, 10); //encrypt password
         let update_pwd = "UPDATE users SET Password = '" + hash + "' WHERE Username = '" + req.session.username + "'";
         let queryup = db.query(update_pwd, (err) => { if (err) throw err; });
     }

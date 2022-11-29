@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS `Users`;
 -- users table ------
 CREATE TABLE `Users` (
   `Username` varchar(20) NOT NULL,
-  `Password` varchar(32) NOT NULL,
+  `Password` varchar(60) NOT NULL,
   `Email` varchar(50) NOT NULL, 
   `ProfilePic` varchar(100) NOT NULL,
   `DisplayName` varchar(20) NOT NULL, 
@@ -21,11 +21,11 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Note: All sample passwords are "password" in md5 hash*/
-INSERT INTO `users` VALUES ('brylil','5f4dcc3b5aa765d61d8327deb882cf99','brylil@gmail.com','/images/icons/user3.jpeg', 'Bryan', 'Asian traveller'),
-('elliamae','5f4dcc3b5aa765d61d8327deb882cf99','ellia@yahoo.com','/images/icons/user1.jpg','Ellia','Hello world! This is my bio'),
-('emman','5f4dcc3b5aa765d61d8327deb882cf99','emman@gmail.com','/images/icons/user4.jpg','Emman','Bon voyage!'),
-('alexis','5f4dcc3b5aa765d61d8327deb882cf99','alex23@hotmail.com','/images/icons/user2.jpeg','Alexis','I like photography'),
-('ccapdev','5f4dcc3b5aa765d61d8327deb882cf99','apdev@gmail.com','/images/icons/user5.jpg','Apdev','This is MP Phase 2.');
+INSERT INTO `users` VALUES ('brylil','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','brylil@gmail.com','/images/icons/user3.jpeg', 'Bryan', 'Asian traveller'),
+('elliamae','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','ellia@yahoo.com','/images/icons/user1.jpg','Ellia','Hello world! This is my bio'),
+('emman','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','emman@gmail.com','/images/icons/user4.jpg','Emman','Bon voyage!'),
+('alexis','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','alex23@hotmail.com','/images/icons/user2.jpeg','Alexis','I like photography'),
+('ccapdev','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','apdev@gmail.com','/images/icons/user5.jpg','Apdev','This is MP Phase 2.');
 
 LOCK TABLES `users` WRITE;
 
