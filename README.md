@@ -14,7 +14,7 @@ Prerequisites:
 
 Instructions:
 - Open db.sql from model folder in MySQL Workbench
-- Run the script (use the lightning button) to create the database
+- Execute the script (use the lightning button) to create the database
 - Open command prompt (CMD)
 - CD to the application location
 - Type “npm start” in CMD 
