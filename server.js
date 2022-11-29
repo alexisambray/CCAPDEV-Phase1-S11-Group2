@@ -270,6 +270,10 @@ app.post("/profile/:username", function(req, res){
 
 /* edit-profile.ejs */
 app.get("/profile/edit/:username", function(req, res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     let get_userprofile = "SELECT * FROM users WHERE username = '" + req.params.username + "'";
     let query = db.query(get_userprofile, (err, result) => {
         if (err) throw err;
@@ -282,6 +286,10 @@ app.get("/profile/edit/:username", function(req, res){
 
 /* for delete-profile */
 app.get("/profile/delete/:username", function(req, res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     console.log("Deleting user: " + req.params.username);
 
     //sql statements
@@ -373,6 +381,10 @@ app.get("/profile/delete/:username", function(req, res){
 
 /* bookmarks.ejs */
 app.get("/bookmarks", function(req, res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     let get_userposts = "SELECT p.postID, p.username, p.title, p.photo, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username JOIN user_bookmarks b on p.postID = b.postID WHERE b.username = '" + req.session.username + "' AND b.postID = p.postID ORDER BY p.postID DESC;";
     let query = db.query(get_userposts, (err, rows) => {
         if (err) throw err;
@@ -446,6 +458,10 @@ app.post("/post/:username/:postID-:title", function(req, res){
 
 /* GET create-post.ejs */
 app.get("/create-post", function(req, res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     let get_userprofile = "SELECT u.username, u.profilepic, u.displayname, u.bio FROM users u WHERE u.username = '" + req.session.username + "'";
     var user;
     let query1 = db.query(get_userprofile, (err, result) => {
@@ -500,6 +516,10 @@ app.post("/create-post", function(req, res){
 
 /* edit-post.ejs */
 app.get("/post/edit/:username/:postID-:title", function(req, res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     let get_post = "SELECT p.*, u.profilepic FROM user_posts p JOIN users u ON p.username = u.username WHERE p.postID = '" + req.params.postID + "';";
     let query1 = db.query(get_post, (err, result) => {
         if (err) throw err;
@@ -512,6 +532,10 @@ app.get("/post/edit/:username/:postID-:title", function(req, res){
 
 /* for delete-post */
 app.get("/post/delete/:username/:postID-:title", function(req, res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+    
     console.log("Deleting post: " + req.params.postID + "-" + req.params.username);
 
     //sql statements
@@ -570,6 +594,10 @@ app.post("/post/comment/:username/:postID-:title", function(req,res){
 
 /* for delete-comment */
 app.get("/post/:username/:postID-:title/comment/:commentID/delete", function(req,res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     let del_comment = "DELETE FROM `comments` WHERE CommentID = " + req.params.commentID;
     let query1 = db.query(del_comment,(err) => {
         if(err) throw err;
@@ -583,6 +611,10 @@ app.get("/post/:username/:postID-:title/comment/:commentID/delete", function(req
 
 /* for likes */
 app.get("/post/like/:username/:postID-:title", function(req,res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+
     //check if post is liked
     let check_likes = "SELECT * FROM likes WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
     let query = db.query(check_likes, (err, result) => {
@@ -612,6 +644,10 @@ app.get("/post/like/:username/:postID-:title", function(req,res){
 
 /* for bookmarks */
 app.get("/post/bookmark/:username/:postID-:title", function(req,res){
+    if(!req.session.isAuth){
+        return res.redirect("/");
+    }
+    
     //check if post is bookmarked
     let check_bookmarks = "SELECT * FROM user_bookmarks WHERE username = '" + req.session.username + "' AND postID = " + req.params.postID;
     let query = db.query(check_bookmarks, (err, result) => {
