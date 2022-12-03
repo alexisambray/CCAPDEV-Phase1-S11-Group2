@@ -2,10 +2,104 @@
 <%- include("modules/nav"); -%>
 <!-- Content Space -->
 <div id="main">
-  <h3 id="hello-title" style="margin: 3%;">About VisiTOUR</h3>
-  <p class="desc">VisiTOUR is a web application that focuses on photo sharing, wherein users can freely upload and share photos of their travels. 
-    Its name came from the words Visitor and Tour. It serves as a photo gallery for multiple users and can allow them to bond over 
-    their past or recent travels. Since it is common for travelers to take photographs of the different places they went to, the website 
-    can serve as a place to indulge in the different photos of users in the place they traveled.</p>
+  <div id="about-container">
+    <h3 id="hello-title">About <img src="/images/logo.png" alt="VisiTOUR" style="height: 120px; margin-left: 12px; margin-top: -40px; margin-bottom: -20px;"></h3>
+
+    <div id="carousel-about" class="carousel slide carousel-fade" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel-about" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel-about" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel-about" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img src="/images/slide1.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Explore the world.</h5>
+            <p>Get a taste of every place through moments captured in time.</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/images/slide2.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Visit and tour.</h5>
+            <p>Discover perfect spots and hidden gems from other globetrotters.</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/images/slide3.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Share your love for adventure.</h5>
+            <p>Connect with other tourists on all things travel.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel-about" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel-about" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <p class="desc">VisiTOUR is a web application that focuses on photo sharing, wherein users can freely upload and share photos of their travels. 
+      Its name came from the words Visitor and Tour. It serves as a photo gallery for multiple users and can allow them to bond over 
+      their past or recent travels. Since it is common for travelers to take photographs of the different places they went to, the website 
+      can serve as a place to indulge in the different photos of users in the place they traveled.</p>
+
+    <h4 id="welcome-title">Meet the Dev Team</h4>
+
+    <div class="card-group">
+      <div class="card text-bg-dark mb-3">
+        <img src="/images/bryan.jpg" class="card-img-top" alt="Bryan Kahlil Alvarez">
+        <div class="card-body">
+          <h5 class="card-title"><a href="https://github.com/bryankahlil" target="_blank">Alvarez, Bryan Kahlil</a></h5>
+          <p class="card-text">Bryan is an ID 120 BSCS-ST Undergraduate Student. He likes playing sports and videogames.</p>
+        </div>
+      </div>
+      <div class="card text-bg-dark mb-3">
+        <img src="/images/alexis.jpeg" class="card-img-top" alt="Alexis Sofia Ambray">
+        <div class="card-body">
+          <h5 class="card-title"><a href="https://github.com/alexisambray" target="_blank">Ambray, Alexis Sofia</a></h5>
+          <p class="card-text">Alexis is a 4th-year BSCS-ST Undergraduate Student with a vision to be a software developer. Her hobbies and interests include watching Korean dramas, listening to music, reading, and playing badminton.</p>
+        </div>
+      </div>
+      <div class="card text-bg-dark mb-3">
+        <img src="/images/ellia.jpg" class="card-img-top" alt="Elliamae Ang">
+        <div class="card-body">
+          <h5 class="card-title"><a href="https://github.com/elliamaeang" target="_blank">Ang, Elliamae</a></h5>
+          <p class="card-text">Ellia is an ID 120 BS-IT Undergraduate Student. She is an aspiring developer who loves dogs and music. Her hobbies include watching youtube videos, listening to songs, and reading fiction literature.</p>
+        </div>
+      </div>
+      <div class="card text-bg-dark mb-3">
+        <img src="/images/emman.jpg" class="card-img-top" alt="Allan Emmanuel Umali">
+        <div class="card-body">
+          <h5 class="card-title"><a href="https://github.com/Emememssss" target="_blank">Umali, Allan Emmanuel</a></h5>
+          <p class="card-text">Ems is an ID 119 BS-ECE Undergraduate Student. While he occasionally enjoys electronics and programming, he is also currently working part-time as a Research Assistant in DLSU.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 id="welcome-title">NPM Packages and Third Party Libraries</h4>
+
+    <ul class="desc list-group list-group-horizontal">
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/bcrypt" target="_blank">Bcrypt</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/body-parser" target="_blank">Body-parser</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/ejs" target="_blank">EJS</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/express" target="_blank">Express</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/express-fileupload" target="_blank">Express-fileupload</a></li>
+    </ul>
+    <ul class="desc list-group list-group-horizontal">
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/express-mysql-session" target="_blank">Express-mysql-session</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/express-session" target="_blank">Express-session</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/jquery" target="_blank">JQuery</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/jsdom" target="_blank">JSDOM</a></li>
+      <li class="list-group-item list-group-item-action text-bg-dark flex-fill"><a href="https://www.npmjs.com/package/mysql" target="_blank">MySQL</a></li>
+    </ul>
+
+    <p class="desc">View the website's <a href="https://github.com/alexisambray/CCAPDEV-Phase1-S11-Group2" target="_blank">github repository</a>.</p>
+  </div>
 </div>
 <%- include("modules/footer"); -%>
