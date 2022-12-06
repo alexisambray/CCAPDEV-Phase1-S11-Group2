@@ -1,4 +1,5 @@
 //Packages declaration
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
@@ -14,10 +15,9 @@ const fs = require("fs");
 
 //Database
 const db = mysql.createConnection({
-    //Note: modify this part to match your local settings!
-	host: 'localhost',
-    user: 'root',
-    password: 'ccapdev123',
+	host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
     database: 'mpdb',
     clearExpired: true,
     checkExpirationInterval: 60000 //1 minute in ms
@@ -51,7 +51,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 app.use(session({
-    secret : 'visitourmpgrp2', //key that will sign cookie
+    secret : process.env.SESH_SECRET, //key that will sign cookie
     resave: false, //false = do not create new session for every req
     saveUninitialized: false, //false = don't save if session has not been modified
     store: sessionStore //where the session will be stored
