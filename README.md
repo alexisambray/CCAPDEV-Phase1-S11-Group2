@@ -10,7 +10,6 @@ Prerequisites:
     - Install Nodemon to your machine globally by typing “npm install -g nodemon” in CMD
     - Check if installed successfully by typing “nodemon --version” in CMD
 - Make sure to have MySQL Workbench installed and functional
-- Modify user and password to match your host server settings in the dotenv (.env) file
 
 Instructions:
 - Open db.sql from model folder in MySQL Workbench
