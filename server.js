@@ -677,6 +677,7 @@ app.get("/post/bookmark/:username/:postID-:title", function(req,res){
 });
 
 //Listener
-app.listen(process.env.PORT || 3000, '0.0.0.0', function() {
+app.listen(process.env.PORT || 3000, '0.0.0.0', err => {
+    if (err) throw err
     console.log("Server started on port " + process.env.PORT );
 });
