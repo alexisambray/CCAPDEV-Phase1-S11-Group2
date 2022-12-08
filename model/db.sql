@@ -21,13 +21,13 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Note: All sample passwords are "password" in md5 hash*/
-INSERT INTO `users` VALUES ('brylil','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','brylil@gmail.com','/images/icons/user3.jpeg', 'Bryan', 'Asian traveller'),
+INSERT INTO `Users` VALUES ('brylil','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','brylil@gmail.com','/images/icons/user3.jpeg', 'Bryan', 'Asian traveller'),
 ('elliamae','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','ellia@yahoo.com','/images/icons/user1.jpg','Ellia','Hello world! This is my bio'),
 ('emman','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','emman@gmail.com','/images/icons/user4.jpg','Emman','Bon voyage!'),
 ('alexis','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','alex23@hotmail.com','/images/icons/user2.jpeg','Alexis','I like photography'),
 ('ccapdev','$2a$10$J8G9AUA6MAOBa4292wCI0OHV5hXAt5vUHZZLLeloyIBPZK/u2Y9aq','apdev@gmail.com','/images/icons/user5.jpg','Apdev','This is MP Phase 2.');
 
-LOCK TABLES `users` WRITE;
+LOCK TABLES `Users` WRITE;
 
 -- user_posts table ------
 UNLOCK TABLES;
@@ -109,9 +109,9 @@ ALTER TABLE Comments
 	ADD FOREIGN KEY (Username) REFERENCES Users (Username),
   ADD FOREIGN KEY (PostID) REFERENCES User_Posts(PostID);
 
-LOCK TABLES `comments` WRITE;
+LOCK TABLES `Comments` WRITE;
 
-INSERT INTO `comments` (`PostID`, `Username`, `Comment`, `Date`) 
+INSERT INTO `Comments` (`PostID`, `Username`, `Comment`, `Date`) 
 VALUES (1,'emman','This looks good!','2022-11-23'),
 (2,'alexis','go girl!','2022-11-23'),
 (3,'elliamae','What a nice photo','2022-11-23'),
