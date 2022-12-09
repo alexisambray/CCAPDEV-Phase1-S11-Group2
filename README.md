@@ -52,7 +52,7 @@ If you received this application with an **existing dotenv file**:
 - Modify the variables to match your local settings.
 
 ### Instructions:
-- Open “db for cloud.sql” from model folder in MySQL Workbench
+- Open “db.sql” from model folder in MySQL Workbench
 - Execute the script (use the lightning button) to create the database
 - Open command prompt (CMD)
 - CD to the application location
