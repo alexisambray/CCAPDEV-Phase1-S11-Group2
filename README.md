@@ -5,7 +5,7 @@ This is a collaborative group project for CCAPDEV MP made by S11 Group 2 (Alvare
 
 **VisiTOUR** is a web application that focuses on photo sharing, wherein users can freely upload and share photos of their travels. Its name came from the words *Visitor* and *Tour*. It serves as a photo gallery for multiple users and can allow them to bond over their past or recent travels. Since it is common for travelers to take photographs of the different places they went to, the website can serve as a place to indulge in various pictures taken by users while they traveled.
 
-The website is deployed at https://apdev-visitour.cyclic.sh.
+The website is deployed at https://apdev-visitour.cyclic.app.
 
 ### Environment:
 - The application is built following the MVC architecture.
